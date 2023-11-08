@@ -1,2 +1,2 @@
-# lift
+# libft
 for 42
