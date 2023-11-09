@@ -217,51 +217,79 @@ char *test_ft_strlcpy()
 
 char *test_ft_strlcat()
 {
-//	char dst[6] = "hello";
-//	char src[7] = "world!";
-//	size_t n = 2;
-//	int res = ft_strlcat(dst, src, n);
-//	debug("====ft_strlcat gives be %d \n",res);
-//	debug("====after ft_strlcat dst is %s and src %s \n",dst, src);
-//	mu_assert(res == 5, "Output shd be 5");
+	char dst[20] = "ab";
+	char src[20] = "bcdef";
+	size_t n = 2;
+	int res = ft_strlcat(dst, src, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst);
+	mu_assert(res == 7, "res = 7 because (n eq dstlen) ->return srclen +dstlen");
+	mu_assert(ft_strncmp(dst, "ab", n) == 0, "Output shd be 0");
 	
-	char dst2[6] = "hello";
-	char src2[7] = "world!";
-	size_t n2 = 2;
-	int res2 = strlcat(dst2, src2, n2);
-	debug("====strlcat gives %d \n",res2);
-	debug("====after strlcat dst is %s and src %s \n",dst2, src2);
-	mu_assert(res2 == 8, "Output shd be 8");
-
-//	char dst3[6] = "hello";
-//	char src3[7] = "world!";
-//	size_t n3 = 15;
-//	int res3 = ft_strlcat(dst3, src3, n3);
-//	debug("====ft_strlcat gives  %d \n",res3);
-//	mu_assert(res3 == 11, "Output shd be 11");
-
-	char dst4[6] = "hello";
-	char src4[7] = "world!";
-	size_t n4 = 6;
-	 res2 = strlcat(dst4, src4, n4);
-//	int res4 = strlcat(dst4, src4, n4);
-	debug("====strlcat gives  %d \n",res2);
-//	debug("====after strlcat dst4 is %s \n",dst4);
-//	mu_assert(res4 == 15, "Output shd be 11");
+	char dst2[20] = "ab";
+	char src2[20] = "bcdef";
+	n = 0;
+	res = ft_strlcat(dst2, src2, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst2);
+	mu_assert(res == 5, "res = 5 because (n < destlen) ->return srclen + n");
+	mu_assert(ft_strncmp(dst2, "ab", 2) == 0, "Output shd be 0");
+			  
+	char dst3[20] = "ab";
+	char src3[20] = "bcdef";
+	n = 1;
+	res = ft_strlcat(dst3, src3, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst3);
+	mu_assert(res == 6, "res = 6 because (n < destlen) ->return srclen + n");
+	mu_assert(ft_strncmp(dst3, "ab", 2) == 0, "Output shd be 0");
 	
-//	char dst5[6] = "hello";
-//	char src5[6] = "world";
-//	size_t n5 = 3;
-//	int res5 = ft_strlcpy(dst5, src5, n5);
-//	debug("====ft_strlcpy with len 3 gives be %d \n",res5);
-//	mu_assert(res3 == 5, "Output shd be still 5 like src length even with dstlen 3");
-//	char dst6[6] = "hello";
-//	char src6[6] = "world";
-//	size_t n6 = 3;
-//	int res6 = strlcpy(dst6, src6, n6);
-//	debug("====strlcpy with len 3 gives %d! \n",res6);
-//	debug("====after strlcpy dst is %s and src %s \n",dst6, src6);
-//	mu_assert(res6 == 5, "Output shd be still 5 like src length even with dstlen 3");
+	char dst4[20] = "ab";
+	char src4[20] = "bcdef";
+	n = 3;
+	res = ft_strlcat(dst4, src4, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst4);
+	mu_assert(res == 7, "res = 6 because (n < destlen) ->return srclen + n");
+	mu_assert(ft_strncmp(dst4, "ab", 2) == 0, "Output shd be 0");
+
+	char dst5[20] = "ab";
+	char src5[20] = "bcdef";
+	n = 4;
+	res = ft_strlcat(dst5, src5, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst5);
+	mu_assert(res == 7, "res = 6 because (n > destlen) ->return dstlen + srclen");
+	mu_assert(ft_strncmp(dst5, "abb", 3) == 0, "Output shd be 0");
+
+	char dst6[20] = "";
+	char src6[20] = "bcdef";
+	n = 4;
+	res = ft_strlcat(dst6, src6, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst6);
+	mu_assert(res == 5, "res = 5 because (n > destlen) ->return dstlen + srclen");
+	mu_assert(ft_strncmp(dst6, "bcd", 3) == 0, "Output shd be 0");
+
+	char dst7[20] = "ab";
+	char src7[20] = "bcdef";
+	n = 10;
+	res = ft_strlcat(dst7, src7, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst7);
+	mu_assert(res == 7, "res = 7 because (n > destlen) ->return dstlen + srclen");
+	mu_assert(ft_strncmp(dst7, "abbcdef", 7) == 0, "Output shd be 0");
+
+	char dst8[20] = "ab";
+	char src8[20] = "";
+	n = 10;
+	res = ft_strlcat(dst8, src8, n);
+	debug("====ft_strlcat gives be %d \n",res);
+	debug("====after ft_strlcat dst shd be ab => %s  \n",dst8);
+	mu_assert(res == 2, "res = 2 because (n > destlen) ->return dstlen + srclen");
+	mu_assert(ft_strncmp(dst8, "ab", 2) == 0, "Output shd be 0");
+
+
 	return NULL;
 }
 

@@ -34,7 +34,7 @@
 
  */
 
-size_t	ft_strlen(const char *s);
+//size_t	ft_strlen(const char *s);
 
 
 size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize)
@@ -45,36 +45,37 @@ size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize
 	srclen = strlen(src);
 	dstlen = strnlen(dst, dstsize);
 	if (dstlen == dstsize)
-		return (dstsize + srclen);
-	if (srclen < dstsize - dstlen) 
 	{
+//		printf("here? dest len = %zu \n", dstlen);
+		return (dstsize + srclen);
+	}
+	if (srclen < dstsize - dstlen)
+	{
+//		printf("here? \n");
 		ft_memcpy(dst + dstlen, src, srclen + 1);
 	} 
 	else
 	{
-		ft_memcpy(dst + dstlen, src, dstsize - 1);
+//		printf("here2? dstlen is %zu copying at most %zu - dstlen - 1 \n", dstlen, dstsize );
+		ft_memcpy(dst + dstlen, src, dstsize - dstlen - 1);
 		dst[dstlen + dstsize - 1] = '\0';
 	}
 	return dstlen + srclen;
 }
 
-int main(void){
-	char dst[20] = "ab";
-	char src[20] = "bcdef";
-	size_t n = 1;
-	int res = ft_strlcat(dst, src, n);
-	//	int res4 = strlcat(dst4, src4, n4);
-	printf("====ft strlcat gives  %d \n",res);
-	printf("====ft strlcat dst  %s\n",dst);
-	
-	char dst4[20] = "ab";
-	char src4[20] = "bcdef";
-	size_t n4 = 1;
-	int res2 = strlcat(dst4, src4, n4);
-	//	int res4 = strlcat(dst4, src4, n4);
-	printf("====strlcat gives  %d \n",res2);
-	printf("====strlcat dst  %s\n",dst4);
-//	debug("====after strlcat dst4 is %s \n",dst4);
-//	mu_assert(res4 == 11, "Output shd be 11");
-	return (0);
-}
+//int main(void){
+//	char dst[20] = "ab";
+//	char src[20] = "";
+//	size_t n = 10;
+//	int res = ft_strlcat(dst, src, n);
+//	printf("====ft strlcat gives  %d \n",res);
+//	printf("====ft strlcat dst  %s\n",dst);
+//	
+//	char dst4[20] = "ab";
+//	char src4[20] = "";
+//	size_t n4 = 10;
+//	int res2 = strlcat(dst4, src4, n4);
+//	printf("====strlcat gives  %d \n",res2);
+//	printf("====strlcat dst  %s\n",dst4);
+//	return (0);
+//}
