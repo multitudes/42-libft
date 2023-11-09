@@ -40,6 +40,7 @@ clean:
 	rm -rf `find . -name "*.dSYM" -print`
 	find  .  -name ".*~" -delete -print
 	rm -Rf tmp
+	rm -f a.out
 
 fclean: clean
 	rm -f $(NAME)

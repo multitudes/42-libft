@@ -293,6 +293,41 @@ char *test_ft_strlcat()
 	return NULL;
 }
 
+char *test_ft_toupper()
+{
+	for (int c = 0; c<=255; c++)
+	{
+		if (c >= 97 && c <= 122)
+		{
+			mu_assert(ft_toupper(c) == c - 32, "wrong output");
+			debug("====after ft_toupper c is %c",(char)ft_toupper(c));
+		}
+		else
+		{
+			mu_assert(ft_toupper(c) == c, "wrong output");
+			debug("====after ft_toupper c is %c",(char)c);
+		}
+	}
+	return NULL;
+}
+
+char *test_ft_tolower()
+{
+	for (int c = 0; c<=255; c++)
+	{
+		if (c >= 65 && c <= 90)
+		{
+			mu_assert(ft_tolower(c) == c + 32, "wrong output");
+			debug("====after ft_toupper c is %c",(char)ft_toupper(c));
+		}
+		else
+		{
+			mu_assert(ft_tolower(c) == c, "wrong output");
+			debug("====after ft_toupper c is %c",(char)c);
+		}
+	}
+	return NULL;
+}
 
 //// for this one since it prints on the terminal I need
 //// to redirect first to a file and then check that the output
@@ -558,9 +593,8 @@ char *all_tests()
 	mu_run_test(test_ft_memmove);
 	mu_run_test(test_ft_strlcpy);
 	mu_run_test(test_ft_strlcat);
-//	
-//	mu_run_test(test_ft_strdup);
-//	mu_run_test(test_ft_range);
+	mu_run_test(test_ft_toupper);
+	mu_run_test(test_ft_tolower);
 	
 	return NULL;
 }
