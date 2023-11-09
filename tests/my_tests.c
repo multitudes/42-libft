@@ -329,6 +329,22 @@ char *test_ft_tolower()
 	return NULL;
 }
 
+char *test_ft_strchr()
+{
+	int c = 88;
+	char s[14] = "hello";
+	char *res = ft_strchr(s, c);
+	mu_assert(res == NULL, "wrong output");
+	mu_assert(strchr(s,c) == NULL, "wrong output");
+	c = 'e';
+	char *res1 = ft_strchr(s, c);
+	char *res2 = strchr(s, c);
+	mu_assert(ft_strncmp(res1, "ello", 4) == 0, "wrong output");
+	mu_assert(ft_strncmp(res2, "ello", 4) == 0, "wrong output");
+
+	return NULL;
+}
+
 //// for this one since it prints on the terminal I need
 //// to redirect first to a file and then check that the output
 //// is correct in reading the file again
@@ -595,6 +611,7 @@ char *all_tests()
 	mu_run_test(test_ft_strlcat);
 	mu_run_test(test_ft_toupper);
 	mu_run_test(test_ft_tolower);
+	mu_run_test(test_ft_strchr);
 	
 	return NULL;
 }
