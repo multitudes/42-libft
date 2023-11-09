@@ -215,6 +215,56 @@ char *test_ft_strlcpy()
 	return NULL;
 }
 
+char *test_ft_strlcat()
+{
+//	char dst[6] = "hello";
+//	char src[7] = "world!";
+//	size_t n = 2;
+//	int res = ft_strlcat(dst, src, n);
+//	debug("====ft_strlcat gives be %d \n",res);
+//	debug("====after ft_strlcat dst is %s and src %s \n",dst, src);
+//	mu_assert(res == 5, "Output shd be 5");
+	
+	char dst2[6] = "hello";
+	char src2[7] = "world!";
+	size_t n2 = 2;
+	int res2 = strlcat(dst2, src2, n2);
+	debug("====strlcat gives %d \n",res2);
+	debug("====after strlcat dst is %s and src %s \n",dst2, src2);
+	mu_assert(res2 == 8, "Output shd be 8");
+
+//	char dst3[6] = "hello";
+//	char src3[7] = "world!";
+//	size_t n3 = 15;
+//	int res3 = ft_strlcat(dst3, src3, n3);
+//	debug("====ft_strlcat gives  %d \n",res3);
+//	mu_assert(res3 == 11, "Output shd be 11");
+
+	char dst4[6] = "hello";
+	char src4[7] = "world!";
+	size_t n4 = 6;
+	 res2 = strlcat(dst4, src4, n4);
+//	int res4 = strlcat(dst4, src4, n4);
+	debug("====strlcat gives  %d \n",res2);
+//	debug("====after strlcat dst4 is %s \n",dst4);
+//	mu_assert(res4 == 15, "Output shd be 11");
+	
+//	char dst5[6] = "hello";
+//	char src5[6] = "world";
+//	size_t n5 = 3;
+//	int res5 = ft_strlcpy(dst5, src5, n5);
+//	debug("====ft_strlcpy with len 3 gives be %d \n",res5);
+//	mu_assert(res3 == 5, "Output shd be still 5 like src length even with dstlen 3");
+//	char dst6[6] = "hello";
+//	char src6[6] = "world";
+//	size_t n6 = 3;
+//	int res6 = strlcpy(dst6, src6, n6);
+//	debug("====strlcpy with len 3 gives %d! \n",res6);
+//	debug("====after strlcpy dst is %s and src %s \n",dst6, src6);
+//	mu_assert(res6 == 5, "Output shd be still 5 like src length even with dstlen 3");
+	return NULL;
+}
+
 
 //// for this one since it prints on the terminal I need
 //// to redirect first to a file and then check that the output
@@ -479,7 +529,7 @@ char *all_tests()
 	mu_run_test(test_ft_memcpy);
 	mu_run_test(test_ft_memmove);
 	mu_run_test(test_ft_strlcpy);
-//	mu_run_test(test_ft_strcmp);
+	mu_run_test(test_ft_strlcat);
 //	
 //	mu_run_test(test_ft_strdup);
 //	mu_run_test(test_ft_range);

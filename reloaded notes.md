@@ -298,3 +298,32 @@ size_t ft_strlcpy(char *dst, const char *src, size_t len)
   return l;
 }
 Also, the len parameter and the return type should be size_t.
+
+ Like snprintf(3), the strlcpy() and strlcat() functions return the total
+     length of the string they tried to create.  For strlcpy() that means the
+     length of src.  For strlcat() that means the initial length of dst plus
+     the length of src.
+
+     If the return value is >= dstsize, the output string has been truncated.
+     It is the caller's responsibility to handle this.
+
+
+snprintf? return the number of characters that would have
+     been printed if the size were unlimited
+     These functions return a
+     negative value if an error occurs.?
+     
+     https://opensource.apple.com/source/Libc/Libc-825.26/string/strlcat.c.auto.html
+size_t
+strlcat(char * restrict dst, const char * restrict src, size_t maxlen) {
+    const size_t srclen = strlen(src);
+    const size_t dstlen = strnlen(dst, maxlen);
+    if (dstlen == maxlen) return maxlen+srclen;
+    if (srclen < maxlen-dstlen) {
+        memcpy(dst+dstlen, src, srclen+1);
+    } else {
+        memcpy(dst+dstlen, src, maxlen-1);
+        dst[dstlen+maxlen-1] = '\0';
+    }
+    return dstlen + srclen;
+}     
