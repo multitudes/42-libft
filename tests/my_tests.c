@@ -130,6 +130,19 @@ char *test_ft_bzero()
 	return NULL;
 }
 
+char *test_ft_memcpy()
+{
+	//	mu_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
+	char dst[6] = "hello";
+	char src[6] = "world";
+	size_t n = 5;
+	ft_memcpy((void *)dst, (void *)src, n);
+	mu_assert(ft_strncmp(dst, src, n) == 0, "Output shd be 0");
+	
+	debug("====memcpy should %s \n",(char *)memcpy((void *)dst, (void *)src, n));
+	return NULL;
+}
+
 
 
 //// for this one since it prints on the terminal I need
@@ -392,7 +405,7 @@ char *all_tests()
 	
 	mu_run_test(test_ft_strncmp);
 	mu_run_test(test_ft_bzero);
-//	mu_run_test(test_sqrt);
+	mu_run_test(test_ft_memcpy);
 //	mu_run_test(test_ft_putstr);
 //	mu_run_test(test_ft_strlen);
 //	mu_run_test(test_ft_strcmp);

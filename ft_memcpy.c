@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:13:19 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/08 17:13:31 by lbrusa           ###   ########.fr       */
+/*   Created: 2023/11/09 12:05:12 by lbrusa            #+#    #+#             */
+/*   Updated: 2023/11/09 12:06:01 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- void *
- memset(void *b, int c, size_t len);
- 
- DESCRIPTION
- The memset() function writes len bytes of value c 
- (converted to an unsigned char) to the string b.
+ The memcpy() function copies n bytes from memory area src to memory area
+ dst.  If dst and src overlap, behavior is undefined.  Applications in
+ which dst and src might overlap should use memmove(3) instead.
  
  RETURN VALUES
- The memset() function returns its first argument.
- */
-void	*ft_memset(void *b, int c, size_t len)
+ The memcpy() function returns the original value of dst.
+*/
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	unsigned long	i;
 	
 	i = 0;
-	len = (unsigned long) len;
-	while (i < len)
+	n = (unsigned long) n;
+	while (i < n)
 	{
-		*((unsigned char *)b++) = c;
+		*((unsigned char *)dst++) = *((unsigned char *)src++);
 		i++;
 	}
-	return b;
+	return (dst);
 }
