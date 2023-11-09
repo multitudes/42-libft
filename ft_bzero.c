@@ -18,10 +18,9 @@
 */
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 	
 	i = 0;
-	n = (unsigned int) n;
 	if (n != 0)
 	{
 		while (i < n)

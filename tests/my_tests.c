@@ -137,9 +137,29 @@ char *test_ft_memcpy()
 	char src[6] = "world";
 	size_t n = 5;
 	ft_memcpy((void *)dst, (void *)src, n);
-	mu_assert(ft_strncmp(dst, src, n) == 0, "Output shd be 0");
+	mu_assert(ft_strncmp(dst, "world", n) == 0, "Output shd be 0");
 	
-	debug("====memcpy should %s \n",(char *)memcpy((void *)dst, (void *)src, n));
+	debug("====memcpy should be %s \n",(char *)memcpy((void *)dst, (void *)src, n));
+	return NULL;
+}
+// it is like the previous but strings can overlap
+// tested with overlapping strings
+char *test_ft_memmove()
+{
+	//	mu_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
+	char dst[11] = "helloworld";
+	char *src = (dst+3);
+	char dst2[11] = "helloworld";
+	char *src2 = (dst2+3);
+	size_t n = 6;
+	debug("====memmove gives be %s \n",(char *)memmove((void *)dst, (void *)src, n));
+	debug("====after memmove dst is %s and src %s \n",dst, src);
+
+	ft_memmove((void *)dst2, (void *)src2, n);
+	debug("====ft_memmove gives be %s \n",dst2);
+
+	mu_assert(ft_strncmp(dst, "loworlorld", n) == 0, "Output shd be 0");
+
 	return NULL;
 }
 
@@ -406,7 +426,7 @@ char *all_tests()
 	mu_run_test(test_ft_strncmp);
 	mu_run_test(test_ft_bzero);
 	mu_run_test(test_ft_memcpy);
-//	mu_run_test(test_ft_putstr);
+	mu_run_test(test_ft_memmove);
 //	mu_run_test(test_ft_strlen);
 //	mu_run_test(test_ft_strcmp);
 //	

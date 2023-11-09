@@ -22,10 +22,9 @@
 */
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	unsigned long	i;
+	size_t	i;
 	
 	i = 0;
-	n = (unsigned long) n;
 	while (i < n)
 	{
 		*((unsigned char *)dst++) = *((unsigned char *)src++);

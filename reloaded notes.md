@@ -261,3 +261,19 @@ https://stackoverflow.com/a/33585153/9497800
 typedef unsigned long size_t;
 #endif
 https://stackoverflow.com/questions/63464078/define-size-t-and-typedef-unsigned-int-size-t
+
+
+check if strings overlap in mem
+https://stackoverflow.com/questions/4023320/how-to-implement-memmove-in-standard-c-without-an-intermediate-copy
+
+#memmove
+https://stackoverflow.com/questions/43507854/memmove-is-overlapping
+memmove allows the source and destination to have an overlapping region, and it is defined so that the contents of the source before memmove will compare equal to contents of the destination after the memmove.
+
+If the source and destination overlap, you will expect the source to have changed in some way after the memmove call. What is prevented is the possible corruption of destination.
+
+The behavior of memmove(dst, src, len) will be similar to:
+
+char buf[len];
+memcpy(buf, src, len);
+memcpy(dst, buf, len);
