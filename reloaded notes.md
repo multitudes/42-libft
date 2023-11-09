@@ -277,3 +277,24 @@ The behavior of memmove(dst, src, len) will be similar to:
 char buf[len];
 memcpy(buf, src, len);
 memcpy(dst, buf, len);
+
+
+#strlcpy
+You're returning the length of the resulting string, not the length it would have been without the len limit.
+
+Save strlen(src) in a variable and return that at the end.
+
+size_t ft_strlcpy(char *dst, const char *src, size_t len)
+{
+  size_t l = strlen(src);
+  size_t i = 0;
+
+  while (i < len - 1 && *src != '\0')
+  {
+      *dst++ = *src++;
+      i++;
+  }
+  *dst = '\0';
+  return l;
+}
+Also, the len parameter and the return type should be size_t.

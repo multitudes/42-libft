@@ -142,6 +142,7 @@ char *test_ft_memcpy()
 	debug("====memcpy should be %s \n",(char *)memcpy((void *)dst, (void *)src, n));
 	return NULL;
 }
+
 // it is like the previous but strings can overlap
 // tested with overlapping strings
 char *test_ft_memmove()
@@ -163,6 +164,56 @@ char *test_ft_memmove()
 	return NULL;
 }
 
+/*
+ size_t	ft_strlcpy(char * restrict dst, const char * restrict src, size_t dstsize)
+ */
+char *test_ft_strlcpy()
+{
+	//	mu_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
+	char dst[6] = "hello";
+	char src[6] = "world";
+	size_t n = 6;
+	int res = ft_strlcpy(dst, src, n);
+	debug("====ft_strlcpy gives be %d \n",res);
+	debug("====after ft strlcpy dst is %s and src %s \n",dst, src);
+	mu_assert(res == 5, "Output shd be 5");
+	char dst2[6] = "hello";
+	char src2[6] = "world";
+	size_t n2 = 6;
+	int res2 = strlcpy(dst2, src2, n2);
+	debug("====strlcpy gives be %d \n",res2);
+	debug("====after strlcpy dst is %s and src %s \n",dst2, src2);
+	mu_assert(res2 == 5, "Output shd be 5");
+
+	char dst3[6] = "hello";
+	char src3[6] = "world";
+	size_t n3 = 0;
+	int res3 = ft_strlcpy(dst3, src3, n3);
+	debug("====ft_strlcpy gives  %d \n",res3);
+	mu_assert(res3 == 5, "Output shd be 5");
+	char dst4[6] = "hello";
+	char src4[6] = "world";
+	size_t n4 = 0;
+	int res4 = strlcpy(dst4, src4, n4);
+	debug("====strlcpy gives  %d \n",res4);
+	debug("====after strlcpy dst is %s and src %s \n",dst4, src4);
+	mu_assert(res4 == 5, "Output shd be 5");
+	
+	char dst5[6] = "hello";
+	char src5[6] = "world";
+	size_t n5 = 3;
+	int res5 = ft_strlcpy(dst5, src5, n5);
+	debug("====ft_strlcpy with len 3 gives be %d \n",res5);
+	mu_assert(res3 == 5, "Output shd be still 5 like src length even with dstlen 3");
+	char dst6[6] = "hello";
+	char src6[6] = "world";
+	size_t n6 = 3;
+	int res6 = strlcpy(dst6, src6, n6);
+	debug("====strlcpy with len 3 gives %d! \n",res6);
+	debug("====after strlcpy dst is %s and src %s \n",dst6, src6);
+	mu_assert(res6 == 5, "Output shd be still 5 like src length even with dstlen 3");
+	return NULL;
+}
 
 
 //// for this one since it prints on the terminal I need
@@ -427,7 +478,7 @@ char *all_tests()
 	mu_run_test(test_ft_bzero);
 	mu_run_test(test_ft_memcpy);
 	mu_run_test(test_ft_memmove);
-//	mu_run_test(test_ft_strlen);
+	mu_run_test(test_ft_strlcpy);
 //	mu_run_test(test_ft_strcmp);
 //	
 //	mu_run_test(test_ft_strdup);
