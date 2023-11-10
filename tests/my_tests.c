@@ -104,20 +104,6 @@ char *test_ft_memset()
 	return NULL;
 }
 
-
-//
-char *test_ft_strncmp()
-{
-	mu_assert(ft_strncmp("hello", "hellA", 6) == 46, "Output shd be 46");
-	mu_assert(ft_strncmp("hello", "", 6) == 104, "Output shd be 104");
-	mu_assert(ft_strncmp("", "hellA", 6) == -104, "Output shd be -104");
-	mu_assert(ft_strncmp("", "", 6) == 0, "Output shd be 0");
-	mu_assert(ft_strncmp("www", "ww", 2) == 0, "Output shd be 0");
-	mu_assert(ft_strncmp("www", "w\b", 2) == 111, "Output shd be 111");
-	
-	return NULL;
-}
-
 char *test_ft_bzero()
 {
 	//	mu_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
@@ -341,10 +327,91 @@ char *test_ft_strchr()
 	char *res2 = strchr(s, c);
 	mu_assert(ft_strncmp(res1, "ello", 4) == 0, "wrong output");
 	mu_assert(ft_strncmp(res2, "ello", 4) == 0, "wrong output");
-
+	c = 'l';
+	char *res3 = ft_strchr(s, c);
+	char *res4 = strchr(s, c);
+	mu_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
+	mu_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
+	
 	return NULL;
 }
 
+char *test_ft_strrchr()
+{
+	int c = 88; // X
+	char s[14] = "hello";
+	char *res = ft_strrchr(s, c);
+	mu_assert(res == NULL, "wrong output");
+	mu_assert(strrchr(s,c) == NULL, "wrong output");
+	c = 'e';
+	char *res1 = ft_strrchr(s, c);
+	char *res2 = strrchr(s, c);
+	mu_assert(ft_strncmp(res1, "ello", 4) == 0, "wrong output");
+	mu_assert(ft_strncmp(res2, "ello", 4) == 0, "wrong output");
+	c = 'l';
+	char *res3 = ft_strrchr(s, c);
+	char *res4 = strrchr(s, c);
+	mu_assert(ft_strncmp(res3, "lo", 2) == 0, "wrong output");
+	mu_assert(ft_strncmp(res4, "lo", 2) == 0, "wrong output");
+	
+	return NULL;
+}
+
+char *test_ft_strncmp()
+{
+	mu_assert(ft_strncmp("hello", "hellA", 6) == 46, "Output shd be 46");
+	mu_assert(ft_strncmp("hello", "", 6) == 104, "Output shd be 104");
+	mu_assert(ft_strncmp("", "hellA", 6) == -104, "Output shd be -104");
+	mu_assert(ft_strncmp("", "", 6) == 0, "Output shd be 0");
+	mu_assert(ft_strncmp("www", "ww", 2) == 0, "Output shd be 0");
+	mu_assert(ft_strncmp("www", "w\b", 2) == 111, "Output shd be 111");
+	
+	return NULL;
+}
+
+//void	*ft_memchr(const void *s, int c, size_t n)
+char *test_ft_memchr()
+{
+	int c = 88;
+	char s[14] = "hello";
+	char *res = ft_memchr(s, c, 5);
+	mu_assert(res == NULL, "wrong output");
+	mu_assert(memchr(s,c, 5) == NULL, "wrong output");
+	c = 'e';
+	char *res1 = ft_memchr(s, c, 5);
+	char *res2 = memchr(s, c, 5);
+	mu_assert(ft_strncmp(res1, "ello", 4) == 0, "wrong output");
+	mu_assert(ft_strncmp(res2, "ello", 4) == 0, "wrong output");
+	c = 'l';
+	char *res3 = ft_memchr(s, c, 5);
+	char *res4 = memchr(s, c, 5);
+	mu_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
+	mu_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
+	
+	return NULL;
+}
+
+// similar than the strcmp but accepting unsigned chars
+// It doesn't say it will return -1 or 1 or a difference between char values
+// What it exactly returns is implementation dependent.
+char *test_ft_memcmp()
+{
+	mu_assert(ft_memcmp("hello", "hellA", 6) > 0, "Output shd be 46");
+	debug("====memcmp( hell , hell , 6) ==  %d",memcmp("hell0", "hell", 6));
+	mu_assert(memcmp("hello", "hellA", 6) > 0, "Output shd be 46");
+	mu_assert(ft_memcmp("hello", "", 6) > 0, "Output shd be 104");
+	mu_assert(memcmp("hello", "", 6) > 0, "Output shd be 104");
+	mu_assert(ft_memcmp("", "hellA", 6) < 0, "Output shd be -104");
+	mu_assert(memcmp("", "hellA", 6) < 0, "Output shd be -104");
+	mu_assert(ft_memcmp("ù", "ù", 6) == 0, "Output shd be 0");
+	mu_assert(memcmp("ù", "ù", 6) == 0, "Output shd be 0");
+	mu_assert(ft_memcmp("www", "ww", 2) == 0, "Output shd be 0");
+	mu_assert(memcmp("www", "ww", 2) == 0, "Output shd be 0");
+	mu_assert(ft_memcmp("www", "w\b", 2) > 0, "Output shd be 111");
+	mu_assert(memcmp("www", "w\b", 2) > 0, "Output shd be 111");
+	
+	return NULL;
+}
 //// for this one since it prints on the terminal I need
 //// to redirect first to a file and then check that the output
 //// is correct in reading the file again
@@ -612,6 +679,9 @@ char *all_tests()
 	mu_run_test(test_ft_toupper);
 	mu_run_test(test_ft_tolower);
 	mu_run_test(test_ft_strchr);
+	mu_run_test(test_ft_strrchr);
+	mu_run_test(test_ft_memchr);
+	mu_run_test(test_ft_memcmp);
 	
 	return NULL;
 }

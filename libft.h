@@ -18,6 +18,13 @@
 typedef unsigned long size_t;
 #endif
 
+#ifndef __SIZE_T
+# define __SIZE_T
+typedef void* NULL;
+#endif
+
+
+
 int		ft_isalpha(int c);
 int 	ft_isdigit(int c);
 int 	ft_isalnum(int c);
@@ -32,23 +39,12 @@ size_t	ft_strlcpy(char * restrict dst, const char * restrict src, size_t dstsize
 size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr(const char *s, int c);
-
-
-//ft_memcpy
-//ft_memmove
-//ft_strlcpy
-//ft_strlcat
-//ft_toupper
-//ft_tolower
-//ft_strchr
-//ft_strrchr
-
-//ft_memchr
-//ft_memcmp
-//ft_strnstr
+char	*ft_strrchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 //ft_atoi
 //ft_calloc
 //ft_strdup

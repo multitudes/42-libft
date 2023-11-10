@@ -42,14 +42,14 @@ size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize
 	size_t srclen;
 	size_t dstlen;
 	
-	srclen = strlen(src);
-	dstlen = strnlen(dst, dstsize);
-	if (dstlen == dstsize)
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (dstsize <= dstlen)
 	{
 //		printf("here? dest len = %zu \n", dstlen);
 		return (dstsize + srclen);
 	}
-	if (srclen < dstsize - dstlen)
+	else if (srclen < dstsize - dstlen)
 	{
 //		printf("here? \n");
 		ft_memcpy(dst + dstlen, src, srclen + 1);
