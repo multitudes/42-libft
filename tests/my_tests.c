@@ -1,6 +1,8 @@
 #include "dbg.h"
 #include "../libft.h"
 #include <string.h>
+#include <stdio.h>
+#include <limits.h>
 
 char *test_ft_isalpha()
 {
@@ -20,13 +22,18 @@ char *test_ft_isdigit()
 {
 	for (int c = 0; c<255; c++)
 	{
-		if (c >= 42 && c <= 57)
+		if (c >= 48 && c <= 57)
 		{
 			mu_assert(ft_isdigit(c) == 1, "Output shd be one");
+			mu_assert(ft_isdigit('0') == 1, "Output shd be one");
+			mu_assert(ft_isdigit('1') == 1, "Output shd be one");
+			mu_assert(ft_isdigit('9') == 1, "Output shd be one");
 		}
 		else
 		{
 			mu_assert(ft_isdigit(c) == 0, "Output shd be zero");
+			mu_assert(ft_isdigit('/') == 0, "Output shd be one");
+			mu_assert(ft_isdigit(':') == 0, "Output shd be one");
 		}
 	}
 	return NULL;
@@ -36,9 +43,12 @@ char *test_ft_isalnum()
 {
 	for (int c = 0; c<255; c++)
 	{
-		if (c >= 42 && c <= 57)
+		if (c >= 48 && c <= 57)
 		{
 			mu_assert(ft_isalnum(c) == 1, "Output shd be one");
+			mu_assert(ft_isalnum('0') == 1, "Output shd be one");
+			mu_assert(ft_isalnum('1') == 1, "Output shd be one");
+			mu_assert(ft_isalnum('9') == 1, "Output shd be one");
 		}
 		else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		{
@@ -412,6 +422,125 @@ char *test_ft_memcmp()
 	
 	return NULL;
 }
+
+char *test_ft_strnstr()
+{
+	char haystk[20] = "hello world";
+	char needle[20] = "wo";
+	size_t len = 11;
+	char *res = ft_strnstr(haystk, needle, len);
+	char *res1 = strnstr(haystk, needle, len);
+	debug("====ft_strnstr gives %s \n",res);
+	debug("====strnstr gives %s \n",res1);
+	mu_assert(ft_strncmp(res, "world", 5) == 0, "Output shd be 0");
+	
+	char haystk2[20] = "hello world";
+	char needle2[20] = "wo";
+	len = 6;
+	char *res2 = ft_strnstr(haystk2, needle2, len);
+	char *res3 = strnstr(haystk2, needle2, len);
+	debug("====ft_strnstr gives be %s \n",res2);
+	debug("====strnstr gives be %s \n",res3);
+	mu_assert(res2 == 0, "Output shd be NULL pointer");
+	
+	char haystk3[20] = "hello world";
+	char needle3[20] = "wo";
+	len = 0;
+	char *res4 = ft_strnstr(haystk3, needle3, len);
+	char *res5 = strnstr(haystk3, needle3, len);
+	debug("====ft_strnstr gives %s \n",res4);
+	debug("====strnstr gives %s \n",res5);
+	mu_assert(res4 == 0, "Output shd be NULL pointer");
+	
+	// return haystack
+	char haystk4[20] = "hello world";
+	char needle4[20] = "";
+	len = 11;
+	char *res6 = ft_strnstr(haystk4, needle4, len);
+	char *res7 = strnstr(haystk4, needle4, len);
+	debug("====ft_strnstr gives %s \n",res6);
+	debug("====strnstr gives %s \n",res7);
+	mu_assert(ft_strncmp(res6, "hello world", 11) == 0, "Output shd be 0");
+	
+	// haystack too short
+	char haystk5[20] = "hello";
+	char needle5[20] = "wo";
+	len = 11;
+	char *res8 = ft_strnstr(haystk5, needle5, len);
+	char *res9 = strnstr(haystk5, needle5, len);
+	debug("====ft_strnstr gives %s \n",res8);
+	debug("====strnstr gives %s \n",res9);
+	mu_assert(res8 == 0, "Output shd be NULL pointer");
+	
+	// len too short
+	char haystk6[20] = "hello world";
+	char needle6[20] = "o w";
+	len = 6;
+	char *res10 = ft_strnstr(haystk6, needle6, len);
+	char *res11 = strnstr(haystk6, needle6, len);
+	debug("====ft_strnstr gives %s \n",res10);
+	debug("====strnstr gives %s \n",res11);
+	mu_assert(res10 == 0, "Output shd be NULL pointer");
+	return NULL;
+}
+
+// int	ft_atoi(const char *str)
+char *test_ft_atoi()
+{
+	// int max is still 2147483647 on a 64 bit machine
+	debug("====int max ==  %d",INT_MAX);
+	mu_assert(ft_atoi("+0") == 0, "Output shd be 0");
+	debug("====atoi( +0 ) ==  %d",atoi("+0"));
+	mu_assert(ft_atoi("-0") == 0, "Output shd be 0");
+	debug("====atoi( -0 ) ==  %d",atoi("-0"));
+	
+	debug("====atoi(  \t++0) ==  %d",atoi("  \t++0"));
+	mu_assert(ft_atoi("  \t++0") == 0, "Output shd be 0");
+
+	mu_assert(ft_atoi("  \t\v\f\n\radd") == 0, "Output shd be 0");
+	debug("====atoi( +0 ) ==  %d",atoi("  \t\v\f\n\radd"));
+	mu_assert(ft_atoi("2147483647") == 2147483647, "Output shd be int max");
+	debug("====atoi( int max) ==  %d",atoi("2147483647"));
+
+	debug("====atoi( int max) ==  %d",atoi("21474836488"));
+	mu_assert(ft_atoi("21474836488") == 8, "Output shd be overflow max");
+	debug("====atoi( int min) ==  %d",atoi("-2147483648"));
+	mu_assert(ft_atoi("-2147483648") == -2147483648, "Output shd be int min");
+	debug("====atoi( int min) ==  %d",atoi("-2"));
+	mu_assert(ft_atoi("-2") == -2, "Output shd be int min");
+	return NULL;
+}
+
+char *test_ft_calloc()
+{
+	void *test = NULL;
+	test = ft_calloc(1, 1);
+	mu_assert(test != NULL, "Output shd be not be null");
+	free(test);
+	//mu_assert(test == NULL, "Output shd now be null");
+	return NULL;
+}
+
+//ft_strdup(const char *s1)
+char *test_ft_strdup()
+{
+	char test[20] = "hello world!";
+	char *dup1 = ft_strdup(test);
+	char *dup2 = strdup(test);
+	
+	debug("==== %s \n",dup1) ;
+	debug("==== %s \n",dup2) ;
+	
+	mu_assert(ft_strncmp(test, dup1, 11) == 0, "Output shd be 0");
+	
+	free(dup1);
+	free(dup2);
+
+	return NULL;
+}
+
+
+
 //// for this one since it prints on the terminal I need
 //// to redirect first to a file and then check that the output
 //// is correct in reading the file again
@@ -682,6 +811,10 @@ char *all_tests()
 	mu_run_test(test_ft_strrchr);
 	mu_run_test(test_ft_memchr);
 	mu_run_test(test_ft_memcmp);
+	mu_run_test(test_ft_strnstr);
+	mu_run_test(test_ft_atoi);
+	mu_run_test(test_ft_calloc);
+	mu_run_test(test_ft_strdup);
 	
 	return NULL;
 }
