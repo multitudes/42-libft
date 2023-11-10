@@ -115,27 +115,23 @@ char *test_ft_itoa()
 	// int max is still 2147483647 on a 64 bit machine
 	debug("====int max ==  %d",INT_MAX);
 	
-	char *test = ft_itoa(-122);
-	debug("====ft_itoa( 0 ) ==  %s",test);
-	mu_assert(ft_strncmp(test, "0", 1) == 0, "Output shd be 0");
+	char *test = ft_itoa(INT_MAX);
+	debug("====ft_itoa( INT_MAX ) ==  %s",test);
+	mu_assert(ft_strncmp(test, "2147483647", 10) == 0, "Output shd be 0");
 	
-//	mu_assert(ft_atoi("-0") == 0, "Output shd be 0");
-//	debug("====atoi( -0 ) ==  %d",atoi("-0"));
-//	
-//	debug("====atoi(  \t++0) ==  %d",atoi("  \t++0"));
-//	mu_assert(ft_atoi("  \t++0") == 0, "Output shd be 0");
-//	
-//	mu_assert(ft_atoi("  \t\v\f\n\radd") == 0, "Output shd be 0");
-//	debug("====atoi( +0 ) ==  %d",atoi("  \t\v\f\n\radd"));
-//	mu_assert(ft_atoi("2147483647") == 2147483647, "Output shd be int max");
-//	debug("====atoi( int max) ==  %d",atoi("2147483647"));
-//	
-//	debug("====atoi( int max) ==  %d",atoi("21474836488"));
-//	mu_assert(ft_atoi("21474836488") == 8, "Output shd be overflow max");
-//	debug("====atoi( int min) ==  %d",atoi("-2147483648"));
-//	mu_assert(ft_atoi("-2147483648") == -2147483648, "Output shd be int min");
-//	debug("====atoi( int min) ==  %d",atoi("-2"));
-//	mu_assert(ft_atoi("-2") == -2, "Output shd be int min");
+	test = ft_itoa(-2147483648);
+	debug("====ft_itoa( int min ) ==  %s",test);
+	mu_assert(ft_strncmp(test, "-2147483648", 11) == 0, "Output shd be 0");
+	
+	test = ft_itoa(-1);
+	debug("====ft_itoa( -1 ) ==  %s",test);
+	mu_assert(ft_strncmp(test, "-1", 2) == 0, "Output shd be 0");
+	
+	test = ft_itoa(5);
+	debug("====ft_itoa( 5 ) ==  %s",test);
+	mu_assert(ft_strncmp(test, "5", 1) == 0, "Output shd be 0");
+	
+	free(test);
 	return NULL;
 }
 
