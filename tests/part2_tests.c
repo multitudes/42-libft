@@ -205,6 +205,57 @@ char *test_ft_striteri()
 	return NULL;
 }
 
+char *test_ft_putchar_fd()
+{
+	
+	ft_putchar_fd('t', 2);
+	ft_putchar_fd('h', 2);
+	ft_putchar_fd('a', 2);
+	ft_putchar_fd('n', 2);
+	ft_putchar_fd('k', 2);
+	ft_putchar_fd('s', 2);
+	ft_putchar_fd('-', 2);
+	ft_putchar_fd('f', 2);
+	ft_putchar_fd('o', 2);
+	ft_putchar_fd('r', 2);
+	ft_putchar_fd('-', 2);
+	ft_putchar_fd('a', 2);
+	ft_putchar_fd('l', 2);
+	ft_putchar_fd('l', 2);
+	ft_putchar_fd(' ', 2);
+	ft_putchar_fd('t', 2);
+	ft_putchar_fd('h', 2);
+	ft_putchar_fd('e', 2);
+	ft_putchar_fd('-', 2);
+	ft_putchar_fd('f', 2);
+	ft_putchar_fd('i', 2);
+	ft_putchar_fd('s', 2);
+	ft_putchar_fd('h', 2);
+	
+	return NULL;
+}
+
+char *test_ft_putstr_fd()
+{
+	ft_putstr_fd("hello-and-thanks for-all-the-fish", 2);
+	ft_putstr_fd("2147483648", 2);
+	
+	return NULL;
+}
+
+char *test_ft_putendl_fd()
+{
+	ft_putendl_fd("2147483648", 2);
+	ft_putendl_fd("hello-and-thanks for-all-the-fish", 2);
+
+	ft_putendl_fd("", 2);
+	ft_putendl_fd("1", 2);
+	
+	return NULL;
+}
+
+
+
 
 
 char *all_tests()
@@ -218,6 +269,9 @@ char *all_tests()
 	mu_run_test(test_ft_itoa);
 	mu_run_test(test_ft_strmapi);
 	mu_run_test(test_ft_striteri);
+	mu_run_test(test_ft_putchar_fd);
+	mu_run_test(test_ft_putstr_fd);
+	mu_run_test(test_ft_putendl_fd);
 	
 	return NULL;
 }

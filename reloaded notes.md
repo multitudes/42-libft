@@ -332,3 +332,11 @@ https://stackoverflow.com/questions/23618328/what-does-size-of-the-memcmp-return
 The memcmp() function shall return an integer greater than, equal to, or less than 0, if the object pointed to by s1 is greater than, equal to, or less than the object pointed to by s2, respectively.
 It doesn't say it will return -1 or 1. What it exactly returns is implementation dependent.
 
+to see the logs in real time
+tail -F [file]
+https://unix.stackexchange.com/questions/18760/how-does-the-tail-commands-f-parameter-work
+
+
+more itoa suggestions
+http://www.strudel.org.uk/itoa/
+
