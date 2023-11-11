@@ -35,27 +35,25 @@ char	*ft_itoa(int n)
 	int		i;
 	int		minus;
 	char	temp[12];
-	char	*p;
 	
 	i = 1;
 	minus = 1;
-	p = temp + 11;
-	*p = '\0';
+	temp[11] = '\0';
 	if (n >= 0)
 	{
 		n *= -1;
 		minus = 0;
 	}
-	*(p - i++) = '0' - (n % 10);
+	temp[11 - i++] = '0' - (n % 10);
 	n /= 10;
 	while (n != 0)
 	{
-		*(p - i++) = '0' - (n % 10);
+		temp[11 - i++] = '0' - (n % 10);
 		n /= 10;
 	}
 	if (minus)
-		*(p - i++) = '-';
-	return (ft_strdup(p - i + 1));
+		temp[11 - i++] = '-';
+	return (ft_strdup(&temp[11 - i + 1]));
 }
 
 //int main()
