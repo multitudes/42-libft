@@ -254,9 +254,17 @@ char *test_ft_putendl_fd()
 	return NULL;
 }
 
+char *test_ft_putnbr_fd()
+{
 
-
-
+	ft_putnbr_fd(-2147483648, 2);
+	ft_putnbr_fd(2147483647, 2);
+	ft_putnbr_fd(0, 2);
+	ft_putnbr_fd(1, 2);
+	ft_putnbr_fd(-1, 2);
+	
+	return NULL;
+}
 
 char *all_tests()
 {
@@ -272,6 +280,7 @@ char *all_tests()
 	mu_run_test(test_ft_putchar_fd);
 	mu_run_test(test_ft_putstr_fd);
 	mu_run_test(test_ft_putendl_fd);
+	mu_run_test(test_ft_putnbr_fd);
 	
 	return NULL;
 }

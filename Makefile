@@ -6,6 +6,8 @@ OBJECTS=$(SOURCES:.c=.o)
 TEST_SRC=$(wildcard tests/*_tests.c)
 TESTS=$(patsubst %.c,%,$(TEST_SRC))
 
+BONUS=$(patsubst .c,%,_bonus.c)
+
 NAME=libft.a
 
 #maybe not needed
@@ -47,3 +49,6 @@ fclean: clean
 
 re: fclean all
 
+.PHONY: bonus
+bonus: LDLIBS += $(NAME)
+bonus: _bonus
