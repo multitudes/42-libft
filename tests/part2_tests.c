@@ -135,6 +135,44 @@ char *test_ft_itoa()
 	return NULL;
 }
 
+//declare f as pointer to function (unsigned int, char) returning char
+char f(unsigned int a, char c);
+
+char f(unsigned int a, char c)
+{
+	char	e;
+	
+	e = 'e';
+	if ((a % 2) || (c == 'a'))
+		e = c;
+
+	return e;
+}
+
+char *test_ft_strmapi()
+{
+	char s[40] = "hello-and-thanks for-all-the-fish";
+	char *test = ft_strmapi(s, f);
+//	eeele-ane-ehanesefereaeleteeefese
+	debug("====test ==  %s",test);
+	mu_assert(ft_strncmp(test, "eeele-ane-ehanesefereaeleteeefese", 30) == 0, "Output shd be 0");
+	
+	char s2[40] = "";
+	test = ft_strmapi(s2, f);
+	//	eeele-ane-ehanesefereaeleteeefese
+	debug("====test ==  %s",test);
+	mu_assert(ft_strncmp(test, "", 1) == 0, "Output shd be 0");
+
+	char s3[4] = "eh";
+	test = ft_strmapi(s3, f);
+	debug("====test ==  %s",test);
+	mu_assert(ft_strncmp(test, "eh", 2) == 0, "Output shd be 0");
+
+	
+	free(test);
+	return NULL;
+}
+
 char *all_tests()
 {
 	mu_suite_start();
@@ -144,6 +182,7 @@ char *all_tests()
 	mu_run_test(test_ft_strtrim);
 	mu_run_test(test_ft_split);
 	mu_run_test(test_ft_itoa);
+	mu_run_test(test_ft_strmapi);
 	
 	return NULL;
 }
