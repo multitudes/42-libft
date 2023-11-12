@@ -23,11 +23,6 @@
  RETURN VALUES
  The memchr() function returns a pointer to the byte located, or NULL 
  if no such byte exists within n bytes.
- // AGAIN
- The memcmp() function shall return an integer greater than, equal to, or less than 0,
- if the object pointed to by s1 is greater than, equal to, or less than the object 
- pointed to by s2, respectively.
- It doesn't say it will return -1 or 1. What it exactly returns is implementation dependent.
  */
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -35,12 +30,13 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned long	i;
 	
 	i = 0;
-	while (((*(unsigned char *)s) != '\0') && i < (unsigned long)n)
+	while (i < (unsigned long)n)
 	{
 		if (*(unsigned char *)s == (unsigned char)c)
 			return (void *)s;
 		s++;
+		i++;
 	}
-	return 0;
+	return NULL;
 }
 

@@ -340,3 +340,6 @@ https://unix.stackexchange.com/questions/18760/how-does-the-tail-commands-f-para
 more itoa suggestions
 http://www.strudel.org.uk/itoa/
 
+strrchr
+https://opensource.apple.com/source/gcc/gcc-926/libiberty/strrchr.c.auto.html
+NULL?

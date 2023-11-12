@@ -35,21 +35,23 @@
  to the size argument, the string was too short and some of the printed
  characters were discarded.  The output is always null-terminated, unless
  size is 0.
- it returns the length of the src... yes shahaha!
+ it returns the length of the src... yes !
 */
 
-size_t	ft_strlcpy(char * restrict dst, const char * restrict src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	l;
+	size_t	lensrc;
 	
 	i = 0;
-	l = ft_strlen(src);
+	lensrc = ft_strlen(src);
+	if (dstsize == 0)
+		return (lensrc);
 	while (i < dstsize - 1 && *src != '\0')
 	{
 		*dst++ = *src++;
 		i++;
 	}
 	*dst = '\0';
-	return (l);
+	return (lensrc);
 }

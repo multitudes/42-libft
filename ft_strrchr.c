@@ -21,16 +21,33 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*p;
-	size_t	len;
+	int		i;
 	
-	len = ft_strlen(s);
-	p = (char *)s + len;
-	while (p != s)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		if (*p == (char)c)
-			return (char *)p;
-		p--;
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	return NULL;
+	return (NULL);
 }
+
+//int main()
+//{
+//	char s1[] = "tripouille";
+//	printf("is this NULL? %s \n",ft_strrchr(s1, 'z'));
+//	if ((char*)ft_strrchr(s1, 'z') == (char*)NULL)
+//		printf("null after all.. \n");
+//	printf("is this NULL? %s \n",(char*)NULL);
+//	return (0);
+//}
+//char arr[BUFSIZ];
+//
+//bytes_read = read(fd, arr, BUFSIZ))
+//while (bytes_read  > 0)
+//{
+//	if (write(1, arr, bytes_read) != bytes_read)
+//		... write(1, "write error on file ...",24;
+//	bytes_read = read(fd, arr, BUFSIZ))
+//}

@@ -128,7 +128,6 @@ char *test_ft_bzero()
 
 char *test_ft_memcpy()
 {
-	//	mu_assert(ft_memset("hello", 55, 5) == 5, "Output shd be 5");
 	char dst[6] = "hello";
 	char src[6] = "world";
 	size_t n = 5;
@@ -136,6 +135,8 @@ char *test_ft_memcpy()
 	mu_assert(ft_strncmp(dst, "world", n) == 0, "Output shd be 0");
 	
 	debug("====memcpy should be %s \n",(char *)memcpy((void *)dst, (void *)src, n));
+
+	
 	return NULL;
 }
 
@@ -208,6 +209,19 @@ char *test_ft_strlcpy()
 	debug("====strlcpy with len 3 gives %d! \n",res6);
 	debug("====after strlcpy dst is %s and src %s \n",dst6, src6);
 	mu_assert(res6 == 5, "Output shd be still 5 like src length even with dstlen 3");
+	
+	char src[] = "coucou";
+	char dest[10]; memset(dest, 'A', 10);
+	/* 1 */  mu_assert(ft_strlcpy(dest, src, 0) == strlen(src) && dest[0] == 'A'); showLeaks();
+	/* 2 */  mu_assert(ft_strlcpy(dest, src, 1) == strlen(src) && dest[0] == 0 && dest[1] == 'A'); showLeaks();
+	/* 3 */  mu_assert(ft_strlcpy(dest, src, 2) == strlen(src) && dest[0] == 'c' && dest[1] == 0  && dest[2] == 'A'); showLeaks();
+	/* 4 */  mu_assert(strlcpy(dest, src, -1) == strlen(src) && !strcmp(src, dest) && dest[strlen(src) + 1] == 'A'); showLeaks(); memset(dest, 'A', 10);
+	/* 5 */  mu_assert(ft_strlcpy(dest, src, 6) == strlen(src) && !memcmp(src, dest, 5) && dest[5] == 0); showLeaks(); memset(dest, 'A', 10);
+	/* 6 */  mu_assert(ft_strlcpy(dest, src, 7) == strlen(src) && !memcmp(src, dest, 7)); showLeaks(); memset(dest, 'A', 10);
+	/* 7 */  mu_assert(ft_strlcpy(dest, src, 8) == strlen(src) && !memcmp(src, dest, 7)); showLeaks(); memset(dest, 'A', 10);
+	/* 8 */  mu_assert(ft_strlcpy(dest, "", 42) == 0 && !memcmp("", dest, 1)); showLeaks(); memset(dest, 0, 10);
+	/* 9 */  mu_assert(ft_strlcpy(dest, "1", 0) == 1 && dest[0] == 0); showLeaks(); memset(dest, 'A', 10);
+	
 	return NULL;
 }
 
@@ -343,6 +357,12 @@ char *test_ft_strchr()
 	mu_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
 	mu_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
 	
+	char s1[] = "tripouille";
+	/* 1 */  mu_assert(ft_strchr(s1, 't') == s1);  
+	/* 2 */  mu_assert(ft_strchr(s1, 'l') == s1 + 7);  
+	/* 3 */  mu_assert(ft_strchr(s1, 'z') == 0);  
+	/* 4 */  mu_assert(ft_strchr(s1, 0) == s1 + strlen(s));  
+	/* 5 */  mu_assert(ft_strchr(s1, 't' + 256) == s1);  
 	return NULL;
 }
 
@@ -364,6 +384,19 @@ char *test_ft_strrchr()
 	mu_assert(ft_strncmp(res3, "lo", 2) == 0, "wrong output");
 	mu_assert(ft_strncmp(res4, "lo", 2) == 0, "wrong output");
 	
+	char s1[] = "tripouille";
+	char s2[] = "ltripouiel";
+	char s3[] = "";
+	/* 1 */  mu_assert(ft_strrchr(s1, 't') == s1);  
+	/* 2 */  mu_assert(ft_strrchr(s1, 'l') == s1 + 8);  
+	/* 3 */  mu_assert(ft_strrchr(s2, 'l') == s2 + 9);  
+	/* 4 */  mu_assert(ft_strrchr(s1, 'z') == NULL);  
+	/* 5 */  mu_assert(ft_strrchr(s1, 0) == s1 + strlen(s));  
+	/* 6 */  mu_assert(ft_strrchr(s1, 't' + 256) == s1);  
+	char * empty = (char*)calloc(1, 1);
+	/* 7 aperez-b */  mu_assert(ft_strrchr(empty, 'V') == NULL); free(empty);  
+	/* 8 */  mu_assert(ft_strrchr(s3, 0) == s3);  
+	
 	return NULL;
 }
 
@@ -375,6 +408,23 @@ char *test_ft_strncmp()
 	mu_assert(ft_strncmp("", "", 6) == 0, "Output shd be 0");
 	mu_assert(ft_strncmp("www", "ww", 2) == 0, "Output shd be 0");
 	mu_assert(ft_strncmp("www", "w\b", 2) == 111, "Output shd be 111");
+	
+	/* 1 */ mu_assert(ft_strncmp("t", "", 0) == 0);  
+	/* 2 */ mu_assert(ft_strncmp("1234", "1235", 3) == 0);  
+	/* 3 */ mu_assert(ft_strncmp("1234", "1235", 4) < 0);  
+	/* 4 */ mu_assert(ft_strncmp("1234", "1235", -1) < 0);  
+	/* 5 */ mu_assert(ft_strncmp("", "", 42) == 0);  
+	/* 6 */ mu_assert(ft_strncmp("Tripouille", "Tripouille", 42) == 0);  
+	/* 7 */ mu_assert(ft_strncmp("Tripouille", "tripouille", 42) < 0);  
+	/* 8 */ mu_assert(ft_strncmp("Tripouille", "TriPouille", 42) > 0);  
+	/* 9 */ mu_assert(ft_strncmp("Tripouille", "TripouillE", 42) > 0);  
+	/* 10 */ mu_assert(ft_strncmp("Tripouille", "TripouilleX", 42) < 0);  
+	/* 11 */ mu_assert(ft_strncmp("Tripouille", "Tripouill", 42) > 0);  
+	/* 12 */ mu_assert(ft_strncmp("", "1", 0) == 0);  
+	/* 13 */ mu_assert(ft_strncmp("1", "", 0) == 0);  
+	/* 14 */ mu_assert(ft_strncmp("", "1", 1) < 0);  
+	/* 15 */ mu_assert(ft_strncmp("1", "", 1) > 0);  
+	/* 16 */ mu_assert(ft_strncmp("", "", 1) == 0);
 	
 	return NULL;
 }
@@ -397,6 +447,14 @@ char *test_ft_memchr()
 	char *res4 = memchr(s, c, 5);
 	mu_assert(ft_strncmp(res3, "llo", 3) == 0, "wrong output");
 	mu_assert(ft_strncmp(res4, "llo", 3) == 0, "wrong output");
+	
+	
+	char s[] = {0, 1, 2 ,3 ,4 ,5};
+	/* 1 */ mu_assert(ft_memchr(s, 0, 0) == NULL);  
+	/* 2 */ mu_assert(ft_memchr(s, 0, 1) == s);  
+	/* 3 */ mu_assert(ft_memchr(s, 2, 3) == s + 2);  
+	/* 4 */ mu_assert(ft_memchr(s, 6, 6) == NULL);  
+	/* 5 */ mu_assert(ft_memchr(s, 2 + 256, 3) == s + 2);   //Cast  mu_assert
 	
 	return NULL;
 }
@@ -517,6 +575,33 @@ char *test_ft_calloc()
 	test = ft_calloc(1, 1);
 	mu_assert(test != NULL, "Output shd be not be null");
 	free(test);
+	
+	void * p = ft_calloc(2, 2);
+	char e[] = {0, 0, 0, 0};
+	/* 1 */ check(!memcmp(p, e, 4));
+	/* 2 */ mcheck(p, 4); free(p); showLeaks();
+	/* 3 */ check(ft_calloc(SIZE_MAX, SIZE_MAX) == NULL); showLeaks();
+	
+	/* @evportel */
+	/* The following tests are not supported by the function's documentation.
+	 * But some effects returned in the trait by Moulinette so the following
+	 * tests were implemented. */
+	/* 4 */ check(ft_calloc(INT_MAX, INT_MAX) == NULL);
+	/* 5 */ check(ft_calloc(INT_MIN, INT_MIN) == NULL); showLeaks();
+	p = ft_calloc(0, 0);
+	/* 6 */ check(p != NULL); free(p); showLeaks();
+	p = ft_calloc(0, 5);
+	/* 7 */ check(p != NULL); free(p); showLeaks();
+	p = ft_calloc(5, 0);
+	/* 8 */ check(p != NULL); free(p); showLeaks();
+	/* 9 */ check(ft_calloc(-5, -5) == NULL); showLeaks();
+	p = ft_calloc(0, -5);
+	/* 10 */ check(p != NULL); free(p); showLeaks();
+	p = ft_calloc(-5, 0);
+	/* 11 */ check(p != NULL); free(p); showLeaks();
+	/* 12 */ check(ft_calloc(3, -5) == NULL); showLeaks();
+	/* 13 */ check(ft_calloc(-5, 3) == NULL); showLeaks();
+	
 	//mu_assert(test == NULL, "Output shd now be null");
 	return NULL;
 }
@@ -542,7 +627,7 @@ char *test_ft_strdup()
 
 
 //// for this one since it prints on the terminal I need
-//// to redirect first to a file and then check that the output
+//// to redirect first to a file and then  mu_assert that the output
 //// is correct in reading the file again
 //char *test_alphabet()
 //{
@@ -560,7 +645,7 @@ char *test_ft_strdup()
 //	fclose(fp);
 //	// resetting the normal behaviour for stdout
 //	freopen ("/dev/tty", "a", stdout);
-//	// now read from file to check
+//	// now read from file to  mu_assert
 //	fp = fopen("tmp/alphabet.txt", "r");
 //	mu_assert(fp != NULL, "failed to read file!");
 //	// assign the line found in fie to the var output
@@ -726,7 +811,7 @@ char *test_ft_strdup()
 //	fclose(fp);
 //	// resetting the normal behaviour for stdout
 //	freopen ("/dev/tty", "a", stdout);
-//	// now read from file to check
+//	// now read from file to  mu_assert
 //	fp = fopen("tmp/ft_putstr.txt", "r");
 //	mu_assert(fp != NULL, "failed to read file!");
 //	// assign the line found in fie to the var output
@@ -764,7 +849,7 @@ char *test_ft_strdup()
 //}
 //
 //// I skip the programs here for now...
-//// I would need a shell script to check them
+//// I would need a shell script to  mu_assert them
 //
 //// will not account for non terminated strings!
 //char *test_ft_strdup()
