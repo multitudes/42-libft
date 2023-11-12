@@ -30,17 +30,15 @@
 // I first count and return an array of empty string pointers
 char	**ft_split_count(char const *s, char c)
 {
-	int		i;
 	int		count;
 	int		state;
 	char	**arr;
 	
-	i = 0;
 	count = 0;
 	state = OUT;
-	while (i < ft_strlen(s))
+	while (*s)
 	{
-		if (s[i] == c)
+		if (*s == c)
 		{
 			state = OUT;
 		}
@@ -49,7 +47,7 @@ char	**ft_split_count(char const *s, char c)
 			state = IN;
 			++count;
 		}
-		i++;
+		s++;
 	}
 	arr = ft_calloc(count + 1, sizeof(char*));
 	return (arr);
