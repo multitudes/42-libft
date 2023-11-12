@@ -342,4 +342,23 @@ http://www.strudel.org.uk/itoa/
 
 strrchr
 https://opensource.apple.com/source/gcc/gcc-926/libiberty/strrchr.c.auto.html
-NULL?
+
+
+#calloc overflows!
+Compliant Solution
+In this compliant solution, the two arguments num_elements and sizeof(long) are checked before the call to calloc() to determine if wrapping will occur:
+long *buffer;
+size_t num_elements;
+ 
+if (num_elements > SIZE_MAX/sizeof(long)) {
+  /* Handle error condition */
+}
+buffer = (long *)calloc(num_elements, sizeof(long));
+if (buffer == NULL) {
+  /* Handle error condition */
+}
+
+Also, malloc's argument is a size_t and the range of that type is [0,SIZE_MAX], so the maximum you can request is SIZE_MAX, which value varies upon implementation and is defined in <limits.h>.
+
+https://opensource.apple.com/source/gcc/gcc-1765/libiberty/calloc.c.auto.html
+

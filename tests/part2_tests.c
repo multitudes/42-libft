@@ -16,6 +16,41 @@ char *test_ft_substr()
 	debug("==== %s \n",sub2) ;
 	mu_assert(ft_strncmp(sub2, "d!", 2) == 0, "Output shd be 0");
 	free(sub2);
+	
+//	char * s = ft_substr("tripouille", 0, 42000);
+//	/* 1 */ check(!strcmp(s, "tripouille"));
+//	/* 2 */ mcheck(s, strlen("tripouille") + 1); free(s); showLeaks();
+//	
+//	s = ft_substr("tripouille", 1, 1);
+//	/* 3 */ check(!strcmp(s, "r"));
+//	/* 4 */ mcheck(s, 2); free(s); showLeaks();
+//	
+//	s = ft_substr("tripouille", 100, 1);
+//	/* 5 */ check(!strcmp(s, ""));
+//	/* 6 */ mcheck(s, 1); free(s); showLeaks();
+//	
+//	char * str = strdup("1");
+//	s = ft_substr(str, 42, 42000000);
+//	/* 7 */ check(!strcmp(s, ""));
+//	/* 8 */ mcheck(s, 1); free(s); free(str); showLeaks();
+//	
+//	str = strdup("0123456789");
+//	s = ft_substr(str, 9, 10);
+//	/* 9  mbueno-g */ check(!strcmp(s, "9"));
+//	/* 10  mbueno-g */ mcheck(s, 2); free(s); free(str); showLeaks();
+//	
+//	s = ft_substr("42", 0, 0);
+//	/* 11  fcaquard */ check(!strcmp(s, ""));
+//	/* 12  fcaquard */ mcheck(s, 1); free(s); showLeaks();
+//	
+//	s = ft_substr("BONJOUR LES HARICOTS !", 8, 14);
+//	/* 13  dfarhi */ check(!strcmp(s, "LES HARICOTS !"));
+//	/* 14  dfarhi */ mcheck(s, 15); free(s); showLeaks();
+//	
+//	s = ft_substr("test", 1, 2);
+//	/* 15  dfarhi */ check(!strcmp(s, "es"));
+//	/* 16  dfarhi */ mcheck(s, 3); free(s); showLeaks();
+	
 	return NULL;
 }
 
@@ -60,6 +95,38 @@ char *test_ft_strtrim()
 	mu_assert(ft_strncmp(res, "hel-?lo", 7) == 0, "Output shd be hel-?lo");
 	free(res);
 
+//	char * s = ft_strtrim("   xxxtripouille", " x");
+//	/* 1 */ check(!strcmp(s, "tripouille"));
+//	/* 2 */ mcheck(s, strlen("tripouille") + 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("tripouille   xxx", " x");
+//	/* 3 */ check(!strcmp(s, "tripouille"));
+//	/* 4 */ mcheck(s, strlen("tripouille") + 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("   xxxtripouille   xxx", " x");
+//	/* 5 */ check(!strcmp(s, "tripouille"));
+//	/* 6 */ mcheck(s, strlen("tripouille") + 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("   xxx   xxx", " x");
+//	/* 7 */ check(!strcmp(s, ""));
+//	/* 8 */ mcheck(s, 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("", "123");
+//	/* 9 */ check(!strcmp(s, ""));
+//	/* 10 */ mcheck(s, 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("123", "");
+//	/* 11 */ check(!strcmp(s, "123"));
+//	/* 12 */ mcheck(s, 4); free(s); showLeaks();
+//	
+//	s = ft_strtrim("", "");
+//	/* 13 */ check(!strcmp(s, ""));
+//	/* 14 */ mcheck(s, 1); free(s); showLeaks();
+//	
+//	s = ft_strtrim("abcdba", "acb");
+//	/* opsec-infosec 15 */ check(!strcmp(s, "d"));
+//	/* opsec-infosec 16 */ mcheck(s, 2); free(s); showLeaks();
+//	
 	return NULL;
 }
 

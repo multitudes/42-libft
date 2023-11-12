@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#define UINT_MAX 4294967295
+#define INT_MAX 2147483647
 /*
  The malloc() function allocates size bytes of memory and returns a pointer 
  to the allocated memory The calloc() function contiguously allocates
@@ -24,10 +25,17 @@
  */
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
+	void	*p;
 	
-	ptr = malloc(count * size);
-	if (ptr == NULL)
+	p = NULL;
+	if ((count > (INT_MAX - 1) || size > (INT_MAX - 1)))
+		if (!(size == 0) && !(count == 0))
+			return (NULL);
+	if (count == 0 || size == 0)
+		count = size = 1;
+	p = malloc(count * size);
+	if (p == NULL)
 		return (NULL);
-	return (ptr);
+	ft_bzero(p, count * size);
+	return (p);
 }

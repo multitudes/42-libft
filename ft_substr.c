@@ -21,22 +21,34 @@
  from the string ’s’.
  The substring begins at index ’start’ and is of
  maximum size ’len’.
+ ex hello len 5
+ start is 4 -> o
+ possible len is 1 5-4
  */
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	size_t	strlen;
 	char	*sub;
 	
 	i = 0;
-	sub = malloc(len + 1);
+	strlen = ft_strlen(s);
+	if (len + (size_t)start > strlen)
+	{
+		if (strlen >= (size_t)start)
+			len = strlen - (size_t)start;
+		else
+			len = 0;
+	}
+	
+	sub = ft_calloc(len + 1, 1);
 	if (sub == NULL)
 		return (NULL);
-	while ((i < len) && (s[start + i] != '\0'))
+	while (i < len)
 	{
 		sub[i] = s[start + i];
 		i++;
 	}
-	sub[start + i] = '\0';
 	return (sub);
 }
 

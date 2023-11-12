@@ -26,12 +26,15 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	n;
+	size_t	b;
 	char	*s2;
 	
+	b = 0;
 	n = ft_strlen(s1) - 1;
 	while (n >= 0 && (ft_strchr(set, (int)s1[n]) != NULL))
-			n--;
-	s2 = ft_substr(s1, 0, n + 1);
-	s2[n + 1] = '\0';
-	return s2;
+		n--;
+	while (b <= n && (ft_strchr(set, (int)s1[b]) != NULL))
+		b++;
+	s2 = ft_substr(s1, b, n - b + 1);
+	return (s2);
 }
