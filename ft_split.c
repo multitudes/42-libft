@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#define IN   1  /* inside a word */
+#define OUT  0  /* outside a word */
 /*
  s:  The string to be split.
  c:  The delimiter character.
@@ -24,20 +27,56 @@
  allowed are malloc, free
  ps char	*ft_strrchr(const char *s, int c);
  */
+// I first count and return an array of empty string pointers
+char	**ft_split_count(char const *s, char c)
+{
+	int		i;
+	int		count;
+	int		state;
+	char	**arr;
+	
+	i = 0;
+	count = 0;
+	state = OUT;
+	while (i < ft_strlen(s))
+	{
+		if (s[i] == c)
+		{
+			state = OUT;
+		}
+		else
+		{
+			state = IN;
+			++count;
+		}
+		i++;
+	}
+	arr = ft_calloc(count + 1, sizeof(char*));
+	return (arr);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	*sub;
 	char	*dup;
 	char 	**arr;
 	size_t		i;
-	int		count;
+	int		start;
+	int		flag;
 	
 	i = 0;
-	count = 0;
+	start = 0;
+	flag = 1;
 	dup = ft_strdup(s);
 	while (i < ft_strlen(s))
-		if (s[i++] == c)
-			count++;
+	{
+		if (s[i] == c)
+		{
+			start = i;
+			i++;
+			flag = 0;
+		}
+	}
 	arr = ft_calloc(count + 2, sizeof(char*));
 	while (count > 0)
 	{
