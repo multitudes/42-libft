@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "_bonus.h"
-#include "libft.h"
 
 /*
  lst:  The address of a pointer to a node.

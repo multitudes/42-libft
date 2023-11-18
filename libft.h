@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef _LIBFT_H_
+# define _LIBFT_H_
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "_bonus.h"
 
 # define NEWLINE "\n"
 

@@ -9,11 +9,9 @@ SOURCES=$(MANDATORY)
 OBJECTS=$(SOURCES:.c=.o)
 
 NAME=libft.a
-
-LDLIBS=-lm -lbsd
 	
 # the target build
-all: $(NAME) tests 
+all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $@ $(OBJECTS)
@@ -26,7 +24,7 @@ clean:
 	rm -f *.o
 	rm -f tests/tests.log
 	rm -rf `find . -name "*.dSYM" -print`
-	find  .  -name ".*~" -delete -print
+	find  .  -name "*.c~" -delete -print
 	rm -Rf tmp
 	rm -f a.out
 

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "_bonus.h"
-#include "libft.h"
 
 /*
  lst:  The beginning of the list.
