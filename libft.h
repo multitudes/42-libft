@@ -14,15 +14,9 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
-# include <string.h>
-# include <stdint.h>
-# include "_bonus.h"
 
 # define NEWLINE "\n"
-# define UINT_MAX 4294967295
-# define INT_MAX 2147483647
 
 // bonus
 typedef struct s_list

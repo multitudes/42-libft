@@ -29,9 +29,6 @@
  If the return value is >= dstsize, the output string has been truncated.
  It is the caller's responsibility to handle this.
  */
-
-//size_t	ft_strlen(const char *s);
-
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srclen;
