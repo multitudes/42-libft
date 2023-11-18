@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 /*
  s1:  The string to be trimmed.
  set:  The reference set of characters to trim.
@@ -22,9 +22,6 @@
  Allocates (with malloc(3)) and returns a copy of
  ’s1’ with the characters specified in ’set’ removed
  from the beginning and the end of the string.
- 	s = ft_strtrim("   xxx   xxx", " x");
-	 7- check(!strcmp(s, ""));
-	8 - mcheck(s, 1); free(s); showLeaks();
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {

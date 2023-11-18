@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 #define IN   1  /* inside a word */
 #define OUT  0  /* outside a word */
+
 /*
  s:  The string to be split.
  c:  The delimiter character.
@@ -26,11 +25,9 @@
  character ’c’ as a delimiter.  The array must end
  with a NULL pointer.
  allowed are malloc, free
- ps char	*ft_strrchr(const char *s, int c);
  */
 // inspired by apple open source '83
 // I use a char** str because the string *str will be changed in the func
-
 static char	*ft_strsep(char **str, char *delim)
 {
 	char	*s;

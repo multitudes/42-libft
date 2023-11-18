@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 /*
  DESCRIPTION
  The strchr() function locates the first occurrence of 

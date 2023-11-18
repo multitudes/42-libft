@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
 
 /*
  The strcmp() and strncmp() functions lexicographically compare the 
