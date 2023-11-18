@@ -6,10 +6,9 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:39:29 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/10 15:39:34 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:57 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -22,12 +21,12 @@
  string, which is the result of the concatenation
  of ’s1’ and ’s2’.
  */
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
 	char	*cat;
-	
+
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	cat = ft_calloc(len1 + len2 + 1, 1);
@@ -37,4 +36,3 @@ char *ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(cat, s2, len1 + len2 + 1);
 	return (cat);
 }
-

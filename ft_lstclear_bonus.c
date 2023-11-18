@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_debug.c                                :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:59:08 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 18:59:11 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/16 19:53:40 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "_bonus.h"
 #include "libft.h"
@@ -28,7 +27,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	**l;
 	t_list	*temp;
-	
+
+	if (*lst == NULL)
+		return;
 	l = lst;
 	temp = *lst;
 	while ((*lst)->next != NULL)
@@ -40,7 +41,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	ft_lstdelone(temp, del);
 	*l = NULL;
 }
-
 
 //void	del(void *content)
 //{

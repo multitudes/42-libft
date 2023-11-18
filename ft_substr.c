@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:16:37 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/10 15:16:39 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/13 13:06:31 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
  start is 4 -> o
  possible len is 1 5-4
  */
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	strlen;
 	char	*sub;
-	
+
 	i = 0;
 	strlen = ft_strlen(s);
 	if (len + (size_t)start > strlen)
@@ -40,7 +40,6 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 		else
 			len = 0;
 	}
-	
 	sub = ft_calloc(len + 1, 1);
 	if (sub == NULL)
 		return (NULL);
@@ -51,4 +50,3 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (sub);
 }
-

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:49:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/08 17:49:55 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:25:41 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@
  equal to, or less than the string s2.
  The comparison is done using unsigned characters, so that ‘\200’
  is greater than ‘\0’.
-
  */
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (n == 0)
 		return (0);

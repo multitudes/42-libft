@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:11:53 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 15:11:55 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:35:54 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	int	count;
-	
+
 	count = ft_strlen(s);
 	write(fd, s, count);
 	write(fd, NEWLINE, 1);
 }
-

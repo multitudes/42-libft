@@ -6,10 +6,9 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:19:49 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 18:19:51 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:28:07 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "_bonus.h"
 #include "libft.h"
@@ -21,6 +20,8 @@
  */
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (lst == NULL)
+		return (NULL);
 	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);

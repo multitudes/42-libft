@@ -6,10 +6,9 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:26:42 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 14:26:51 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:41:32 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -23,11 +22,10 @@
  as first argument.  Each character is passed by
  address to ’f’ to be modified if necessary.
  */
-
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	count;
-	
+
 	count = ft_strlen(s);
 	while (count > 0)
 	{

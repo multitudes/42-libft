@@ -6,13 +6,11 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:52 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/10 17:53:55 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 16:18:16 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
-#include <stdio.h>
 
 /*
  n:  the integer to convert.
@@ -35,7 +33,7 @@ char	*ft_itoa(int n)
 	int		i;
 	int		minus;
 	char	temp[12];
-	
+
 	i = 1;
 	minus = 1;
 	temp[11] = '\0';
@@ -63,4 +61,3 @@ char	*ft_itoa(int n)
 //	free(res);
 //	return (0);
 //}
-

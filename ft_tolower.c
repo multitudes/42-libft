@@ -6,10 +6,9 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:36:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/09 18:36:16 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 16:17:12 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -19,4 +18,3 @@ int	ft_tolower(int c)
 		c += 32;
 	return (c);
 }
-

@@ -6,34 +6,35 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/08 12:45:52 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/17 10:50:08 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#ifndef __SIZE_T
-# define __SIZE_T
-typedef unsigned long size_t;
-#endif
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdint.h>
+# include "_bonus.h"
 
-#include <stdlib.h>
-#include <unistd.h>
-
-#define NEWLINE "\n"
+# define NEWLINE "\n"
+# define UINT_MAX 4294967295
+# define INT_MAX 2147483647
 
 // bonus
-typedef struct 		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
 int		ft_isalpha(int c);
-int 	ft_isdigit(int c);
-int 	ft_isalnum(int c);
-int 	ft_isascii(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);

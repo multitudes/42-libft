@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:54:34 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/09 14:10:34 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:44:15 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@
  the same input parameters and output result as snprintf(3).  They are
  designed to be safer, more consistent, and less error prone replacements
  for the easily misused functions strncpy(3) and strncat(3).
- 
  strlcpy() and strlcat() take the full size of the destination buffer and
  guarantee NUL-termination if there is room.  Note that room for the NUL
  should be included in dstsize.  Also note that strlcpy() and strlcat()
  only operate on true ''C'' strings. This means that for strlcpy() src
  must be NUL-terminated and for strlcat() both src and dst() must be NUL-
  terminated.
- 
  strlcpy() copies up to dstsize - 1 characters from the string src to dst,
  NUL-terminating the result if dstsize is not 0.
  The snprintf() and vsnprintf() functions will write at most size-1 of the
@@ -37,12 +35,11 @@
  size is 0.
  it returns the length of the src... yes !
 */
-
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	lensrc;
-	
+
 	i = 0;
 	lensrc = ft_strlen(src);
 	if (dstsize == 0)

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:02:02 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/10 12:02:06 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:43:24 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ RETURN VALUES
  This behavior is not required by C and portable code should only depend on the
  sign of the returned value.
  */
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (n > 0)
 	{
-		while ((i < (n - 1)) && *(unsigned char*)s1 == *(unsigned char*)s2)
+		while ((i < (n - 1)) && *(unsigned char *)s1 == *(unsigned char *)s2)
 		{
 			s1++;
 			s2++;
 			i++;
 		}
-		return (*(unsigned char*)s1 - *(unsigned char*)s2);
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
 	}
 	return (0);
 }

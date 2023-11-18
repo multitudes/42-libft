@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:49:09 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 14:49:12 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/15 17:50:17 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	count;
-	
+
 	count = ft_strlen(s);
 	write(fd, s, count);
 }
