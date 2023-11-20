@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:52:03 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:09:40 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 13:28:54 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,34 @@
  RETURN VALUES
  The memmove() function returns the original value of dst.
  there is a way to make it faster without intermediate copy
- checking if the strings overlapt
+ checking if the strings could overlapt or if they need to be copied
+ from the end or the front
+ I use len which is unsigned to loop on the strings
  */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int		i;
+	unsigned char	*tmp_dst;
+	unsigned char	*tmp_src;
 
-	i = len - 1;
-	if ((dst > src) && ((dst - src) < (int)len))
+	if (dst == NULL || src == NULL || len == 0)
+		return (dst);
+	tmp_dst = (unsigned char *) dst;
+	tmp_src = (unsigned char *) src;
+	if (tmp_dst > tmp_src)
 	{
-		while (i >= 0)
+		while (len > 0)
 		{
-			*(((unsigned char *)(dst)) + i) = *(((unsigned char *)(src)) + i);
-			i--;
+			*(tmp_dst + len - 1) = *(tmp_src + len - 1);
+			len--;
 		}
 	}
-	else if ((src > dst) && ((src - dst) < (int)len))
+	else if (tmp_src > tmp_dst)
 	{
-		i = 0;
-		while (i < (int)len)
+		while (len > 0)
 		{
-			*(((unsigned char *)(dst)) + i) = *(((unsigned char *)(src)) + i);
-			i++;
+			*tmp_dst++ = *tmp_src++;
+			len--;
 		}
 	}
-	else if ((len != 0) && (src != dst))
-		ft_memcpy(dst, src, len);
-	return ((void *)dst);
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 11:07:27 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:15:25 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:53:44 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (lst == NULL || f == NULL)
+		return ;
+	
 	while (lst->next != NULL)
 	{
 		f(lst->content);

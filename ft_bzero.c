@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:17:06 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:42:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 12:49:18 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@
 */
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	char	*tmp;
 
-	i = 0;
-	if (n != 0)
+	tmp = (char *) s;
+	while (n > 0)
 	{
-		while (i < n)
-		{
-			*((char *)s++) = 0;
-			i++;
-		}
+		*tmp++ = 0;
+		n--;
 	}
 }

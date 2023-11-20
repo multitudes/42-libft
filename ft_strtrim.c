@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:57:47 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:22:12 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 16:19:22 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,29 @@
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	n;
-	size_t	b;
+	int		n;
+	int		b;
 	char	*s2;
 
 	b = 0;
-	n = ft_strlen(s1);
-	while (n > 0 && (ft_strchr(set, (int)s1[n]) != NULL))
-	{
-		--n;
-	}
-	n++;
-	while (b < n && (ft_strchr(set, (int)s1[b]) != NULL))
-	{
+	n = ft_strlen(s1) - 1;
+	while (n > 0 && (ft_strchr(set, s1[n]) != NULL))
+		n--;
+	while (b <= n && (ft_strchr(set, s1[b]) != NULL))
 		b++;
-	}
-	s2 = ft_substr(s1, b, n - b);
+	s2 = ft_substr(s1, b, n - b + 1);
 	return (s2);
 }
 
+// #include <stdio.h>
 // int main()
 // {
 
-// 	char *s = ft_strtrim("   xxx   xxx", " x");
-// 	printf("str is -%s-",s);
+// 	char *s = ft_strtrim("   xxxa   xxx", " x");
+// 	printf("|   xxx   xxx| with x is -%s-\n",s);
 // 		free(s);
-// 	s = ft_strtrim("   xxxtripouille", " x");
+
+// 	s = ft_strtrim("   xxxldhug", " x");
 // 	printf("str is -%s-",s);
 // 		free(s);
 // 	s = ft_strtrim("a", " x");

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:46:03 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:27:15 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 14:15:59 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
  */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned long	i;
+	size_t	i;
 
 	i = 0;
-	while (i < (unsigned long)n)
+	while (i < n)
 	{
 		if (*(unsigned char *)s == (unsigned char)c)
 			return ((void *)s);

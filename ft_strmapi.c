@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:47:43 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:25:03 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 16:28:00 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	count = ft_strlen(s);
 	s2 = calloc(count + 1, 1);
+	if (s2 == NULL)
+		return (NULL);
 	while (count > 0)
 	{
 		count--;

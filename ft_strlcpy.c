@@ -6,15 +6,14 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:54:34 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:44:15 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 14:03:28 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- size_t
- strlcpy(char * restrict dst, const char * restrict src, size_t dstsize);
+ size_t strlcpy(char * dst, const char * src, size_t dstsize);
  The strlcpy() and strlcat() functions copy and concatenate strings with
  the same input parameters and output result as snprintf(3).  They are
  designed to be safer, more consistent, and less error prone replacements
@@ -38,17 +37,16 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	lensrc;
+	size_t	srclen;
 
 	i = 0;
-	lensrc = ft_strlen(src);
-	if (dstsize == 0)
-		return (lensrc);
-	while (i < dstsize - 1 && *src != '\0')
+	srclen = ft_strlen(src);
+	while ((i + 1) < dstsize && *src != '\0')
 	{
 		*dst++ = *src++;
 		i++;
 	}
-	*dst = '\0';
-	return (lensrc);
+	if (dstsize != 0)
+		*dst = '\0';
+	return (srclen);
 }

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:03:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:14:07 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 12:14:37 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ static int	my_word_count(const char *s, char c)
 	return (count);
 }
 
+static void	*ft_free(char **arr, int i)
+{
+	while (i >= 0)
+		free(arr[i--]);
+	free(arr);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -95,6 +103,8 @@ char	**ft_split(char const *s, char c)
 	{
 		splitstr = ft_strsep((char **)&s, &c); 
 		arr[i] = ft_strdup(splitstr);
+		if (arr[i] == NULL)
+			return (ft_free(arr, i));
 		i++;
 	}
 	arr[i] = NULL;

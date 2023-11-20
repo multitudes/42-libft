@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:13:19 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:26:26 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 12:34:30 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
  */
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	i;
+	unsigned char	*tmp;
 
-	i = 0;
-	while (i < len)
+	tmp = (unsigned char*) b;
+	while (len > 0)
 	{
-		*((unsigned char *)b++) = c;
-		i++;
+		*tmp++ = (unsigned char) c;
+		len--;
 	}
 	return (b);
 }

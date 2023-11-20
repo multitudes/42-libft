@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:16:37 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/13 13:06:31 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 16:01:34 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	strlen;
 	char	*sub;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	strlen = ft_strlen(s);
 	if (len + (size_t)start > strlen)
