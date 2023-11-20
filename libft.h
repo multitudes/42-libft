@@ -6,16 +6,17 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/17 10:50:08 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:20:05 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIBFT_H_
-# define _LIBFT_H_
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
-# include "_bonus.h"
+# include "libft_bonus.h"
 
 # define NEWLINE "\n"
 

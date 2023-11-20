@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:45:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 16:19:57 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:11:08 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
  a valid digit in the given base.  (In bases above 10, the letter ‘A’
  in either upper or lower case represents 10, ‘B’ represents 11, and so forth, 
  with ‘Z’ representing 35.)
- The strtol(), strtoll(), strtoimax(), and strtoq() functions return the result 
- of the conversion, unless the value would underflow or overflow.
+ The strtol(), strtoll(), strtoimax(), and strtoq() functions return 
+ the result of the conversion, unless the value would underflow or overflow.
  If no conversion could be performed, 0 is returned
  isspace checks for      ``\t''``\n''``\v''``\f''``\r''`` ''
  */

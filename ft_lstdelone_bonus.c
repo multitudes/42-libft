@@ -6,11 +6,11 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:52:04 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/11 18:52:09 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:15:22 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
+#include "libft_bonus.h"
 
 /*
  lst:  The node to free.

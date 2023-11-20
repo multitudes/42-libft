@@ -6,11 +6,25 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:12:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/16 19:18:38 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:15:32 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
+#include "libft_bonus.h"
+
+/*
+function returns 1 if node created was null and clean the list.
+has to be followed by a return null to exit if true
+*/
+static int	check_if_null_clear(t_list **lst, t_list *new, void (*del)(void *))
+{
+	if (new == NULL)
+	{
+		ft_lstclear(lst, del);
+		return (1);
+	}
+	return (0);
+}
 
 /*
 lst: The address of a pointer to a node.
@@ -46,11 +60,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		lst = lst->next;
 		new_node = ft_lstnew(f(lst->content));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&return_list, del);
+		if (check_new_node_not_null(&return_list, new_node, del))
 			return (NULL);
-		}
 		ft_lstadd_back(&return_list, new_node);
 	}
 	return (return_list);

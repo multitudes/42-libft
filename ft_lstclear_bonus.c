@@ -6,11 +6,11 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:59:08 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/16 19:53:40 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:15:18 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
+#include "libft_bonus.h"
 
 /*
  lst:  The address of a pointer to a node.
@@ -28,7 +28,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*temp;
 
 	if (*lst == NULL)
-		return;
+		return ;
 	l = lst;
 	temp = *lst;
 	while ((*lst)->next != NULL)

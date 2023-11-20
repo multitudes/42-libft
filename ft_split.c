@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:03:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/16 17:43:54 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:14:07 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
  with a NULL pointer.
  allowed are malloc, free
  */
-// inspired by apple open source '83
-// I use a char** str because the string *str will be changed in the func
+// inspired by UNIX
+// I use a char** str because the string *str will be changed 
+// in the func
 static char	*ft_strsep(char **str, char *delim)
 {
 	char	*s;
@@ -55,7 +56,7 @@ static char	*ft_strsep(char **str, char *delim)
 	}
 }
 
-// I first count 
+// Counting the words divided by the char c 
 static int	my_word_count(const char *s, char c)
 {
 	int		count;
@@ -135,85 +136,4 @@ char	**ft_split(char const *s, char c)
 	// printf("==== %s \n",res[2]);
 // 	// printf("==== %s \n",res[3]);
 // freeTab(res);
-// res = ft_split(" tripouille 42 ", ' ');
-// 	printf("==== -%s-\n",res[0]);
-	// printf("==== -%s \n",res[1]);
-// freeTab(res);
-// res = ft_split("  tripouille  42--", ' ');
-// 	printf("==== %s \n",res[0]);
-// 	printf("==== %s \n",res[1]);
-// 	// printf("==== %s \n",res[2]);
-// 	freeTab(res);
-// // // 	/* 1 */ mcheck(tab, sizeof(char *) * 3);
-// // // 	/* 2 */ check(!strcmp(tab[0], "tripouille"));
-// // // 	/* 3 */ mcheck(tab[0], strlen("tripouille") + 1);
-// // // 	/* 4 */ check(!strcmp(tab[1], "42"));
-// // // 	/* 5 */ mcheck(tab[1], strlen("42") + 1);
-// // // 	/* 6 */ check(tab[2] == NULL);
-// // // 	freeTab(tab); showLeaks();
-// // // 	tab = ft_split("tripouille", 0);
-// // // 	/* 7 */ check(!strcmp(tab[0], "tripouille"));
-// // // 	/* 8 */ check(tab[1] == NULL);
-// // // 	freeTab(tab); showLeaks();
-// --1-2--3---4----5-----42
-// // // 	tab = ft_split("     ", ' ');
-// // // 	/* 9 */ check(tab[0] == NULL);
-// // // 	free(tab); showLeaks();
-// // // 	char * invalidReadCheck = new char; *invalidReadCheck = 0;
-// // // 	tab = ft_split(invalidReadCheck, 0);
-// // // 	/* 10 */ check(tab[0] == NULL); delete invalidReadCheck;
-// // // 	free(tab); showLeaks();
-// // // 	tab = ft_split("chinimala", ' ');
-// // // 	/* 11 */ mcheck(tab, sizeof(char *) * 2);
-// // // 	/* 12 */ check(!strcmp(tab[0], "chinimala"));
-// // // 	/* 13 */ check(tab[1] == NULL);
-// // // 	freeTab(tab); showLeaks();
-// // // 	tab = ft_split("", ' ');
-// // // 	/* 14 */ mcheck(tab, sizeof(char *) * 1);
-// // // 	/* 15 */ check(tab[0] == NULL);
-// // // 	freeTab(tab); showLeaks();
-// // // 	/* sguerra- */
-// // // 	char * splitme = strdup("Tripouille");
-// // // 	tab = ft_split(splitme, ' ');
-// // // 	/* 16 */ mcheck(tab, sizeof(char *) * 2);
-// // // 	/* 17 */ check(!strcmp(tab[0], "Tripouille"));
-// // // 	/* 18 */ check(tab[1] == NULL);
-// // // 	free(splitme); freeTab(tab); showLeaks();
-// // // 	splitme = strdup("Tripouille ");
-// // // 	tab = ft_split(splitme, ' ');
-// // // 	/* 19 */ mcheck(tab, sizeof(char *) * 2);
-// // // 	/* 20 */ check(!strcmp(tab[0], "Tripouille"));
-// // // 	/* 21 */ check(tab[1] == NULL);
-// // // 	free(splitme); freeTab(tab); showLeaks();
-// // // 	splitme = strdup(" Tripouille");
-// // // 	tab = ft_split(splitme, ' ');
-// // // 	/* 22 */ mcheck(tab, sizeof(char *) * 2);
-// // // 	/* 23 */ check(!strcmp(tab[0], "Tripouille"));
-// // // 	/* 24 */ check(tab[1] == NULL);
-// // // 	free(splitme); freeTab(tab); showLeaks();
-// // // 	splitme = strdup(" Tripouille ");
-// // // 	tab = ft_split(splitme, ' ');
-// // // 	/* 25 */ mcheck(tab, sizeof(char *) * 2);
-// // // 	/* 26 */ check(!strcmp(tab[0], "Tripouille"));
-// // // 	/* 27 */ mcheck(tab[0], strlen("Tripouille") + 1);
-// // // 	/* 28 */ check(tab[1] == NULL);
-// // // 	free(splitme); freeTab(tab); showLeaks();
-// // // 	/* wleite */
-// // // 	splitme = strdup("--1-2--3---4----5-----42");
-// // // 	tab = ft_split(splitme, '-');
-// // // 	/* 29 */ mcheck(tab, sizeof(char *) * 7);
-// // // 	/* 30 */ check(!strcmp(tab[0], "1"));
-// // // 	/* 31 */ mcheck(tab[0], strlen("1") + 1);
-// // // 	/* 32 */ check(!strcmp(tab[1], "2"));
-// // // 	/* 33 */ mcheck(tab[1], strlen("2") + 1);
-// // // 	/* 34 */ check(!strcmp(tab[2], "3"));
-// // // 	/* 35 */ mcheck(tab[2], strlen("3") + 1);
-// // // 	/* 36 */ check(!strcmp(tab[3], "4"));
-// // // 	/* 37 */ mcheck(tab[3], strlen("4") + 1);
-// // // 	/* 38 */ check(!strcmp(tab[4], "5"));
-// // // 	/* 39 */ mcheck(tab[4], strlen("5") + 1);
-// // // 	/* 40 */ check(!strcmp(tab[5], "42"));
-// // // 	/* 41 */ mcheck(tab[5], strlen("42") + 1);
-// // // 	/* 42 */ check(tab[6] == NULL);
-// // // 	free(splitme); freeTab(tab); showLeaks();
 // }

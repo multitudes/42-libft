@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _bonus.h                                           :+:      :+:    :+:   */
+/*   libft_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:11:40 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/16 15:42:36 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/20 11:19:36 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _BONUS_H_
-# define _BONUS_H_
-# include <unistd.h>
+#ifndef LIBFT_BONUS_H
+# define LIBFT_BONUS_H
 # include "libft.h"
 
-typedef struct s_list t_list;
+typedef struct s_list	t_list;
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
