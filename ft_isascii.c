@@ -15,8 +15,8 @@
 /*
 * The isascii() function tests for an ASCII character, which is any 
 * character between 0 and octal 0177 inclusive. (127!)
-* The values returned are nonzero if the character c falls into the tested class, 
-* and zero if not.
+* The values returned are nonzero if the character c falls into the tested 
+* class, and zero if not.
 */
 int	ft_isascii(int c)
 {
