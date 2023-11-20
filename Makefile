@@ -10,7 +10,6 @@ OBJECTS=$(SOURCES:.c=.o)
 
 NAME=libft.a
 	
-# the target build
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
