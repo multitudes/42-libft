@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:03:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 12:14:37 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:18:13 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 #define OUT  0  /* outside a word */
 
 /*
+SYNOPSIS
+
+char **ft_split(char const *s, char c);
+
  s:  The string to be split.
  c:  The delimiter character.
  Return value
@@ -35,11 +39,11 @@ static char	*ft_strsep(char **str, char *delim)
 	int		c;
 	char	*tok;	
 
+	if (*str == NULL || str == NULL)
+		return (NULL);
 	s = *str;
 	while (*s == *delim)
 		s++;
-	if (*s == 0)
-		return (NULL);
 	tok = s;
 	while (1)
 	{
@@ -81,7 +85,11 @@ static int	my_word_count(const char *s, char c)
 static void	*ft_free(char **arr, int i)
 {
 	while (i >= 0)
-		free(arr[i--]);
+	{
+		if (arr[i] != NULL)
+			free(arr[i]);
+		i--;
+	}
 	free(arr);
 	return (NULL);
 }
@@ -93,6 +101,8 @@ char	**ft_split(char const *s, char c)
 	char	*splitstr;	
 	char	**arr;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	count = 0;
 	count = my_word_count(s, c);
@@ -104,46 +114,9 @@ char	**ft_split(char const *s, char c)
 		splitstr = ft_strsep((char **)&s, &c); 
 		arr[i] = ft_strdup(splitstr);
 		if (arr[i] == NULL)
-			return (ft_free(arr, i));
+			return (ft_free(arr, i--));
 		i++;
 	}
 	arr[i] = NULL;
 	return (arr);
 }
-
-// void freeTab(char * * tab)
-// {
-// 	for (int i = 0; tab[i] != NULL; ++i)
-// 	{
-// 		printf("freeing in arr[%d] ===> %s\n", i, tab[i]);
-// 		free(tab[i]);
-// 	}
-// 	free(tab);
-// }
-
-// int main()
-// {
-// 	char **res5 = ft_split("hello", 0);
-// 	printf("==== %s \n",res5[0]);
-// 	//my_assert(ft_strncmp(res5[0], "hello", 5) == 0, "Output shd be hello");
-// }
-
-// int main()
-// {
-	// char test[45] = "---     hello-and-thanks for-all-the--fish---";
-	// char **res = ft_split(test, '-');
-// 	printf("==== %s \n",res[0]);
-// 	printf("==== %s \n",res[1]);
-// 	printf("==== %s \n",res[2]);
-// 	printf("==== %s \n",res[3]);
-// 	printf("==== %s \n",res[4]);
-// 	printf("==== %s \n",res[5]);
-// 	printf("==== %s \n",res[6]);
-	// char test[45] = "--1-2--3---4----5-----42";
-	// char **res = ft_split(test, '-');
-	// printf("==== %s-\n",res[0]);
-	// printf("==== %s \n",res[1]);
-	// printf("==== %s \n",res[2]);
-// 	// printf("==== %s \n",res[3]);
-// freeTab(res);
-// }

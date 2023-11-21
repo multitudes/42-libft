@@ -6,13 +6,16 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:16:37 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 16:01:34 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:09:11 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+char *ft_substr(char const *s, unsigned int start, size_t len);
+
  s:  The string from which to create the substring.
  start:  The start index of the substring in the
  string ’s’.

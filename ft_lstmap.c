@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:12:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:49:05 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:08:28 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 /*
+SYNOPSIS
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 function returns 1 if node created was null and clean the list.
 has to be followed by a return null to exit if true
 */

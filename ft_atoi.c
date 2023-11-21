@@ -6,13 +6,18 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:45:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:11:08 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:56:20 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+Signature:
+       #include <stdlib.h>
+
+       int atoi(const char *nptr);
+	   
  The atoi() function converts the initial portion of the string pointed to 
  by str to int representation.
  It is equivalent to:
@@ -36,6 +41,8 @@ int	ft_atoi(const char *str)
 	int	n;
 	int	sign;
 
+	if (str == NULL)
+		return (0);
 	n = 0;
 	sign = 1;
 	while ((*str >= 9 && *str <= 13) || (*str == 32))

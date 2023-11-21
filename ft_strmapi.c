@@ -6,13 +6,16 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:47:43 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 16:28:00 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:17:48 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
  Parameters
  s:  The string on which to iterate.
  f:  The function to apply to each character.
@@ -30,6 +33,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	count;
 	char	*s2;
 
+	if (s == NULL || f == NULL)
+		return ((char *)s);
 	count = ft_strlen(s);
 	s2 = calloc(count + 1, 1);
 	if (s2 == NULL)

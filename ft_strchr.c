@@ -6,13 +6,17 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:44:53 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:42:38 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:14:26 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+      #include <string.h>
+      char *strchr(const char *s, int c);
+ 
  DESCRIPTION
  The strchr() function locates the first occurrence of 
  c (converted to a char) in the string pointed to by
@@ -27,6 +31,8 @@
  */
 char	*ft_strchr(const char *s, int c)
 {
+	if (s == NULL)
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)

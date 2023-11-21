@@ -6,13 +6,16 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:57:47 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 16:19:22 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:13:21 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+char *ft_strtrim(char const *s1, char const *set);
+
  s1:  The string to be trimmed.
  set:  The reference set of characters to trim.
  Return value
@@ -29,6 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		b;
 	char	*s2;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	b = 0;
 	n = ft_strlen(s1) - 1;
 	while (n > 0 && (ft_strchr(set, s1[n]) != NULL))

@@ -6,14 +6,17 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:54:34 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 14:03:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:15:52 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- size_t strlcpy(char * dst, const char * src, size_t dstsize);
+SYNOPSIS
+     #include <string.h>
+     size_t strlcpy(char *dst, const char *src, size_t size);
+
  The strlcpy() and strlcat() functions copy and concatenate strings with
  the same input parameters and output result as snprintf(3).  They are
  designed to be safer, more consistent, and less error prone replacements
@@ -33,12 +36,17 @@
  characters were discarded.  The output is always null-terminated, unless
  size is 0.
  it returns the length of the src... yes !
+
+ NOTE The orig strlcpy crashes when I pass NULL to either string args
+ mine returns zero..
 */
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	srclen;
 
+	if (dst == NULL || src == NULL)
+		return (0);
 	i = 0;
 	srclen = ft_strlen(src);
 	while ((i + 1) < dstsize && *src != '\0')

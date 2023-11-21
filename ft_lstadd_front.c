@@ -1,43 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 18:41:25 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 11:15:09 by lbrusa           ###   ########.fr       */
+/*   Created: 2023/11/11 17:41:56 by lbrusa            #+#    #+#             */
+/*   Updated: 2023/11/21 18:02:54 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 /*
+SYNOPSIS
+void ft_lstadd_front(t_list **lst, t_list *new);
+
  lst:  The address of a pointer to the first link of
  a list.
  new:  The address of a pointer to the node to be
  added to the list.
- adds the node ’new’ at the end of the list.
+ Adds the node ’new’ at the beginning of the list.
+ node->next = list->first;
+ list->first->prev = node;
+ list->first = node;
  */
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*last;
-
-	last = ft_lstlast(*lst);
-	if (last == NULL)
-	{
-		*lst = new;
+	if (new == NULL)
 		return ;
-	}
-	last->next = new;
+	if (lst == NULL)
+		lst = &new;
+	else 
+		new->next = *lst;
+	*lst = new;
 }
-
-// int main()
-// {
-// 	t_list * l =  NULL; 
-// 	//t_list * l2 =  NULL;
-// 	ft_lstadd_back(&l, ft_lstnew((void*)1));
-// 	/* 1 */ printf("%p\n",l->content);
-// 	/* 2 */ printf("%p\n",l->next);
-// 	return (0);
-// }

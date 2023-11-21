@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 11:07:27 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 16:42:15 by lbrusa           ###   ########.fr       */
+/*   Created: 2023/11/11 16:11:40 by lbrusa            #+#    #+#             */
+/*   Updated: 2023/11/21 18:03:14 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 /*
- lst:  The address of a pointer to a node.
- f:  The address of the function used to iterate on
- the list.
- Iterates the list ’lst’ and applies the function
- ’f’ on the content of each node.
- */
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+SYNOPSIS
+ Allocates (with malloc(3)) and returns a new node.
+ The member variable ’content’ is initialized with
+ the value of the parameter ’content’.  The variable
+ ’next’ is initialized to NULL.
+ */ 
+t_list	*ft_lstnew(void *content)
 {
-	if (lst == NULL || f == NULL)
-		return ;
-	while (lst->next != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
-	f(lst->content);
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

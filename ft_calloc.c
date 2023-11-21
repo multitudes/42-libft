@@ -6,13 +6,16 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:44:16 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/17 12:39:47 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:58:28 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+       #include <stdlib.h>
+	   void *calloc(size_t nmemb, size_t size);
  The malloc() function allocates size bytes of memory and returns a pointer 
  to the allocated memory The calloc() function contiguously allocates
  enough space for count objects that are size bytes of memory

@@ -6,13 +6,17 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:32:28 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:28:27 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:14:08 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+      #include <string.h>
+      char *strrchr(const char *s, int c);
+
  The strrchr() function is identical to strchr(),
  except it locates the last occurrence of c.
 */
@@ -20,6 +24,8 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 
+	if (s == NULL)
+		return (NULL);
 	i = ft_strlen(s);
 	while (i >= 0)
 	{

@@ -6,13 +6,17 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:39:29 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:39:57 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:14:52 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+
+char *ft_strjoin(char const *s1, char const *s2)
+
  s1:  The prefix string.
  s2:  The suffix string.
  ret The new string.
@@ -27,6 +31,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len2;
 	char	*cat;
 
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	cat = ft_calloc(len1 + len2 + 1, 1);

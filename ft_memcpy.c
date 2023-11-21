@@ -6,13 +6,18 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:05:12 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/20 12:55:36 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:19:08 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+       #include <string.h>
+
+       void *memcpy(void *dest, const void *src, size_t n);
+
  The memcpy() function copies n bytes from memory area src to memory area
  dst.  If dst and src overlap, behavior is undefined.  Applications in
  which dst and src might overlap should use memmove(3) instead.

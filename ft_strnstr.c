@@ -6,13 +6,18 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:42:50 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 17:49:41 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:17:11 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+       #include <string.h>
+
+     char *strnstr(const char *big, const char *little, size_t len);
+
 The strnstr() function locates the first occurrence of the null-terminated 
  string needle in the string haystack, where not more than len characters
  are searched.  Characters that appear after a ‘\0’ character
@@ -29,6 +34,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 	size_t	k;
 
+	if (haystack == NULL || needle == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -47,5 +54,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			return ((char *)haystack + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

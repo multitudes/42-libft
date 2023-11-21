@@ -6,13 +6,16 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:52 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 16:18:16 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:02:05 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+SYNOPSIS
+char *ft_itoa(int n);
+
  n:  the integer to convert.
  Return value
  The string representing the integer.
@@ -53,11 +56,3 @@ char	*ft_itoa(int n)
 		temp[11 - i++] = '-';
 	return (ft_strdup(&temp[11 - i + 1]));
 }
-
-//int main()
-//{
-//	char *res = ft_itoa(4362456);
-//	printf("%s \n", res);
-//	free(res);
-//	return (0);
-//}

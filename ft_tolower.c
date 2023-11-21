@@ -6,15 +6,21 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:36:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/15 16:17:12 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/21 18:13:11 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+SYNOPSIS
+       #include <ctype.h>
+
+       int toupper(int c);
+*/
 int	ft_tolower(int c)
 {
-	if (c >= 65 && c <= 90)
+	if (c >= 'A' && c <= 'Z')
 		c += 32;
 	return (c);
 }
