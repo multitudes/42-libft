@@ -31,8 +31,6 @@ fclean: clean
 	@echo "==================\nRemoving ${NAME}"
 	rm -f $(NAME)
 
-
-
 re: fclean all
 
 # ========== bonus ==============

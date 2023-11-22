@@ -6,12 +6,12 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:49:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:16:27 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:05:25 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 /*
 SYNOPSIS
        #include <string.h>
@@ -41,7 +41,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1[i] == s2[i] && s1[i] != '0' && i < (n - 1))
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (0);
 }

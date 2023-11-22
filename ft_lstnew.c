@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:11:40 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:03:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/22 13:04:04 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ SYNOPSIS
  The member variable ’content’ is initialized with
  the value of the parameter ’content’.  The variable
  ’next’ is initialized to NULL.
- */ 
+ */
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;

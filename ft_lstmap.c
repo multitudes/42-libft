@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:12:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:08:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2023/11/22 13:00:09 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	content = f(lst->content); 
+	content = f(lst->content);
 	return_list = ft_lstnew(content);
 	if (return_list == NULL)
 	{
