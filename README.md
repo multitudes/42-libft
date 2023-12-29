@@ -1,2 +1,2 @@
-# libft
+# 42-libft
 for 42
