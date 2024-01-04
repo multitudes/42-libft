@@ -1,5 +1,7 @@
 CFLAGS=-Wall -Wextra -Werror
 
+CC=cc
+
 # part 1 - 23 functions
 # part 2 - 11 functions
 # bonus --  9 list functions
@@ -11,6 +13,9 @@ SOURCES= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_str
 	ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJECTS=$(SOURCES:.c=.o)
+
+%.o: %.c 
+	$(CC) $(CFLAGs) -c $< -o $@
 
 NAME=libft.a
 	
