@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_itoxx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 14:49:09 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:17 by lbrusa           ###   ########.fr       */
+/*   Created: 2024/01/06 13:44:35 by lbrusa            #+#    #+#             */
+/*   Updated: 2024/01/06 13:44:57 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-SYNOPSIS
-
-void ft_putstr_fd(char *s, int fd);
-
- Parameters
- s:  The string to output.
- fd:  The file descriptor on which to write.
- Outputs the string ’s’ to the given file
- descriptor.
+Used for conversions to base16
+This function handles the uppercase X
  */
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_itoxx(unsigned int nbr)
 {
-	int	count;
+	int		i;
+	char	hex_p[19];
+	char	*res;
 
-	if (s == NULL)
-		return ;
-	count = (int)ft_strlen(s);
-	write(fd, s, count);
+	i = 0;
+	if (nbr == 0)
+		hex_p[i++] = '0';
+	while (nbr > 0)
+	{
+		hex_p[i++] = BASE16X[nbr % 16];
+		nbr /= 16;
+	}
+	reverse(hex_p, i);
+	res = ft_strdup(hex_p);
+	return (res);
 }
