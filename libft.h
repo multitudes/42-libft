@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:53:48 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/06 14:32:12 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_itox(unsigned int nbr);
 char	*ft_itoxx(unsigned int nbr);
 char	*ft_itoxp(uintptr_t nbr);
+long	ft_atol(const char *str);
 
 // bonus
 t_list	*ft_lstnew(void *content);
@@ -81,4 +82,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // utils
 void	_reverse(char *res, int len);
+
 #endif
