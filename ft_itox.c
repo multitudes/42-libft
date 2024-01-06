@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:44:18 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:51:57 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/06 13:53:53 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ In the functions used to convert a number to
 a string I use an algo which produces a string first 
 but in the reverse order. This function just reverses that string 
 */
-void	reverse(char *res, int len)
+void	_reverse(char *res, int len)
 {
 	int	j;
 	int	c;

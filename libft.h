@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:52:08 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/06 13:53:48 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // utils
-void	reverse(char *res, int len);
+void	_reverse(char *res, int len);
 #endif
