@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:44:35 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:44:57 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/06 13:54:32 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_itoxx(unsigned int nbr)
 		hex_p[i++] = BASE16X[nbr % 16];
 		nbr /= 16;
 	}
-	reverse(hex_p, i);
+	_reverse(hex_p, i);
 	res = ft_strdup(hex_p);
 	return (res);
 }
