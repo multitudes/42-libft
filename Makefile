@@ -12,18 +12,32 @@ SOURCES= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_str
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_itoxp.c ft_itox.c ft_itoxx.c ft_atol.c
 
-OBJECTS=$(SOURCES:.c=.o)
+PRINTF_PATH = ft_printf
 
-%.o: %.c 
-	$(CC) $(CFLAGs) -c $< -o $@
+SOURCES_PRINTF = $(addprefix $(PRINTF_PATH)/, ft_printf.c pr_.c pr_c.c pr_s.c pr_p.c pr_x.c pr_xx.c \
+base16_utils.c base16_utils2.c pr_i.c err.c pr_u.c utils.c utilsflags.c utilsflags2.c)
+
+SOURCES += $(SOURCES_PRINTF)
+
+OBJECTS = $(SOURCES:.c=.o)
+
+# this rule below is redundant
+# %.o: %.c 
+# 	$(CC) $(CFLAGs) -c $< -o $@
 
 NAME=libft.a
 	
 all: $(NAME)
 
+# $@: Represents the target. In the context of my rule $(LIBFT): $(OBJECTS),
+# it refers to $(LIBFT)
+# $^: Represents all the prerequisites of the rule. 
+# In the same context, $^ refers to $(OBJECTS)
+# Then I have an ar command with the options 
+# r (insert new files), c (create a new archive), 
+# and s (write an object-file index into the archive).
 $(NAME): $(OBJECTS)
-	ar rcs $@ $(OBJECTS)
-	ranlib $@
+	ar rcs $@ $^
 	
 clean:
 	@echo ""

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 14:32:12 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/06 16:52:33 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <stdint.h>
 # include <unistd.h>
 
@@ -22,11 +23,18 @@
 # define BASE16X "0123456789ABCDEF"
 
 // bonus
-typedef struct s_list
+// typedef struct s_list
+// {
+// 	void			*content;
+// 	struct s_list	*next;
+// }					t_list;
+
+typedef struct s_list 
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	struct	s_list *next;
+	struct	s_list *prev;
+	void	*content;
+} 				t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
