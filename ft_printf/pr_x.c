@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/27 19:52:47 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:56:19 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ssize_t	pr_x(va_list *ap, char *conv)
 	t_flags	*flags;
 
 	flags = init_flags();
-	if (flags == NULL) 
+	if (flags == NULL)
 		return (0);
 	fill_flags(conv, &flags);
 	if (ft_strchr(conv, '#') != NULL)

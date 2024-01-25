@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/29 12:05:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:12:05 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_flags	*init_flags(void)
 	t_flags	*flags;
 
 	flags = malloc(sizeof(t_flags));
-	if (flags == NULL) 
+	if (flags == NULL)
 		return (NULL);
 	flags->minus = 0;
 	flags->zero = 0;
@@ -117,7 +117,7 @@ used in the string conversion without the flags struct
  */
 void	get_width_and_precision(char *conv, int *width, int *prec)
 {
-	if (*conv == '-') 
+	if (*conv == '-')
 		conv++;
 	if (*conv == '.' && conv++)
 	{

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:07 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/28 12:07:01 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 20:00:03 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ssize_t	get_left_padding_c(size_t width, int c)
 		return (0);
 	ft_memset(s, ' ', width);
 	if (width > 0)
-		ft_memcpy((s + width - 1), &c, 1); 
+		ft_memcpy((s + width - 1), &c, 1);
 	else
 		ft_memcpy((s + width), &c, 1);
 	if (!width)

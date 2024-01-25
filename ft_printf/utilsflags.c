@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/29 13:40:17 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:55:56 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,26 @@ void	fill_flags2(char *conv, t_flags **flags)
 		conv++;
 	}
 	upd_minw_prec_in_flags(conv, *flags);
+}
+
+void	fill_flags(char *p, t_flags **flags)
+{
+	while (ft_strchr("+-0# ", *p) != NULL && *p)
+	{
+		if (*p == '+')
+			(*flags)->plus = 1;
+		if (*p == '0')
+		{
+			(*flags)->zero = 1;
+			(*flags)->pad = '0';
+		}
+		if (*p == '-')
+			(*flags)->minus = 1;
+		if (*p == ' ')
+			(*flags)->space = 1;
+		if (*p == '*')
+			(*flags)->star += 1;
+		p++;
+	}
+	upd_minw_prec_in_flags(p, *flags);
 }

@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:39 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/29 15:18:34 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 20:01:02 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ int	ft_printf(const char *format, ...)
 
 /*
 -Wall -Werror -Wextra 
-cc ft_printf.c  pr_.c pr_c.c pr_s.c pr_i.c err.c pr_p.c base16_utils.c pr_x.c pr_xx.c pr_u.c base16_utils2.c utils.c -L./libft -lft utilsflags2.c utilsflags.c 
+cc ft_printf.c  pr_.c pr_c.c pr_s.c pr_i.c err.c \
+pr_p.c base16_utils.c pr_x.c pr_xx.c pr_u.c base16_utils2.c 
+utils.c -L./libft -lft utilsflags2.c utilsflags.c 
 allowed are |%cspdiuxXU|
 
 I will be using the return value of write
@@ -120,13 +122,17 @@ ssize_t write(int fd, const void *buf, size_t count);
 // //	printf("n = %d\n", n);
 // //	n2 = ft_printf("|%*p|",-23, &num);
 // //	printf("n = %d\n", n2);
-// 	n1 = printf("|%#3X|", 42);//|-01|
-// 	printf("n = %d\n", n1);
-// 	n2 = ft_printf("|%#3X|", 42);
-// 	printf("n = %d\n", n2);
-// 	// n1 = printf("|%-3.7s|\n", "t");
+// 	// n1 = printf("|%#6.2x|", 42);//|-01|
+// 	// printf("n = %d\n", n1);
+// 	// n2 = ft_printf("|%#6.2X|", 42);
+// 	// printf("n = %d\n", n2);
+// 	n1 = printf("|%-3.7s|\n", "t");
+// 	printf("n1 = %d\n", n1);
+// 	n2 = ft_printf("|%-3.7s|\n", "t");
+// 	printf("my printf n2 = %d\n", n2);
+// 	// n1 = printf("|%p|\n", NULL);
 // 	// printf("n1 = %d\n", n1);
-// 	// n2 = ft_printf("|%-3.7s|\n", "t");
+// 	// n2 = ft_printf("|%p|\n", NULL);
 // 	// printf("my printf n2 = %d\n", n2);
 // 	return (1);
 // }

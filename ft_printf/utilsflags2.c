@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/29 15:17:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:57:31 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,27 @@ void	upd_minw_prec_in_flags(char *p, t_flags *flags)
 		flags->pad = '0';
 }
 
-void	fill_flags(char *p, t_flags **flags)
+void	adjust_l_i3(char *s, char *p, t_flags *fl)
 {
-	while (ft_strchr("+-0# ", *p) != NULL && *p)
+	if (((fl->hash && fl->zero) || (fl->hash && fl->dot)) && !(p[0] == '0'))
 	{
-		if (*p == '+')
-			(*flags)->plus = 1;
-		if (*p == '0')
-		{
-			(*flags)->zero = 1;
-			(*flags)->pad = '0';
-		}
-		if (*p == '-')
-			(*flags)->minus = 1;
-		if (*p == ' ')
-			(*flags)->space = 1;
-		if (*p == '*')
-			(*flags)->star += 1;
-		p++;
+		if ((fl->fw - fl->prec - 2) > 0)
+			ft_memcpy(s + (fl->fw - fl->prec - 2), "0x", 2);
+		else
+			ft_memcpy(s, "0x", 2);
 	}
-	upd_minw_prec_in_flags(p, *flags);
+	else if (((fl->hashhash && fl->zero) || (fl->hashhash && fl->dot)) \
+	&& !(p[0] == '0'))
+	{
+		if ((fl->fw - fl->prec - 2) > 0)
+			ft_memcpy(s + (fl->fw - fl->prec - 2), "0X", 2);
+		else
+			ft_memcpy(s, "0X", 2);
+	}
+	else if ((fl->hash && !((fl->zero) || (fl->dot))) && !(p[0] == '0'))
+		ft_memcpy((s + fl->fw - fl->len - 2), "0x", 2);
+	else if (fl->hashhash && !((fl->zero) || (fl->dot)) && !(p[0] == '0'))
+		ft_memcpy((s + fl->fw - fl->len - 2), "0X", 2);
 }
 
 void	adjust_l_i2(char *s, char *p, t_flags *flags)
@@ -79,82 +80,66 @@ void	adjust_l_i2(char *s, char *p, t_flags *flags)
 		s[0] = ' ';
 		s[flags->fw - (flags->prec + 1)] = '-';
 	}
-	if (((flags->hash && flags->zero) || (flags->hash && flags->dot )) && !(p[0] == '0'))
-	{
-		if (((flags->fw - flags->prec - 2) > 0) && (flags->prec > flags->len + 2))
-			ft_memcpy(s + (flags->fw - flags->prec - 2), "0x", 2);
-		else 
-			ft_memcpy(s, "0x", 2);
-	}
-	else if (((flags->hashhash && flags->zero) || (flags->hashhash && flags->dot)) && !(p[0] == '0'))
-	{
-		if (((flags->fw - flags->prec - 2) > 0) && (flags->prec > flags->len + 2))
-			ft_memcpy(s + (flags->fw - flags->prec - 2), "0X", 2);
-		else 
-			ft_memcpy(s, "0X", 2);
-	}
-	else if ((flags->hash && !((flags->zero) || (flags->dot))) && !(p[0] == '0')) 
-		ft_memcpy((s + flags->fw - flags->len - 2), "0x", 2);
-	else if (flags->hashhash && !((flags->zero) || (flags->dot)) && !(p[0] == '0')) 
-		ft_memcpy((s + flags->fw - flags->len - 2), "0X", 2);
+	adjust_l_i3(s, p, flags);
 }
 
 /*
 
 */
-void	adjust_l_i(char *s, char *p, t_flags *flags)
+void	adjust_l_i(char *s, char *p, t_flags *fs)
 {
-	if (p[0] == '-' && (flags->pad == '0') && (flags->fw > flags->len))
-		ft_memcpy((s + flags->fw - (flags->len - 1)), p + 1, flags->len - 1);
+	if (p[0] == '-' && (fs->pad == '0') && (fs->fw > fs->len))
+		ft_memcpy((s + fs->fw - (fs->len - 1)), p + 1, fs->len - 1);
 	else
-		ft_memcpy((s + flags->fw - flags->len), p, flags->len);
-	if ((flags->plus || flags->space || flags->zero) && (!flags->unsgned) &&\
-	(!(flags->pad == '0') || (flags->len >= flags->prec)))
+		ft_memcpy((s + fs->fw - fs->len), p, fs->len);
+	if ((fs->plus || fs->space || fs->zero) && (!fs->unsgned) && \
+	(!(fs->pad == '0') || (fs->len >= fs->prec)))
 	{
-		if (flags->plus && !(p[0] == '-') && (!flags->unsgned))
-			s[flags->fw - (flags->len + 1)] = '+';
-		else if ((p[0] == '-') && flags->zero && (flags->fw > flags->len))
+		if (fs->plus && !(p[0] == '-') && (!fs->unsgned))
+			s[fs->fw - (fs->len + 1)] = '+';
+		else if ((p[0] == '-') && fs->zero && (fs->fw > fs->len))
 		{
-			s[flags->fw - (flags->prec + 1)] = '-';
+			s[fs->fw - (fs->prec + 1)] = '-';
 			s[0] = ' ';
 		}
 	}
-	else if ((flags->pad == '0') && (flags->plus || flags->space) && (!flags->unsgned))
+	else if ((fs->pad == '0') && (fs->plus || fs->space) && (!fs->unsgned))
 	{
-		if (flags->plus)
+		if (fs->plus)
 			s[0] = '+';
 	}
-	else if (p[0] == '-' && (flags->pad == '0'))
+	else if (p[0] == '-' && (fs->pad == '0'))
 		s[0] = '-';
-	adjust_l_i2(s, p, flags);
+	adjust_l_i2(s, p, fs);
 }
 
 /*
 
 */
-void	update_flags_r_i(char *p, t_flags *flags)
+void	update_flags_r_i(char *p, t_flags *fs)
 {
-	flags->len = (int)ft_strlen(p);
-	if (flags->prec < flags->len)
+	fs->len = (int)ft_strlen(p);
+	if (fs->prec < fs->len)
 		if (p[0] == '-')
-			flags->prec = flags->len - 1;
-	if (flags->zero && !flags->plus && (p[0] != '-'))
-		flags->pad = '0';
+			fs->prec = fs->len - 1;
+	if (fs->zero && !fs->plus && (p[0] != '-'))
+		fs->pad = '0';
 	if (p[0] == '-')
-		flags->plus = 0;
+		fs->plus = 0;
 	if (p[0] == '-')
-		flags->zero = 0;
-	if (flags->fw == flags->prec && (p[0] == '-') && (flags->dot))
-		(flags->fw)++;
-	if (flags->len > flags->fw)
-		flags->fw = flags->len;
-	if ((flags->len + (flags->plus || flags->space) && (!flags->unsgned)) > flags->fw)
-		flags->fw = flags->len + 1;
-	if ((flags->hash || flags->hashhash) && ((flags->fw < (flags->len + 2)) || (flags->fw < (flags->prec + 2))))
-		{
-			if (flags->fw < (flags->len + 2))
-				flags->fw = flags->len + 2;
-			if (flags->fw < (flags->prec + 2))
-				flags->fw = flags->prec + 2;
-		}
+		fs->zero = 0;
+	if (fs->fw == fs->prec && (p[0] == '-') && (fs->dot))
+		(fs->fw)++;
+	if (fs->len > fs->fw)
+		fs->fw = fs->len;
+	if ((fs->len + (fs->plus || fs->space) && (!fs->unsgned)) > fs->fw)
+		fs->fw = fs->len + 1;
+	if ((fs->hash || fs->hashhash) && ((fs->fw < (fs->len + 2)) || \
+	(fs->fw < (fs->prec + 2))))
+	{
+		if (fs->fw < (fs->len + 2))
+			fs->fw = fs->len + 2;
+		if (fs->fw < (fs->prec + 2))
+			fs->fw = fs->prec + 2;
+	}
 }

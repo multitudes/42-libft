@@ -1,5 +1,6 @@
-CFLAGS=-Wall -Wextra -Werror
-
+# added -fPIE -fPIC because compiling on mac m1 and linux
+# sometimes gave weird errors
+CFLAGS=-fPIE -fPIC -Wall -Wextra -Werror
 CC=cc
 
 # part 1 - 23 functions
@@ -21,7 +22,7 @@ SOURCES += $(SOURCES_PRINTF)
 
 OBJECTS = $(SOURCES:.c=.o)
 
-# this rule below is redundant
+# this rule below is redundant but I leave it for clarity
 # %.o: %.c 
 # 	$(CC) $(CFLAGs) -c $< -o $@
 

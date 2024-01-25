@@ -6,11 +6,28 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/29 15:24:35 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/17 19:59:49 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	prepare_flags2(char *conv, t_flags *flags)
+{
+	if ((flags->plus || flags->space) && !flags->unsgned)
+		if (flags->len + 1 > flags->fw)
+			flags->fw = flags->len + 1;
+	if ((flags->pad == '0') && (flags->len > flags->prec))
+		flags->pad = ' ';
+	if ((flags->hash || flags->hashhash) && !(conv[0] == '0') && \
+	((flags->fw < (flags->len + 2)) || (flags->fw < (flags->prec + 2))))
+	{
+		if (flags->fw < (flags->len + 2))
+			flags->fw = flags->len + 2;
+		if (flags->fw < (flags->prec + 2))
+			flags->fw = flags->prec + 2;
+	}
+}
 
 void	prepare_flags(char *conv, t_flags *flags)
 {
@@ -27,19 +44,7 @@ void	prepare_flags(char *conv, t_flags *flags)
 		(flags->fw)++;
 	if (flags->len > (flags->fw))
 		flags->fw = flags->len;
-	if ((flags->plus || flags->space) && !flags->unsgned) 
-		if (flags->len + 1 > flags->fw)
-			flags->fw = flags->len + 1;
-	if ((flags->pad == '0') && (flags->len > flags->prec))
-		flags->pad = ' ';
-	if ((flags->hash || flags->hashhash) && !(conv[0] == '0') && (flags->dot) && \
-	((flags->fw < (flags->len + 2)) || (flags->fw < (flags->prec + 2))))
-		{
-			if (flags->fw < (flags->len + 2))
-				flags->fw = flags->len + 2;
-			if (flags->fw < (flags->prec + 2))
-				flags->fw = flags->prec + 2;
-		}
+	prepare_flags2(conv, flags);
 }
 
 /*

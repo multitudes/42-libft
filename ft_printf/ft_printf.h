@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:18:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/08 11:37:38 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:10:34 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft.h"
 # include <stdarg.h>
 # include <stdlib.h>
-// # include <stdio.h>
+# include <stdio.h>
 
 // I decided to group all flags in one struct to avoid getting crazy
 //
@@ -146,12 +146,15 @@ ssize_t		get_right_padding(size_t width, size_t max_w, char *p, int has_pt);
 ssize_t		get_left_padding(size_t width, size_t max_w, char *p, int has_pt);
 void		adjust_l_i(char *s, char *p, t_flags *flags);
 void		adjust_l_i2(char *s, char *p, t_flags *flags);
+void		adjust_l_i3(char *s, char *p, t_flags *flags);
 void		adjust_r_i(char *s, char *p, t_flags *flags);
 void		adjust_r_i2(char *s, char *conv, t_flags *flags);
 void		adjust_r_i2_space_plus(char *s, char *conv, t_flags *flags);
 void		update_for_x(char *s, char *conv, t_flags *flags);
 t_flags		*init_flags(void);
 void		fill_flags(char *p, t_flags **flags);
+void		prepare_flags(char *conv, t_flags *flags);
+void		prepare_flags2(char *conv, t_flags *flags);
 void		update_flags_r_i(char *p, t_flags *flags);
 char		*safemalloc_and_set(ssize_t width, int c);
 void		upd_minw_prec_in_flags(char *p, t_flags *flags);

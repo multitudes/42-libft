@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 16:52:33 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:13:52 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdint.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
 
 # define NEWLINE "\n"
 # define BASE16 "0123456789abcdef"
@@ -31,10 +32,10 @@
 
 typedef struct s_list 
 {
-	struct	s_list *next;
-	struct	s_list *prev;
-	void	*content;
-} 				t_list;
+	struct s_list	*next;
+	struct s_list	*prev;
+	void			*content;
+}				t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -90,5 +91,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // utils
 void	_reverse(char *res, int len);
+
+// my printf
+int		ft_printf(const char *format, ...);
 
 #endif
