@@ -20,8 +20,8 @@ base16_utils.c base16_utils2.c pr_i.c err.c pr_u.c utils.c utilsflags.c utilsfla
 SOURCES += $(SOURCES_PRINTF)
 
 GNL_PATH = get_next_line
-SOURCES_GNL = $(addprefix $(GNL_PATH)/, get_next_line.c get_next_line_bonus.c get_next_line_utils.c \
-get_next_line_utils_bonus.c) 
+SOURCES_GNL = $(addprefix $(GNL_PATH)/, get_next_line.c get_next_line_utils.c \
+get_next_line_utils.c) 
 SOURCES += $(SOURCES_GNL)
 
 OBJECTS = $(SOURCES:.c=.o)
