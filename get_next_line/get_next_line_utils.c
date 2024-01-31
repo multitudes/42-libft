@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 16:02:56 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/21 19:57:39 by lbrusa           ###   ########.fr       */
+/*   Created: 2023/12/18 16:02:47 by lbrusa            #+#    #+#             */
+/*   Updated: 2023/12/21 19:55:45 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 ssize_t	_get_content_in_lst(t_blk *node, char *line_string)
 {
@@ -50,7 +50,7 @@ char	*_get_line_and_stash(t_blk **line, char *buf, ssize_t n)
 	t_blk	*node;
 
 	free(buf);
-	if ((n <= -1 && _freeline(line, NULL)) || (*line == NULL))
+	if ((n <= -1 && _fr(line, NULL)) || (*line == NULL))
 		return (NULL);
 	line_string = ft_calloc(sizeof(char), ((*line)->size + 1));
 	if (line_string == NULL || (*line)->size == 0)
@@ -60,16 +60,18 @@ char	*_get_line_and_stash(t_blk **line, char *buf, ssize_t n)
 	{
 		node = _lstnew(line_string + pos, (*line)->size - pos);
 		line_string[pos] = 0;
-		_freeline(line, NULL);
+		_fr(line, NULL);
+		if (!node)
+			return (NULL);
 		node->has_nl = _strchr_newline((char *)node->content);
 		*line = node;
 	}
 	else
-		_freeline(line, NULL);
+		_fr(line, NULL);
 	return (line_string);
 }
 
-int	_freeline(t_blk **line, char *s)
+int	_fr(t_blk **line, char *s)
 {
 	t_blk	**l;
 	t_blk	*tmp;
@@ -95,9 +97,11 @@ int	_freeline(t_blk **line, char *s)
 	return (1);
 }
 
-int	_safe_init(char **buf, ssize_t *n)
+int	_safety_check(int fd, char **buf, ssize_t *n)
 {
 	*n = 1;
+	if (fd >= OPEN_MAX)
+		return (0);
 	*buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!*buf)
 		return (0);

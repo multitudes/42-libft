@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 16:03:11 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/21 19:57:39 by lbrusa           ###   ########.fr       */
+/*   Created: 2023/12/18 16:02:26 by lbrusa            #+#    #+#             */
+/*   Updated: 2023/12/21 19:55:52 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
+/*
+I had to add because valgrind complained about using a not initialised 
+variable. It was not true because I was initializing my final string
+in the next function but it has badly interpreted so I replaced my malloc
+with a ft_calloc from the libft (modified)
+*/
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*p;
@@ -68,6 +74,9 @@ t_blk	*_lstnew(void *content, ssize_t n)
 	return (new);
 }
 
+/*
+similar to strchr but specialized for a newline char
+*/
 ssize_t	_strchr_newline(char *str)
 {
 	ssize_t	i;
@@ -83,14 +92,9 @@ ssize_t	_strchr_newline(char *str)
 }
 
 /*
- printf("==== append blk ====\n");
- printf("==== my line->contents %s and new %s====\n",
- (char*)(line)->content, (char*)new->content);
- printf("==== new size %zd ====\n", line->size);
- //	printf("==== my line->contents %s and new %s====\n", 
- (char*)(line)->content, str);
+ app is for append! I had to shorten my line for norm!
  */
-ssize_t	_lst_app(t_blk *line, char *str, ssize_t n)
+ssize_t	_app(t_blk *line, char *str, ssize_t n)
 {
 	t_blk	*new;
 
@@ -138,70 +142,27 @@ char	*get_next_line(int fd)
 {
 	ssize_t			n;
 	char			*buf;
-	static t_blk	*line;
+	static t_blk	*line[OPEN_MAX];
 
-	if (!_safe_init(&buf, &n))
+	if (!_safety_check(fd, &buf, &n))
 		return (NULL);
-	if (line == NULL || line->has_nl < 0)
+	if (line[fd] == NULL || line[fd]->has_nl < 0)
 	{
 		n = read(fd, buf, BUFFER_SIZE);
 		while (n > 0)
 		{
 			buf[n] = 0;
-			if (line == NULL)
+			if (line[fd] == NULL)
 			{
-				line = _lstnew(buf, n);
-				if (line == NULL && _freeline(&line, buf))
+				line[fd] = _lstnew(buf, n);
+				if (line[fd] == NULL && _fr(&line[fd], buf))
 					return (NULL);
 			}
-			else if (line && !_lst_app(line, buf, n) && _freeline(&line, buf))
+			else if (line[fd] && !_app(line[fd], buf, n) && _fr(&line[fd], buf))
 				return (NULL);
-			if (line->has_nl >= 0 || read_again(fd, &buf, &n) <= 0)
+			if (line[fd]->has_nl >= 0 || read_again(fd, &buf, &n) <= 0)
 				break ;
 		}
 	}
-	return (_get_line_and_stash(&line, buf, n));
+	return (_get_line_and_stash(&line[fd], buf, n));
 }
-
-/*
-int main(void) {
-	int	fd;
-	char	*s;
-	
-	fd = open("file1", O_RDONLY);
-	printf("** fd = %d - buffer size %d\n",fd ,BUFFER_SIZE);
-	s = get_next_line(fd);
-	printf("next line is |%s|\n", s);
-	free(s);
-	s = get_next_line(-1);
-	printf("next line is |%s|\n", s);
-	free(s);
-	// s = get_next_line(fd);
-	// printf("next line is |%s|\n", s);
-	// free(s);
-	// s = get_next_line(fd);
-	// printf("next line is |%s|\n", s);
-	// free(s);
-	// s = get_next_line(fd);
-	// printf("next line is |%s|\n", s);
-	// free(s);
-	// s = get_next_line(fd);
-	// printf("next line is |%s|\n", s);
-	// free(s);
-	//	s = get_next_line(fd);
-//	printf("next line is |%s|\n", s);
-//	s = get_next_line(fd);
-//	printf("next line is |%s|\n", s);
-//	s = get_next_line(fd);
-//	printf("next line is |%s|\n", s);
-//	s = get_next_line(fd);
-//	printf("next line is |%s|\n", s);
-//	s = get_next_line(fd);
-//	printf("next line is |%s|\n", s);
-	
-	close(fd);
-	
-	return 0;
-}
-
-*/
