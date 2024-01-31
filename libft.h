@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/23 15:13:52 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/31 12:38:02 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	_reverse(char *res, int len);
 
 // my printf
 int		ft_printf(const char *format, ...);
+char	*get_next_line(int fd);
 
 #endif
