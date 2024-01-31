@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/27 19:54:41 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/31 11:39:26 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ Used for conversion to base16
 if the hash is used then I add a prefix.
 This function handles the lowercase x
  */
-char	*ft_itox(unsigned int nbr)
-{
-	int		i;
-	char	hex_p[19];
-	char	*res;
+// char	*ft_itox(unsigned int nbr)
+// {
+// 	int		i;
+// 	char	hex_p[19];
+// 	char	*res;
 
-	i = 0;
-	if (nbr == 0)
-		hex_p[i++] = '0';
-	while (nbr > 0)
-	{
-		hex_p[i++] = BASE16[nbr % 16];
-		nbr /= 16;
-	}
-	reverse(hex_p, i);
-	res = ft_strdup(hex_p);
-	return (res);
-}
+// 	i = 0;
+// 	if (nbr == 0)
+// 		hex_p[i++] = '0';
+// 	while (nbr > 0)
+// 	{
+// 		hex_p[i++] = BASE16[nbr % 16];
+// 		nbr /= 16;
+// 	}
+// 	reverse(hex_p, i);
+// 	res = ft_strdup(hex_p);
+// 	return (res);
+// }
 
 /*
 Used for conversions to base16

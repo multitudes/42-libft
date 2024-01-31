@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/28 12:03:46 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/31 11:39:19 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ void	reverse(char *res, int len)
 /*
 Used for converting pointers to base16
  */
-char	*ft_itoxp(uintptr_t nbr)
-{
-	int		i;
-	char	*prefix;
-	char	hex_p[19];
-	char	*res;
+// char	*ft_itoxp(uintptr_t nbr)
+// {
+// 	int		i;
+// 	char	*prefix;
+// 	char	hex_p[19];
+// 	char	*res;
 
-	i = 0;
-	prefix = "0x";
-	if (nbr == 0)
-		return (ft_strdup("(nil)"));
-	while (nbr > 0)
-	{
-		hex_p[i++] = BASE16[nbr % 16];
-		nbr /= 16;
-	}
-	reverse(hex_p, i);
-	res = ft_strjoin(prefix, hex_p);
-	return (res);
-}
+// 	i = 0;
+// 	prefix = "0x";
+// 	if (nbr == 0)
+// 		return (ft_strdup("(nil)"));
+// 	while (nbr > 0)
+// 	{
+// 		hex_p[i++] = BASE16[nbr % 16];
+// 		nbr /= 16;
+// 	}
+// 	reverse(hex_p, i);
+// 	res = ft_strjoin(prefix, hex_p);
+// 	return (res);
+// }

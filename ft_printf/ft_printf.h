@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:18:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/23 15:10:34 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/01/31 11:38:41 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,6 @@ char		*safemalloc_and_set(ssize_t width, int c);
 void		upd_minw_prec_in_flags(char *p, t_flags *flags);
 void		get_width_and_precision(char *conv, int *width, int *max_w);
 int			width_prec_atoi(char **p);
-char		*ft_itoxp(uintptr_t nbr);
-char		*ft_itox(unsigned int nbr);
 char		*ft_itoxx(unsigned int nbr);
 char		*ft_itou(unsigned int nbr);
 void		reverse(char *res, int len);
