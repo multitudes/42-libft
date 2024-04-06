@@ -25,13 +25,13 @@ void ft_lstadd_front(t_list **lst, t_list *new);
  list->first->prev = node;
  list->first = node;
  */
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new_node)
 {
-	if (new == NULL)
+	if (new_node == NULL)
 		return ;
 	if (lst == NULL)
-		lst = &new;
+		lst = &new_node;
 	else
 		new->next = *lst;
-	*lst = new;
+	*lst = new_node;
 }
