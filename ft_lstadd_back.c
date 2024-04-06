@@ -22,7 +22,7 @@ void ft_lstadd_back(t_list **lst, t_list *new);
  added to the list.
  adds the node ’new’ at the end of the list.
  */
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *node)
 {
 	t_list	*last;
 
@@ -32,5 +32,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	last->next = new;
+	last->next = node;
 }
