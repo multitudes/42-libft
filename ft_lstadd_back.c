@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:41:25 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:07:12 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/04/07 16:15:20 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void ft_lstadd_back(t_list **lst, t_list *new);
  added to the list.
  adds the node ’new’ at the end of the list.
  */
-void	ft_lstadd_back(t_list **lst, t_list *node)
+void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	t_list	*last;
 
 	last = ft_lstlast(*lst);
 	if (last == NULL)
 	{
-		*lst = new;
+		*lst = new_node;
 		return ;
 	}
-	last->next = node;
+	last->next = new_node;
 }

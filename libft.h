@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/04/06 12:38:42 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/04/07 16:12:13 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <unistd.h>
 # include "ft_printf/ft_printf.h"
 
+#ifndef NEWLINE
 # define NEWLINE "\n"
+#endif
 # define BASE16 "0123456789abcdef"
 # define BASE16X "0123456789ABCDEF"
 
