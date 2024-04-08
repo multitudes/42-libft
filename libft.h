@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/04/07 16:12:13 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/04/08 11:56:40 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 // 	struct s_list	*next;
 // }					t_list;
 
+// when I did the pushswap project I realised a double linked list is 
+// much more useful than a single linked list. it doesnt change much in the code.
 typedef struct s_list 
 {
 	struct s_list	*next;

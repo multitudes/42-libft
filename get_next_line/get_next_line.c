@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 16:02:26 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/31 11:52:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/04/07 17:59:54 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,9 @@ ssize_t	_app(t_blk *line, char *str, ssize_t n)
  Write a function that returns a line read from a
  file descriptor
  params:
- n used by read.
- stash and buf of size depending buffer
+ fd: file descriptor to read from
+ return: a string read from fd without the newline
+ 
  line is a linked list collecting the strings ready to be
  outputted as a string when collated and a newline has been found
  initialized as a t_blk which 
