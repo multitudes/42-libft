@@ -23,7 +23,10 @@ How to force the mallocs to fail with ulimit -m 50 (or other number)
 ## The case of strncpy 
 
 
+
+
+## adding printf and get_next_line
+
 ## Bad functions in C
 The functions which are supposed to be bad… buffer overflow..
 Link to the printf case… 
-
