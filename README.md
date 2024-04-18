@@ -16,3 +16,14 @@ use of the keywords constant.  Inline keywords macros
 ## Example with the evolution of strlen 
 
 
+## malloc
+Then the malloc case quoting from kerrisk malloc(0) case returns a pointer to be free
+How to force the mallocs to fail with ulimit -m 50 (or other number)
+
+## The case of strncpy 
+
+
+## Bad functions in C
+The functions which are supposed to be bad… buffer overflow..
+Link to the printf case… 
+
