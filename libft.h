@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:45:30 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/04/08 11:56:40 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:02:39 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <unistd.h>
 # include "ft_printf/ft_printf.h"
 
-#ifndef NEWLINE
-# define NEWLINE "\n"
-#endif
+# ifndef NEWLINE
+#  define NEWLINE "\n"
+# endif
+
 # define BASE16 "0123456789abcdef"
 # define BASE16X "0123456789ABCDEF"
 
@@ -33,8 +34,9 @@
 // }					t_list;
 
 // when I did the pushswap project I realised a double linked list is 
-// much more useful than a single linked list. it doesnt change much in the code.
-typedef struct s_list 
+// much more useful than a single linked list. it doesnt change much 
+// in the code.
+typedef struct s_list
 {
 	struct s_list	*next;
 	struct s_list	*prev;

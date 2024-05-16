@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:41:56 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/05/16 11:52:49 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:01:40 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_lstadd_front(t_list **lst, t_list *new);
  list->first->prev = node;
  list->first = node;
  */
-void ft_lstadd_front(t_list **lst, t_list *new_node)
+void	ft_lstadd_front(t_list **lst, t_list *new_node)
 {
 	if (new_node != NULL && *lst != NULL)
 	{
