@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:44:16 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 17:58:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:25:11 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ DEBUG tests/part1_tests.c:616: --- pointer calloc 0 -5 -> 0xd6e750
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*p;
+	char	*tmp;
+	size_t	n;
 
-	p = NULL;
 	if (count == 0 || size == 0)
 	{
 		count = 1;
@@ -45,6 +46,12 @@ void	*ft_calloc(size_t count, size_t size)
 	p = malloc(count * size);
 	if (p == NULL)
 		return (NULL);
-	ft_bzero(p, count * size);
+	n = count * size;
+	tmp = p;
+	while (n > 0)
+	{
+		*tmp++ = 0;
+		n--;
+	}
 	return (p);
 }

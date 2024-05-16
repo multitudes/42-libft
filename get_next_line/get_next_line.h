@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 16:02:39 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/31 11:52:24 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:26:30 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include "../libft.h"
 
 typedef struct s_blk
 {
@@ -45,6 +46,5 @@ t_blk	*_lstnew(void *content, ssize_t n);
 int		_safety_check(int fd, char **buf, ssize_t *n);
 ssize_t	read_again(int fd, char **buf, ssize_t *n);
 ssize_t	_get_content_in_lst(t_blk *node, char *line_string);
-void	*ft_calloc(size_t count, size_t size);
 
 #endif

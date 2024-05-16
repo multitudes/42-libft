@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 16:02:26 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/04/07 17:59:54 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:25:41 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@ variable. It was not true because I was initializing my final string
 in the next function but it has badly interpreted so I replaced my malloc
 with a ft_calloc from the libft (modified)
 */
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*p;
-	char	*tmp;
-	size_t	n;
+// void	*ft_calloc(size_t count, size_t size)
+// {
+// 	void	*p;
+// 	char	*tmp;
+// 	size_t	n;
 
-	if (count == 0 || size == 0)
-	{
-		count = 1;
-		size = 1;
-	}
-	if (count >= (SIZE_MAX / size))
-		return (NULL);
-	p = malloc(count * size);
-	if (p == NULL)
-		return (NULL);
-	n = count * size;
-	tmp = p;
-	while (n > 0)
-	{
-		*tmp++ = 0;
-		n--;
-	}
-	return (p);
-}
+// 	if (count == 0 || size == 0)
+// 	{
+// 		count = 1;
+// 		size = 1;
+// 	}
+// 	if (count >= (SIZE_MAX / size))
+// 		return (NULL);
+// 	p = malloc(count * size);
+// 	if (p == NULL)
+// 		return (NULL);
+// 	n = count * size;
+// 	tmp = p;
+// 	while (n > 0)
+// 	{
+// 		*tmp++ = 0;
+// 		n--;
+// 	}
+// 	return (p);
+// }
 
 /*
  SYNOPSIS

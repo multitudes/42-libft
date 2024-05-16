@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:59:08 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:07:57 by lbrusa           ###   ########.fr       */
+/*   Updated: 2024/05/16 11:57:01 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	**l;
 	t_list	*temp;
 
-	if (*lst == NULL || lst == NULL)
+	if (lst == NULL || *lst == NULL)
 		return ;
 	l = lst;
 	temp = *lst;
-	while ((*lst)->next != NULL)
+	while ((*lst)->next)
 	{
 		*lst = (*lst)->next;
 		ft_lstdelone(temp, del);
