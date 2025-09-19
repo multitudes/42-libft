@@ -3,23 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/17 19:12:05 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 14:13:52 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-ops is an array of function pointers each taking care of a 
-conversion string.
-the conversion specifiers for the mandatory part are:
-|%cspdiuxX|
-if none are found in the format specifier string then the last one
-will be executed err_s
-*/
+/**
+ * init_ops - Initialize the operations array with conversion functions.
+ *
+ * Arguments:
+ *   ops: Array of function pointers for conversion operations.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Initializes the ops array with function pointers corresponding to
+ *   printf conversion specifiers: %cspdiuxX%. The last element is an
+ *   error handler for invalid conversions. Each function handles its
+ *   respective conversion type with appropriate formatting.
+ */
 void	init_ops(t_ffunc *ops)
 {
 	ops[0] = pr_;
@@ -34,10 +41,21 @@ void	init_ops(t_ffunc *ops)
 	ops[9] = err_s;
 }
 
-/*
-t_flags is a struct used in the %i conversion
-when everything became too unwieldly 
-*/
+/**
+ * init_flags - Initialize and allocate a flags structure.
+ *
+ * Arguments:
+ *   None.
+ *
+ * Returns:
+ *   Pointer to the initialized flags structure, or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates and initializes a t_flags structure with default values.
+ *   Used for tracking formatting flags, width, precision, and padding
+ *   in printf conversions. All flags are set to 0 and pad character to space.
+ */
+
 t_flags	*init_flags(void)
 {
 	t_flags	*flags;
@@ -65,14 +83,19 @@ t_flags	*init_flags(void)
 	return (flags);
 }
 
-/*
- this is a variation of ft_atoi and it is made in such a way
- that if I pass a string, any initial chars which are not a number 
- and including beginning zeroes will be discarded. 
- It is only used for width and precision in strings 
- the precision will start usually with a '.' and some numbers and this 
- will work there. if there are no numbers or if I 
- passed a null terminator then it will return zero
+/**
+ * width_prec_atoi - Convert string to integer for width/precision parsing.
+ *
+ * Arguments:
+ *   p: Pointer to string pointer (updated during parsing).
+ *
+ * Returns:
+ *   The converted integer value, or 0 if no digits found.
+ *
+ * Description:
+ *   Variation of ft_atoi that skips non-digit characters and leading zeros.
+ *   Updates the string pointer to point after the parsed number.
+ *   Used for parsing width and precision in format specifiers.
  */
 int	width_prec_atoi(char **p)
 {
@@ -94,11 +117,19 @@ int	width_prec_atoi(char **p)
 	return (n);
 }
 
-/*
- running out of space in my func I had to do this extra func
- to save two lines
- If my malloc fails to allocated width chars then it frees p
- and returns null. Otherwise it returns a null terminated blank string
+/**
+ * safemalloc_and_set - Safely allocate and initialize a string buffer.
+ *
+ * Arguments:
+ *   width: Size of buffer to allocate.
+ *   c:     Character to fill the buffer with.
+ *
+ * Returns:
+ *   Pointer to the allocated and initialized buffer, or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates width+1 characters, fills with character 'c', and null-terminates.
+ *   Used for creating padding buffers in printf formatting functions.
  */
 char	*safemalloc_and_set(ssize_t width, int c)
 {
@@ -112,8 +143,21 @@ char	*safemalloc_and_set(ssize_t width, int c)
 	return (s);
 }
 
-/*
-used in the string conversion without the flags struct
+/**
+ * get_width_and_precision - Parse width and precision from conversion string.
+ *
+ * Arguments:
+ *   conv:  The conversion string to parse.
+ *   width: Pointer to store the parsed width.
+ *   prec:  Pointer to store the parsed precision.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Parses width and precision values from a conversion string.
+ *   Handles cases with dot notation for precision. If only precision
+ *   is specified (starts with '.'), width is set to 0.
  */
 void	get_width_and_precision(char *conv, int *width, int *prec)
 {

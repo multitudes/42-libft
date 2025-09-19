@@ -3,18 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utilsflags2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/17 19:57:31 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 14:17:37 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
- the char *p arg is the conversion string ex +2.3
- and I need to get the minwidth 2 and the prec precision 3
+/**
+ * upd_minw_prec_in_flags - Update minimum width and precision in flags structure.
+ *
+ * Arguments:
+ *   p:     The conversion string to parse (e.g., "+2.3").
+ *   flags: Pointer to the flags structure to update.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Parses minimum width and precision from the conversion string and updates
+ *   the flags structure. Handles dot notation for precision, adjusts field
+ *   width based on flags, and sets appropriate padding characters.
  */
 void	upd_minw_prec_in_flags(char *p, t_flags *flags)
 {
@@ -40,6 +51,22 @@ void	upd_minw_prec_in_flags(char *p, t_flags *flags)
 		flags->pad = '0';
 }
 
+/**
+ * adjust_l_i3 - Handle hash flag prefixes for left-justified integers.
+ *
+ * Arguments:
+ *   s:  The output string buffer.
+ *   p:  The converted integer string.
+ *   fl: Pointer to the flags structure.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Adds "0x" or "0X" prefixes to hexadecimal numbers when the hash flag
+ *   is set and the number is non-zero. Handles different positioning
+ *   based on zero-padding and precision flags.
+ */
 void	adjust_l_i3(char *s, char *p, t_flags *fl)
 {
 	if (((fl->hash && fl->zero) || (fl->hash && fl->dot)) && !(p[0] == '0'))
@@ -63,6 +90,22 @@ void	adjust_l_i3(char *s, char *p, t_flags *fl)
 		ft_memcpy((s + fl->fw - fl->len - 2), "0X", 2);
 }
 
+/**
+ * adjust_l_i2 - Handle special cases for left-justified integer formatting.
+ *
+ * Arguments:
+ *   s:     The output string buffer.
+ *   p:     The converted integer string.
+ *   flags: Pointer to the flags structure.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Handles edge cases like zero precision with zero value, negative
+ *   numbers with zero padding, and calls adjust_l_i3 for hash flag
+ *   processing. Adjusts field width and character placement accordingly.
+ */
 void	adjust_l_i2(char *s, char *p, t_flags *flags)
 {
 	if (flags->prec == 0 && flags->len == 1 && p[0] == '0' && flags->dot)
@@ -83,9 +126,23 @@ void	adjust_l_i2(char *s, char *p, t_flags *flags)
 	adjust_l_i3(s, p, flags);
 }
 
-/*
-
-*/
+/**
+ * adjust_l_i - Main function for left-justified integer string adjustment.
+ *
+ * Arguments:
+ *   s:  The output string buffer.
+ *   p:  The converted integer string.
+ *   fs: Pointer to the flags structure.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Positions the converted integer string in the output buffer for
+ *   left-justified formatting. Handles sign prefixes (+, -, space),
+ *   zero padding, and negative numbers. Calls adjust_l_i2 for additional
+ *   processing of special cases.
+ */
 void	adjust_l_i(char *s, char *p, t_flags *fs)
 {
 	if (p[0] == '-' && (fs->pad == '0') && (fs->fw > fs->len))
@@ -113,9 +170,22 @@ void	adjust_l_i(char *s, char *p, t_flags *fs)
 	adjust_l_i2(s, p, fs);
 }
 
-/*
 
-*/
+/**
+ * update_flags_r_i - Update flags for right-justified integer formatting.
+ *
+ * Arguments:
+ *   p:  The converted integer string.
+ *   fs: Pointer to the flags structure to update.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Updates the flags structure based on the converted string properties.
+ *   Adjusts field width, precision, padding, and handles interactions
+ *   between different flags. Ensures proper spacing for signs and prefixes.
+ */
 void	update_flags_r_i(char *p, t_flags *fs)
 {
 	fs->len = (int)ft_strlen(p);

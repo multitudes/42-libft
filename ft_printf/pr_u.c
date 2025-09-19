@@ -3,17 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   pr_u.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/17 20:00:15 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 14:11:00 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-
+/**
+ * pr_u - Print an unsigned integer with formatting for %u conversion.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list of arguments.
+ *   conv: The conversion string containing width, precision, and flags.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Handles the %u conversion in printf, printing an unsigned integer
+ *   with optional width, precision, and flags (0, -, *). Sets the
+ *   unsigned flag and uses the same padding functions as signed integers.
+ *   Supports dynamic width specification with *.
  */
 ssize_t	pr_u(va_list *ap, char *conv)
 {

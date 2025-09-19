@@ -3,20 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   pr_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:20 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/28 12:07:01 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 14:10:38 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
- hey |%2.s| |  |
- printf("str is %s\n",str);
- // printf("left padd = width %ld and prec %ld and conv %s pt = %d\n",width,
-  prec, str, has_pt);
+/**
+ * get_left_padding - Print a string right-justified with padding and precision.
+ *
+ * Arguments:
+ *   width:  Minimum field width.
+ *   prec:   Maximum number of characters to print from the string.
+ *   str:    The string to print.
+ *   has_pt: Whether precision was specified (dot found in format).
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', fills it with spaces, and places
+ *   the string 'str' (up to 'prec' characters if has_pt) at the rightmost
+ *   position. Adjusts width based on string length and precision.
  */
 ssize_t	get_left_padding(size_t width, size_t prec, char *str, int has_pt)
 {
@@ -47,17 +58,22 @@ ssize_t	get_left_padding(size_t width, size_t prec, char *str, int has_pt)
 	return (i);
 }
 
-/*	
- width is: at least width or more chars - if the s is longer then
- the length of the string will be taken
- prec is: no more than prec char will be printed and the rest padded
- so if prec is zero then I will see only padding
- if both are zero nothing will be printed
- s = hello - if width is 8 and prec is zero then |        |
- s = hello - if width is 8 and prec is 1 then    |       h|
- s = hello - if width is 2 and prec is 8 then    |       h|
- // printf("right padd = width %ld and precision %ld and conv %s 
- pt = %d\n",width, prec, str, has_pt);
+/**
+ * get_right_padding - Print a string left-justified with padding and precision.
+ *
+ * Arguments:
+ *   width:  Minimum field width.
+ *   prec:   Maximum number of characters to print from the string.
+ *   str:    The string to print.
+ *   has_pt: Whether precision was specified (dot found in format).
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', places the string 'str' at the
+ *   leftmost position (up to 'prec' characters if has_pt), and fills
+ *   the remaining space with padding. Adjusts width based on precision.
  */
 ssize_t	get_right_padding(size_t width, size_t prec, char *str, int has_pt)
 {
@@ -87,25 +103,22 @@ ssize_t	get_right_padding(size_t width, size_t prec, char *str, int has_pt)
 	return (i);
 }
 
-/*
- Params:
- s : the string to print from the unnamed args
- wdh; the number of chars to print and will pad
- max_wdh; // n :the max number of chars to print and no pad
- '#' will give an error
- '-' will be ignored until the end or a dot
- I first check for the modifiers which are not allowed like #0h ljztL
- if after that I get numbers those are the width. (optional
- if a dot after that it means they specify the max width
- if after the dot there are no number the width will be zero!
- 
- // 1 -  do the parameter field check
- // n$ - will skip for now if any number is followed by a $
- // 2 -check how many char if I have a dot followed by a number
- printf("va_arg is %s and conversion str: |%s| \n", str, conv);
- printf("\nconv str ==== |%s|\n",conv);
- printf("width %d and precision %d\n",width, prec);
- printf("width %d and precision %d\n",width, prec);
+
+/**
+ * pr_s - Print a string with formatting for %s conversion.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list of arguments.
+ *   conv: The conversion string containing width, precision, and flags.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Handles the %s conversion in printf, printing a string with optional
+ *   width and precision. Supports left-justification (-) flag and dynamic
+ *   width (*). If the string is NULL, prints "(null)" when appropriate.
+ *   Precision limits the maximum number of characters printed.
  */
 ssize_t	pr_s(va_list *ap, char *conv)
 {

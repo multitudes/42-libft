@@ -3,17 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   pr_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/28 12:07:01 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 14:09:16 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-
+/**
+ * get_l_pad_p - Print a pointer right-justified with padding.
+ *
+ * Arguments:
+ *   width: Minimum field width.
+ *   p:     The pointer string to print.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', fills it with spaces, and places
+ *   the pointer string 'p' at the rightmost position. If the string length
+ *   exceeds width, uses the string length as width. Frees the input string.
  */
 ssize_t	get_l_pad_p(int width, char *p)
 {
@@ -36,8 +48,20 @@ ssize_t	get_l_pad_p(int width, char *p)
 	return (i);
 }
 
-/*
-
+/**
+ * get_r_pad_p - Print a pointer left-justified with padding.
+ *
+ * Arguments:
+ *   width: Minimum field width.
+ *   p:     The pointer string to print.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', fills it with spaces, and places
+ *   the pointer string 'p' at the leftmost position. If the string length
+ *   exceeds width, uses the string length as width. Frees the input string.
  */
 ssize_t	get_r_pad_p(int width, char *p)
 {
@@ -60,8 +84,20 @@ ssize_t	get_r_pad_p(int width, char *p)
 	return (i);
 }
 
-/*
-
+/**
+ * pr_p - Print a pointer with formatting for %p conversion.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list of arguments.
+ *   conv: The conversion string containing width and flags.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Handles the %p conversion in printf, printing a pointer address
+ *   in hexadecimal format with "0x" prefix. Supports width and
+ *   left-justification (-) flag. Uses ft_itoxp to convert the pointer.
  */
 ssize_t	pr_p(va_list *ap, char *conv)
 {
