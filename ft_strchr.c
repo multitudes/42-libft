@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:44:53 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/22 18:33:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:16:29 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-      #include <string.h>
-      char *strchr(const char *s, int c);
- 
- DESCRIPTION
- The strchr() function locates the first occurrence of 
- c (converted to a char) in the string pointed to by
- s.  The terminating null character is considered 
- to be part of the string; therefore if c is ‘\0’, the
- functions locate the terminating ‘\0’.
- The strrchr() function is identical to strchr(), 
- except it locates the last occurrence of c.
- RETURN VALUES
- The functions strchr() and strrchr() return a pointer to the located 
- character, or NULL if the character does not appear in the string.
+/**
+ * ft_strchr - Locate the first occurrence of a character in a string.
+ *
+ * See man strchr(3) for details.
+ *
+ * Arguments:
+ *   s: Pointer to the string to search.
+ *   c: Character to locate (converted to char).
+ *
+ * Returns:
+ *   Pointer to the located character, or NULL if not found.
+ *
+ * Description:
+ *   Searches for the first occurrence of character 'c' in the string 's'.
+ *   The terminating null character is considered part of the string.
  */
 char	*ft_strchr(const char *s, int c)
 {

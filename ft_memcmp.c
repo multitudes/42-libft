@@ -3,32 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:02:02 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:19:24 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:12:05 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <string.h>
-
-       int memcmp(const void *s1, const void *s2, size_t n);
-	   
-DESCRIPTION
-The memcmp() function compares byte string s1 against byte string s2.
-Both strings are assumed to be n bytes long.
-RETURN VALUES
- The memcmp() function returns zero if the two strings are identical, 
- otherwise returns the difference
- between the first two differing bytes (treated as unsigned char values, 
- so that ‘\200’ is greater than ‘\0’, for example).
- Zero-length strings are always identical.
- This behavior is not required by C and portable code should only depend on the
- sign of the returned value.
+/**
+ * ft_memcmp - Compare two memory areas byte by byte.
+ *
+ * See man memcmp(3) for details.
+ *
+ * Arguments:
+ *   s1: Pointer to the first memory area.
+ *   s2: Pointer to the second memory area.
+ *   n:  Number of bytes to compare.
+ *
+ * Returns:
+ *   Zero if the memory areas are identical, otherwise the difference
+ *   between the first differing bytes (as unsigned char).
+ *
+ * Description:
+ *   Compares the first n bytes of the memory areas s1 and s2.
+ *   Returns zero if they are identical, or the difference between
+ *   the first differing bytes. Only the sign of the result is portable.
  */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

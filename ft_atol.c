@@ -3,31 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:45:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 15:19:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 11:48:47 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Signature:
-    #include <stdlib.h>
-
-    long
-    atol(const char *str);
-	   
-The atol() function converts the initial portion of the string pointed to
-by str to long integer representation.
-
- The string may begin with an arbitrary amount of white space (as determined 
- by isspace(3)) followed by a single optional ‘+’ or ‘-’ sign.The remainder
- of the string is converted to a long, long long, intmax_t or quad_t
- value in the obvious manner, stopping at the first character which is not
- a valid digit.
- isspace checks for      ``\t''``\n''``\v''``\f''``\r''`` ''
+/**
+ * ft_atol - Convert the digits in a string to a long integer.
+ *
+ * See man atol(3) for details.
+ *
+ * Arguments:
+ *   str: The string to convert.
+ *
+ * Returns:
+ *   The converted long integer value.
  */
 long	ft_atol(const char *str)
 {
@@ -47,11 +41,3 @@ long	ft_atol(const char *str)
 		n = 10 * n + ((*str++ - '0') * sign);
 	return (n);
 }
-
-// int main(void)
-// {
-// 	long num = 0;
-// 	num = ft_atol("2147483650");
-// 	printf("num got %ld",num);
-// 	return 0;
-// }

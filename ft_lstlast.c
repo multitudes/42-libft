@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:19:49 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:43 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:08:05 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-t_list *ft_lstlast(t_list *lst);
-
- lst:  The beginning of the list.
- ret Last node of the list
- Returns the last node of the list.
+/**
+ * ft_lstlast - Return the last node of a linked list.
+ *
+ * Arguments:
+ *   lst: The beginning of the list.
+ *
+ * Returns:
+ *   The last node of the list, or NULL if the list is empty.
+ *
+ * Description:
+ *   Iterates through the list and returns the last node.
  */
 t_list	*ft_lstlast(t_list *lst)
 {

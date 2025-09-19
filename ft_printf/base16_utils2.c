@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   base16_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:21:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/31 11:39:19 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:40:06 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-In the functions used to convert a number to 
-a string I use an algo which produces a string first 
-but in the reverse order. This function just reverses that string 
-*/
+/**
+ * reverse - Reverse a string in place.
+ *
+ * Arguments:
+ *   res: The string to reverse.
+ *   len: Length of the string.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Used internally for number-to-string conversions that build the string
+ *   in reverse order. This function reverses the string in place and
+ *   null-terminates it.
+ */
 void	reverse(char *res, int len)
 {
 	int	j;
@@ -35,26 +45,4 @@ void	reverse(char *res, int len)
 	res[len] = 0;
 }
 
-/*
-Used for converting pointers to base16
- */
-// char	*ft_itoxp(uintptr_t nbr)
-// {
-// 	int		i;
-// 	char	*prefix;
-// 	char	hex_p[19];
-// 	char	*res;
 
-// 	i = 0;
-// 	prefix = "0x";
-// 	if (nbr == 0)
-// 		return (ft_strdup("(nil)"));
-// 	while (nbr > 0)
-// 	{
-// 		hex_p[i++] = BASE16[nbr % 16];
-// 		nbr /= 16;
-// 	}
-// 	reverse(hex_p, i);
-// 	res = ft_strjoin(prefix, hex_p);
-// 	return (res);
-// }

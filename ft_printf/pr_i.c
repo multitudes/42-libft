@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   pr_i.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/17 19:59:49 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:47:26 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * prepare_flags2 - Adjust formatting flags for integer conversions.
+ *
+ * Arguments:
+ *   conv:  The string representation of the integer.
+ *   flags: Pointer to the flags structure for formatting.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Modifies the flags structure to ensure correct field width and padding
+ *   for integer formatting. Handles plus, space, zero-padding, and hash flags.
+ *   Ensures the field width is sufficient for prefixes and padding.
+ */
 void	prepare_flags2(char *conv, t_flags *flags)
 {
 	if ((flags->plus || flags->space) && !flags->unsgned)
@@ -29,6 +44,21 @@ void	prepare_flags2(char *conv, t_flags *flags)
 	}
 }
 
+/**
+ * prepare_flags2 - Adjust formatting flags for integer conversions.
+ *
+ * Arguments:
+ *   conv:  The string representation of the integer.
+ *   flags: Pointer to the flags structure for formatting.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Modifies the flags structure to ensure correct field width and padding
+ *   for integer formatting. Handles plus, space, zero-padding, and hash flags.
+ *   Ensures the field width is sufficient for prefixes and padding.
+ */
 void	prepare_flags(char *conv, t_flags *flags)
 {
 	flags->len = (int)ft_strlen(conv);
@@ -47,8 +77,20 @@ void	prepare_flags(char *conv, t_flags *flags)
 	prepare_flags2(conv, flags);
 }
 
-/*
-
+/**
+ * get_l_pad_i - Print an integer right-justified with padding.
+ *
+ * Arguments:
+ *   conv:  The string representation of the integer.
+ *   flags: Pointer to the flags structure for formatting.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'fw', fills it with spaces or padding,
+ *   and places the integer string at the rightmost position according
+ *   to the flags. Writes the result to standard output.
  */
 ssize_t	get_l_pad_i(char *conv, t_flags *flags)
 {
@@ -68,8 +110,22 @@ ssize_t	get_l_pad_i(char *conv, t_flags *flags)
 	return (i);
 }
 
-/*
 
+
+/**
+ * get_r_pad_i - Print an integer left-justified with padding.
+ *
+ * Arguments:
+ *   conv:  The string representation of the integer.
+ *   flags: Pointer to the flags structure for formatting.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'fw', fills it with spaces or padding,
+ *   and places the integer string at the leftmost position according
+ *   to the flags. Writes the result to standard output.
  */
 ssize_t	get_r_pad_i(char *conv, t_flags *flags)
 {
@@ -88,35 +144,21 @@ ssize_t	get_r_pad_i(char *conv, t_flags *flags)
 	return (i);
 }
 
-/*
- In C's printf and related functions, the length modifiers \
- specify the size of the argument that you're working
- with. Here's a list of common length modifiers:
- 
- h: Used with integer specifiers (d, i, o, u, x, X) to indicate 
- that the corresponding argument is a short (for d, i, o, u, x, X)
- or unsigned short (for o, u, x, X).
- hh: Used with integer specifiers to indicate that the corresponding 
- argument is a signed char (for d, i) or unsigned char (for o, u, x, X).
- l: Used with integer specifiers to indicate that the corresponding 
- argument is a long (for d, i, o, u, x, X), or with floating-point
- specifiers (f, e, E, g, G) to indicate that the corresponding argument
- is a double.
- ll: Used with integer specifiers to indicate that the corresponding 
- argument is a long long (for d, i, o, u, x, X).
- j: Used with integer specifiers to indicate that the corresponding 
- argument is of type intmax_t or uintmax_t.
- z: Used with integer specifiers to indicate that the corresponding 
- argument is of type size_t.
- t: Used with integer specifiers to indicate that the corresponding 
- argument is of type ptrdiff_t.
- if (zero)
- printf("got zero\n");
- printf("width %d\n",width);
- if (ft_strchr(conv, '-') && ft_strchr(conv, ' ') == NULL)
- width *= -1;
- printf("im here in i! and the value is %s\n", nr);
- printf("width %d zero %d sign %d\n",width, zero, pl_sign);
+/**
+ * pr_i - Print an integer with formatting for %d and %i conversions.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list of arguments.
+ *   conv: The conversion string containing width, precision, and flags.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Handles the %d and %i conversions in printf, printing an integer
+ *   with optional width, precision, and flags (+, space, 0, -, etc.).
+ *   Allocates and formats the output string according to the flags,
+ *   then prints it left- or right-justified as needed.
  */
 ssize_t	pr_i(va_list *ap, char *conv)
 {

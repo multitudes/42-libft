@@ -3,18 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoxx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:44:35 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:54:32 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:10:00 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Used for conversions to base16
-This function handles the uppercase X
+/**
+ * ft_itoxx - Convert an unsigned int to a hexadecimal string (uppercase).
+ *
+ * Arguments:
+ *   nbr: The unsigned integer to convert.
+ *
+ * Returns:
+ *   The string representing the hexadecimal value in uppercase, or 
+ *   NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a string representing the hexadecimal
+ *   value of the input number in uppercase. Used for %X conversions.
  */
 char	*ft_itoxx(unsigned int nbr)
 {

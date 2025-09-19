@@ -3,17 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoxp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:48:35 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:54:29 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:10:16 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Used for converting pointers to base16
+/**
+ * ft_itoxp - Convert a pointer value to a hexadecimal string 
+ * (with "0x" prefix).
+ *
+ * Arguments:
+ *   nbr: The pointer value to convert (as uintptr_t).
+ *
+ * Returns:
+ *   The string representing the pointer in hexadecimal (with "0x" prefix),
+ *   or "(nil)" if the pointer is NULL.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a string representing the pointer
+ *   value
+ *   in base 16, prefixed with "0x". Used for printing pointer addresses.
  */
 char	*ft_itoxp(uintptr_t nbr)
 {

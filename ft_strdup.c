@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:57:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:14:45 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:16:54 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-     #include <string.h>
-    char *strdup(const char *s);
-
-The strdup() function allocates sufficient memory for a copy of the string s1, 
-does the copy, and returns a pointer to it.  The pointer may subsequently 
-be used as an argument to the function free(3).
-If insufficient memory is available, NULL is returned and errno is set to ENOMEM.
-The strndup() function copies at most n characters from the string s1 always NUL 
-terminating the copied string.
+/**
+ * ft_strdup - Duplicate a string.
+ *
+ * See man strdup(3) for details.
+ *
+ * Arguments:
+ *   s1: The string to duplicate.
+ *
+ * Returns:
+ *   Pointer to the newly allocated copy of the string,
+ *   or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates sufficient memory for a copy of the string 's1',
+ *   copies it, and returns a pointer to the new string.
+ *   The returned pointer can be freed with free(3).
  */
 char	*ft_strdup(const char *s1)
 {

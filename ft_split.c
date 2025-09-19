@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:03:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/22 19:39:53 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:16:08 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
 #define IN   1  /* inside a word */
 #define OUT  0  /* outside a word */
 
-#include <stdio.h>
-/*
-SYNOPSIS
-
-char **ft_split(char const *s, char c);
-
- s:  The string to be split.
- c:  The delimiter character.
- Return value
- The array of new strings resulting from the split.
- NULL if the allocation fails.
- Allocates (with malloc(3)) and returns an array
- of strings obtained by splitting ’s’ using the
- character ’c’ as a delimiter.  The array must end
- with a NULL pointer.
- allowed are malloc, free
+/**
+ * ft_split - Split a string into an array of strings using a delimiter.
+ *
+ * Arguments:
+ *   s: The string to be split.
+ *   c: The delimiter character.
+ *
+ * Returns:
+ *   The array of new strings resulting from the split.
+ *   NULL if the allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns an array of strings obtained by
+ *   splitting 's' using the character 'c' as a delimiter. The array ends
+ *   with a NULL pointer.
  */
-// inspired by UNIX
-// I use a char** str because the string *str will be changed 
-// in the func
-//*ft_substr(char const *s, unsigned int start, size_t len)
 static char	*ft_strsep(char **str, char *delim)
 {
 	char	*s;
@@ -63,7 +60,21 @@ static char	*ft_strsep(char **str, char *delim)
 	}
 }
 
-// Counting the words divided by the char c 
+/**
+ * my_word_count - Count words in a string separated by a delimiter.
+ *
+ * Arguments:
+ *   s: The string to count words in.
+ *   c: The delimiter character.
+ *
+ * Returns:
+ *   The number of words found.
+ *
+ * Description:
+ *   Iterates through the string 's' and counts the number of words
+ *   separated by the delimiter character 'c'. A word is a sequence
+ *   of non-delimiter characters.
+ */
 static int	my_word_count(const char *s, char c)
 {
 	int		count;
@@ -85,6 +96,20 @@ static int	my_word_count(const char *s, char c)
 	return (count);
 }
 
+/**
+ * ft_free - Free an array of strings and return NULL.
+ *
+ * Arguments:
+ *   arr: The array of strings to free.
+ *   i:   The last index to free.
+ *
+ * Returns:
+ *   NULL.
+ *
+ * Description:
+ *   Frees each string in the array 'arr' up to index 'i', then frees
+ *   the array itself and returns NULL. Used for cleanup on allocation failure.
+ */
 static void	*ft_free(char **arr, int i)
 {
 	while (i >= 0)
@@ -97,6 +122,22 @@ static void	*ft_free(char **arr, int i)
 	return (NULL);
 }
 
+/**
+ * ft_split - Split a string into an array of strings using a delimiter.
+ *
+ * Arguments:
+ *   s: The string to be split.
+ *   c: The delimiter character.
+ *
+ * Returns:
+ *   The array of new strings resulting from the split.
+ *   NULL if the allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns an array of strings obtained by
+ *   splitting 's' using the character 'c' as a delimiter. The array ends
+ *   with a NULL pointer.
+ */
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -121,41 +162,3 @@ char	**ft_split(char const *s, char c)
 	arr[i] = NULL;
 	return (arr);
 }
-
-// #include <stdio.h>
-// void freeTab(char * * tab)
-// {
-// 	for (int i = 0; tab[i] != NULL; ++i)
-// 	{
-// 		printf("freeing in arr[%d] ===> %s\n", i, tab[i]);
-// 		free(tab[i]);
-// 	}
-// 	free(tab);
-// }
-// int main()
-// {
-// 	char **res = ft_split("hello!zzzzzzzz", 'z');
-// 	printf("==== %s \n",res[0]);
-// 	printf("==== %s \n",res[1]);
-// 	// printf("==== %s \n",res[2]);
-// 	// printf("==== %s \n",res[3]);
-// 	// printf("==== %s \n",res[4]);
-// 	// printf("==== %s \n",res[5]);
-// 	// printf("==== %s \n",res[6]);
-// 	// printf("==== %s \n",res[7]);
-// 	// printf("==== %s \n",res[8]);
-// 	// printf("==== %s \n",res[9]);
-// 	// printf("==== %s \n",res[10]);
-// 	// printf("==== %s \n",res[11]);
-// 	// printf("==== %s \n",res[12]);
-// 	// printf("==== %s \n",res[13]);
-// 	// char **res2 = ft_split("hello!zzzzzzzz", 'z');
-// 	// 	printf("==== %s \n",res2[0]);
-// 	// char test[45] = "--1-2--3---4----5-----42";
-// 	// char **res = ft_split(test, '-');
-// 	// printf("==== %s-\n",res[0]);
-// 	// printf("==== %s \n",res[1]);
-// 	// printf("==== %s \n",res[2]);
-// 	// printf("==== %s \n",res[3]);
-// freeTab(res);
-// }

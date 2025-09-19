@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:16:37 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:09:11 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:49:18 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-char *ft_substr(char const *s, unsigned int start, size_t len);
-
- s:  The string from which to create the substring.
- start:  The start index of the substring in the
- string ’s’.
- len:  The maximum length of the substring.
- Allocates (with malloc(3)) and returns a substring
- from the string ’s’.
- The substring begins at index ’start’ and is of
- maximum size ’len’.
- ex hello len 5
- start is 4 -> o
- possible len is 1 5-4
+/**
+ * ft_substr - Create a substring from a string.
+ *
+ * Arguments:
+ *   s:     The string from which to create the substring.
+ *   start: The start index of the substring in the string 's'.
+ *   len:   The maximum length of the substring.
+ *
+ * Returns:
+ *   The substring, or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a substring from the string 's'.
+ *   The substring begins at index 'start' and is of maximum size 'len'.
+ *   If 'start' is greater than the length of 's', returns an empty string.
  */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

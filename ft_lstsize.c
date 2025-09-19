@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:00:45 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:32 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:11:32 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-int ft_lstsize(t_list *lst);
-
- lst:  The beginning of the list.
- return The length of the list
- Counts the number of nodes in a list.
+/**
+ * ft_lstsize - Count the number of nodes in a linked list.
+ *
+ * Arguments:
+ *   lst: The beginning of the list.
+ *
+ * Returns:
+ *   The length of the list (number of nodes).
+ *
+ * Description:
+ *   Iterates through the list and returns the total number of nodes.
  */
 int	ft_lstsize(t_list *lst)
 {

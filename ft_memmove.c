@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:52:03 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:47 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:12:42 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <string.h>
-
-       void *memmove(void *dest, const void *src, size_t n);
-
- DESCRIPTION
- The memmove() function copies len bytes from string src to string dst.
- The two strings may overlap; the copy is always done in a non-destructive
- manner.
- RETURN VALUES
- The memmove() function returns the original value of dst.
- there is a way to make it faster without intermediate copy
- checking if the strings could overlapt or if they need to be copied
- from the end or the front
- I use len which is unsigned to loop on the strings
+/**
+ * ft_memmove - Copy memory area, handling overlap safely.
+ *
+ * See man memmove(3) for details.
+ *
+ * Arguments:
+ *   dst: Pointer to the destination memory area.
+ *   src: Pointer to the source memory area.
+ *   len: Number of bytes to copy.
+ *
+ * Returns:
+ *   Pointer to the destination memory area (dst).
+ *
+ * Description:
+ *   Copies len bytes from src to dst. Handles overlapping memory areas
+ *   by copying from the end or the front as needed to avoid corruption.
  */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

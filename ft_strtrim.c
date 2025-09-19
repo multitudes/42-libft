@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:57:47 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:13:21 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:49:00 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-char *ft_strtrim(char const *s1, char const *set);
-
- s1:  The string to be trimmed.
- set:  The reference set of characters to trim.
- Return value
- The trimmed string.
- NULL if the allocation fails.
- Description
- Allocates (with malloc(3)) and returns a copy of
- ’s1’ with the characters specified in ’set’ removed
- from the beginning and the end of the string.
+/**
+ * ft_strtrim - Trim characters from the beginning and end of a string.
+ *
+ * Arguments:
+ *   s1:  The string to be trimmed.
+ *   set: The reference set of characters to trim.
+ *
+ * Returns:
+ *   The trimmed string.
+ *   NULL if the allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a copy of 's1' with the characters
+ *   specified in 'set' removed from the beginning and the end of the string.
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {

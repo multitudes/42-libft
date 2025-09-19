@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   pr_.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:18:55 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/12/27 16:04:20 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:43:29 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
- function responsible for the %% case
- 
- It will print % if successul
- the conv string in input can be %% or |%--+02%|
+/**
+ * pr_ - Print a literal '%' character for the '%%' format specifier.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list (unused).
+ *   conv: The conversion string (can be "%%" or similar).
+ *
+ * Returns:
+ *   The number of characters printed (always 1).
+ *
+ * Description:
+ *   Handles the '%%' case in printf, printing a single '%' character.
+ *   Ignores the arguments and conversion string.
  */
 ssize_t	pr_(va_list *ap, char *conv)
 {

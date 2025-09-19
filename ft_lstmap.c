@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:12:44 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/22 13:00:09 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:09:16 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-function returns 1 if node created was null and clean the list.
-has to be followed by a return null to exit if true
+
+/**
+* check_if_null_clear - Helper to clear list if node allocation fails.
+*
+* Arguments:
+*   lst:  The address of a pointer to the list.
+*   new:  The newly created node.
+*   del:  The address of the function used to delete the content.
+*
+* Returns:
+*   1 if new node is NULL and the list was cleared, 0 otherwise.
+*
+* Description:
+*   Used internally by ft_lstmap to free the list if node allocation fails.
 */
 static int	check_if_null_clear(t_list **lst, t_list *new, void (*del)(void *))
 {
@@ -28,20 +37,23 @@ static int	check_if_null_clear(t_list **lst, t_list *new, void (*del)(void *))
 	return (0);
 }
 
-/*
-lst: The address of a pointer to a node.
-f: The address of the function used to iterate on
-the list.
-del: The address of the function used to delete
-the content of a node if needed
-The new list.
-NULL if the allocation fails
-Iterates the list ’lst’ and applies the function
-’f’ on the content of each node. Creates a new
-list resulting of the successive applications of
-the function ’f’. The ’del’ function is used to
-delete the content of a node if needed.
-*/
+/**
+ * ft_lstmap - Create a new list by applying a function to each node's content.
+ *
+ * Arguments:
+ *   lst:  The address of a pointer to a node.
+ *   f:    The address of the function used to iterate on the list.
+ *   del:  The address of the function used to delete the content of a node if needed.
+ *
+ * Returns:
+ *   The new list.
+ *   NULL if the allocation fails.
+ *
+ * Description:
+ *   Iterates the list 'lst' and applies the function 'f' on the content of each node.
+ *   Creates a new list resulting from the successive applications of the function 'f'.
+ *   The 'del' function is used to delete the content of a node if needed.
+ */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;

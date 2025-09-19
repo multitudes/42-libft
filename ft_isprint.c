@@ -3,31 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:54:23 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:01:07 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:04:29 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <ctype.h>
-		int isprint(int c);
- The isprint() function tests for any printing character, 
- including space (‘ ’).  The value of the argument must be representable 
- as an unsigned char or the value of EOF.
- 
- In the ASCII character set, this includes the following characters 
- (preceded by their numeric values, in octal):
- 
- 040 sp to 176 ``~'' => 32 to 126!
- 
- RETURN VALUES
- The isprint() function returns zero if the character tests 
- false and returns non-zero if the character tests true.
+/**
+ * ft_isprint - Check if a character is printable.
+ *
+ * See man isprint(3) for details.
+ *
+ * Arguments:
+ *   c: Character to check.
+ *
+ * Returns:
+ *   Non-zero if c is printable (ASCII 32-126), zero otherwise.
  */
 int	ft_isprint(int c)
 {

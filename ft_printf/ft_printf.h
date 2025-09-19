@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:18:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/31 11:38:41 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:42:00 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-// I decided to group all flags in one struct to avoid getting crazy
-//
+// I decided to group all flags in one struct
 typedef struct s_flags {
 	int		minus;
 	int		zero;

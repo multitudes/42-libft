@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:44:18 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:54:25 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:05:49 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-In the functions used to convert a number to 
-a string I use an algo which produces a string first 
-but in the reverse order. This function just reverses that string 
-*/
+/**
+ * _reverse - Reverse a string in place.
+ *
+ * Arguments:
+ *   res: The string to reverse.
+ *   len: Length of the string.
+ *
+ * Returns:
+ *   None.
+ *
+ * Description:
+ *   Used internally for number-to-string conversions that build the string
+ *   in reverse order. This function reverses the string in place.
+ */
 void	_reverse(char *res, int len)
 {
 	int	j;
@@ -35,9 +44,18 @@ void	_reverse(char *res, int len)
 	res[len] = 0;
 }
 
-/*
-Used for conversion to base16 from unsigned int
-This function handles the lowercase x
+/**
+ * ft_itox - Convert an unsigned int to a hexadecimal string (lowercase).
+ *
+ * Arguments:
+ *   nbr: The unsigned integer to convert.
+ *
+ * Returns:
+ *   The string representing the hexadecimal value, or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a string representing the hexadecimal
+ *   value of the input number in lowercase. Uses _reverse to correct digit order.
  */
 char	*ft_itox(unsigned int nbr)
 {

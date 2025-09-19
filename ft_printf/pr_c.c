@@ -3,18 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   pr_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:07 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/17 20:00:03 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:44:25 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-
-*/
+/**
+ * get_left_padding_c - Print a character right-justified with padding.
+ *
+ * Arguments:
+ *   width: Minimum field width.
+ *   c:     The character to print.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', fills it with spaces, and places
+ *   the character 'c' at the rightmost position. If width is zero, prints
+ *   only the character. Writes the result to standard output.
+ */
 ssize_t	get_left_padding_c(size_t width, int c)
 {
 	ssize_t	i;
@@ -35,16 +47,20 @@ ssize_t	get_left_padding_c(size_t width, int c)
 	return (i);
 }
 
-/*
- width is: at least width or more chars - if the s is longer then
- the length of the string will be taken
- max_w is: no more than max_w char will be printed and the rest padded
- so if max_w is zero then I will see only padding
- if both are zero nothing will be printed
- s = hello - if width is 8 and max_w is zero then |        |
- s = hello - if width is 8 and max_w is 1 then    |       h|
- s = hello - if width is 2 and max_w is 8 then    |       h|
- precision for character conversion (%c) is ignored.
+/**
+ * get_right_padding_c - Print a character left-justified with padding.
+ *
+ * Arguments:
+ *   width: Minimum field width.
+ *   c:     The character to print.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Allocates a buffer of size 'width', fills it with spaces, and places
+ *   the character 'c' at the leftmost position. Writes the result to
+ *   standard output.
  */
 ssize_t	get_right_padding_c(size_t width, int c)
 {
@@ -61,21 +77,21 @@ ssize_t	get_right_padding_c(size_t width, int c)
 	return (i);
 }
 
-/*
- Params:
- c : the char to print from the unnamed args
- wdh; the number of chars to print and will pad
- max_wdh; // n :the max number of chars to print and no pad
- 
- '#' will give an error
- '-' will be ignored until the end or a dot
- I first check for the modifiers which are not allowed like #0h ljztL
- if after that I get numbers those are the width. (optional
- if a dot after that it means they specify the max width
- if after the dot there are no number the width will be zero!
- printf("width %d\n",width);
- precision for character conversion (%c) is ignored.
-   '#0+	' is ignored
+/**
+ * pr_c - Print a character with optional width and padding for %c conversion.
+ *
+ * Arguments:
+ *   ap:   Pointer to the va_list of arguments.
+ *   conv: The conversion string containing width and flags.
+ *
+ * Returns:
+ *   The number of characters printed.
+ *
+ * Description:
+ *   Handles the %c conversion in printf, printing a character with optional
+ *   width and padding. Supports left and right padding based on flags.
+ *   Precision and most flags are ignored for character conversion.
+ *   If width is negative, left-justifies the character.
  */
 ssize_t	pr_c(va_list *ap, char *conv)
 {

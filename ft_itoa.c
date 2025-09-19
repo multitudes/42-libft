@@ -3,33 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:53:52 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:02:05 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 12:05:19 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-char *ft_itoa(int n);
-
- n:  the integer to convert.
- Return value
- The string representing the integer.
- NULL if the allocation fails.
- Description
- Allocates (with malloc(3)) and returns a string
- representing the integer received as an argument.
- Negative numbers must be handled.
- 
- here I decide something different. since the neg int min is the one giving
- problems I assumed the default is a neg number, and I change the sign only
- if it is a positive number. So I run all the calculations like n is negative
- and if it wasnt at the end i dont print the minus and overflow not a prob
- anymore!
+/**
+ * ft_itoa - Convert an integer to a string.
+ *
+ * See man itoa(3) for details.
+ *
+ * Arguments:
+ *   n: The integer to convert.
+ *
+ * Returns:
+ *   The string representing the integer, or NULL if allocation fails.
+ *
+ * Description:
+ *   Allocates (with malloc) and returns a string representing the integer
+ *   received as an argument. Handles negative numbers, including INT_MIN.
  */
 char	*ft_itoa(int n)
 {
