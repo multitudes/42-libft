@@ -6,7 +6,7 @@
 /*   By: lbrusa <lbrusa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:19:14 by lbrusa            #+#    #+#             */
-/*   Updated: 2025/09/19 13:47:26 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/19 13:47:43 by lbrusa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,6 @@ ssize_t	get_l_pad_i(char *conv, t_flags *flags)
 	free(flags);
 	return (i);
 }
-
-
 
 /**
  * get_r_pad_i - Print an integer left-justified with padding.
