@@ -60,6 +60,28 @@ The functions are logically organized into categorized directories for better ma
 - **Memory Boundaries**: Understanding how functions like `memcpy` vs `memmove` handle overlapping memory regions
 - **Allocation Patterns**: Every `malloc()` must have a corresponding `free()`, and `malloc(0)` returns a valid pointer that must be freed
 
+## My ft_printf implementation
+**Buffer Overflow Protection:**
+- Our `ft_printf` implementation includes careful bounds checking
+- All conversions validate input ranges before processing
+- Memory allocations for string building are size-controlled
+
+**Supported Format Specifiers:**
+- `%c` - Character
+- `%s` - String (handles NULL gracefully)
+- `%p` - Pointer (with proper 0x prefix)
+- `%d`, `%i` - Signed integers
+- `%u` - Unsigned integers  
+- `%x`, `%X` - Hexadecimal (lowercase/uppercase)
+- `%%` - Literal percent sign
+
+### Why Custom Printf Matters
+1. **Learning**: Understanding format parsing, variadic arguments, number conversion
+2. **Control**: No reliance on external libraries in systems programming
+3. **Security**: Can implement additional safety checks beyond standard library
+4. **Performance**: Optimized for specific use cases without unused features
+
+
 ### C Language 
 - **Keywords**: Proper use of `const`, `static`, `inline` modifiers
 - **Macros vs Functions**: When to use preprocessor macros vs inline functions
@@ -113,11 +135,9 @@ Many standard C functions are inherently unsafe:
 - `gets()` → **NEVER USE** (removed from C11)
 - `sprintf()` → Use `snprintf()` or bounds-checked alternatives
 
-## The ft_printf Implementation
+## Example of security issues in printf
 
-### Security Advantages Over Standard printf
-
-**Format String Attack Prevention:**
+Format String Attack:
 ```c
 #include  <stdio.h> 
 void main(int argc, char **argv)
@@ -130,26 +150,6 @@ void main(int argc, char **argv)
 }
 
 ```
-
-**Buffer Overflow Protection:**
-- Our `ft_printf` implementation includes careful bounds checking
-- All conversions validate input ranges before processing
-- Memory allocations for string building are size-controlled
-
-**Supported Format Specifiers:**
-- `%c` - Character
-- `%s` - String (handles NULL gracefully)
-- `%p` - Pointer (with proper 0x prefix)
-- `%d`, `%i` - Signed integers
-- `%u` - Unsigned integers  
-- `%x`, `%X` - Hexadecimal (lowercase/uppercase)
-- `%%` - Literal percent sign
-
-### Why Custom Printf Matters
-1. **Learning**: Understanding format parsing, variadic arguments, number conversion
-2. **Control**: No reliance on external libraries in systems programming
-3. **Security**: Can implement additional safety checks beyond standard library
-4. **Performance**: Optimized for specific use cases without unused features
 
 ## Building the Library
 
