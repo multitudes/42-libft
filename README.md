@@ -1,4 +1,4 @@
-# 42-libft
+# libft
 
 The first project of the core curriculum of 42 Berlin. 
 
