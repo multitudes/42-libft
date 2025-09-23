@@ -49,15 +49,8 @@ The functions are logically organized into categorized directories for better ma
 - `ft_lstlast`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
 
 ### **`ft_printf/`** - Custom Printf Implementation
-- Complete printf reimplementation with format specifiers
+- Almost complete printf reimplementation with format specifiers
 - Supports: `%c`, `%s`, `%p`, `%d`, `%i`, `%u`, `%x`, `%X`, `%%`
-
-**Why This Structure?**
-- **Logical Grouping**: Related functions are together, making debugging and maintenance easier
-- **Modularity**: Each category can be compiled independently if needed
-- **Scalability**: New functions can be added to appropriate categories without cluttering
-- **Code Navigation**: Developers can quickly find functions by purpose
-- **Educational**: The structure itself teaches software organization principles
 
 ## What I Learned
 
@@ -67,13 +60,13 @@ The functions are logically organized into categorized directories for better ma
 - **Memory Boundaries**: Understanding how functions like `memcpy` vs `memmove` handle overlapping memory regions
 - **Allocation Patterns**: Every `malloc()` must have a corresponding `free()`, and `malloc(0)` returns a valid pointer that must be freed
 
-### C Language Mastery
+### C Language 
 - **Keywords**: Proper use of `const`, `static`, `inline` modifiers
 - **Macros vs Functions**: When to use preprocessor macros vs inline functions
 - **Function Pointers**: Implementing higher-order functions like `ft_lstmap` and `ft_strmapi`
 - **Variadic Functions**: Building `ft_printf` with variable argument lists
 
-## Critical Security Concerns
+## Security Concerns in Common C functions
 
 ### The `strncpy` Problem
 ```c
@@ -126,11 +119,16 @@ Many standard C functions are inherently unsafe:
 
 **Format String Attack Prevention:**
 ```c
-// VULNERABLE: User input as format string
-printf(user_input);  // Attacker can use %n, %x to read/write memory
+#include  <stdio.h> 
+void main(int argc, char **argv)
+{
+	// This line is safe
+	printf("%s\n", argv[1]);
 
-// SAFE: Format string is controlled
-ft_printf("User said: %s", user_input);
+	// This line is vulnerable
+	printf(argv[1]);
+}
+
 ```
 
 **Buffer Overflow Protection:**
@@ -197,5 +195,8 @@ int main(void)
 
 ```bash
 gcc -Wall -Wextra -Werror -I. your_program.c -L. -lft
+```
+## References
+https://owasp.org/www-community/attacks/Format_string_attack
 ```
 
