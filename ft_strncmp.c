@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:49:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/07/10 12:51:21 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/29 15:26:45 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,12 @@ works like strncmp but with less code
 */
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
-
-	i = 0;
 	if (!s1 && !s2)
 		return (0);
-	if (!s1 && s2)
-		return (-(unsigned char)s2[0]);
-	if (s1 && !s2)
-		return ((unsigned char)s1[0]);
-	while (s1[i] == s2[i] && s1[i] != '\0')
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
