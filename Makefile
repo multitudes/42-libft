@@ -1,24 +1,58 @@
 # added -fPIE -fPIC because compiling on mac m1 and linux
 # sometimes gave weird errors
-CFLAGS=-fPIE -fPIC -Wall -Wextra -Werror
+CFLAGS=-fPIE -fPIC -Wall -Wextra -Werror -I.
 CC=cc
 
-# part 1 - 23 functions
-# part 2 - 11 functions
-# bonus --  9 list functions
-SOURCES= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
-	ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
-	ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-	ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-	ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_itoxp.c ft_itox.c ft_itoxx.c ft_atol.c
+# ============================================================================
+# SOURCE FILE ORGANIZATION
+# ============================================================================
 
+# String manipulation functions
+STRING_SOURCES = src/string/ft_strlen.c src/string/ft_strchr.c src/string/ft_strrchr.c \
+	src/string/ft_strncmp.c src/string/ft_strnstr.c src/string/ft_strdup.c \
+	src/string/ft_substr.c src/string/ft_strjoin.c src/string/ft_strtrim.c \
+	src/string/ft_split.c src/string/ft_strmapi.c src/string/ft_striteri.c \
+	src/string/ft_strlcpy.c src/string/ft_strlcat.c
+
+# Memory manipulation functions
+MEMORY_SOURCES = src/memory/ft_memset.c src/memory/ft_bzero.c src/memory/ft_memcpy.c \
+	src/memory/ft_memmove.c src/memory/ft_memchr.c src/memory/ft_memcmp.c \
+	src/memory/ft_calloc.c
+
+# Character classification and transformation functions
+CHARACTER_SOURCES = src/character/ft_isalpha.c src/character/ft_isdigit.c \
+	src/character/ft_isalnum.c src/character/ft_isascii.c src/character/ft_isprint.c \
+	src/character/ft_toupper.c src/character/ft_tolower.c
+
+# Conversion functions (ASCII to int, int to string)
+CONVERSION_SOURCES = src/conversion/ft_atoi.c src/conversion/ft_atol.c \
+	src/conversion/ft_itoa.c src/conversion/ft_itox.c src/conversion/ft_itoxp.c \
+	src/conversion/ft_itoxx.c
+
+# Output functions (file descriptor output)
+OUTPUT_SOURCES = src/output/ft_putchar_fd.c src/output/ft_putstr_fd.c \
+	src/output/ft_putendl_fd.c src/output/ft_putnbr_fd.c
+
+# Linked list functions (bonus)
+LIST_SOURCES = src/list/ft_lstnew.c src/list/ft_lstadd_front.c src/list/ft_lstsize.c \
+	src/list/ft_lstlast.c src/list/ft_lstadd_back.c src/list/ft_lstdelone.c \
+	src/list/ft_lstclear.c src/list/ft_lstiter.c src/list/ft_lstmap.c
+
+# Combine all core libft sources
+SOURCES = $(STRING_SOURCES) $(MEMORY_SOURCES) $(CHARACTER_SOURCES) \
+	$(CONVERSION_SOURCES) $(OUTPUT_SOURCES) $(LIST_SOURCES)
+
+# ============================================================================
+# ADDITIONAL COMPONENTS
+# ============================================================================
+
+# ft_printf subdirectory
 PRINTF_PATH = ft_printf
-
 SOURCES_PRINTF = $(addprefix $(PRINTF_PATH)/, ft_printf.c pr_.c pr_c.c pr_s.c pr_p.c pr_x.c pr_xx.c \
 base16_utils.c base16_utils2.c pr_i.c err.c pr_u.c utils.c utilsflags.c utilsflags2.c)
 SOURCES += $(SOURCES_PRINTF)
 
+# get_next_line subdirectory
 GNL_PATH = get_next_line
 SOURCES_GNL = $(addprefix $(GNL_PATH)/, get_next_line.c get_next_line_utils.c \
 get_next_line_utils.c) 
