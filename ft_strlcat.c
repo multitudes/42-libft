@@ -3,37 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:01:55 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/22 13:38:07 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 14:38:49 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-     #include <string.h>
-     size_t  strlcat(char *dst, const char *src, size_t size);
- 
- strlcat() appends string src to the end of dst.  It will append at most
- dstsize - strlen(dst) - 1 characters.  It will then NUL-terminate, unless
- dstsize is 0 or the original dst string was longer than dstsize (in
- practice this should not happen as it means that either dstsize is
- incorrect or that dst is not a proper string).
- If the src and dst strings overlap, the behavior is undefined.
- strlcat will append at most size - strlen(dst) - 1 bytes,
- NUL-terminating the result. strlcat returns the total length
- of the string it tried to create.
- Like snprintf(3), the strlcpy() and strlcat() functions return the total
- length of the string they tried to create. For strlcat() that means the 
- initial length of dst plus the length of src.
- If the return value is >= dstsize, the output string has been truncated.
- It is the caller's responsibility to handle this.
-
- NOTE The orig strlcat crashes when I pass NULL to either string args
- mine returns zero..
+/**
+ * @brief Safely concatenates strings with size limit
+ * 
+ * Appends string src to the end of dst. It will append at most
+ * dstsize - strlen(dst) - 1 characters and NUL-terminate the result,
+ * unless dstsize is 0 or the original dst string was longer than dstsize.
+ * If the src and dst strings overlap, the behavior is undefined.
+ * 
+ * @param dst The destination string to append to
+ * @param src The source string to append
+ * @param dstsize The size of the destination buffer
+ * @return The total length of the string it tried to create (initial length 
+ * of dst plus length of src)
+ * @note If return value >= dstsize, the output string has been truncated
+ * @note Returns 0 if either dst or src is NULL (differs from standard strlcat)
  */
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

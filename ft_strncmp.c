@@ -6,31 +6,27 @@
 /*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:49:41 by lbrusa            #+#    #+#             */
-/*   Updated: 2025/09/29 15:26:45 by laurentb         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:37:43 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-/*
-SYNOPSIS
-       #include <string.h>
-       int strncmp(const char *s1, const char *s2, size_t n);
 
- The strcmp() and strncmp() functions lexicographically compare the 
- null-terminated strings s1 and s2.
- The strncmp() function compares not more than n characters.  
- Because strncmp() is designed for comparing strings rather than binary data,
- characters that appear after a ‘\0’ character are not compared.
- RETURN VALUES
- The strcmp() and strncmp() functions return an integer greater than, 
- equal to, or less than 0, according as the string s1 is greater than,
- equal to, or less than the string s2.
- The comparison is done using unsigned characters, so that ‘\200’
- is greater than ‘\0’.
- I check the input args for null values but the orig function has 
- this check already made through the preprocessor compiler so i cannot
- pass NULL even if I wanted to
+/**
+ * @brief Compares at most n characters of two strings
+ * 
+ * Lexicographically compares the null-terminated strings s1 and s2.
+ * Compares not more than n characters. Characters that appear after
+ * a '\0' character are not compared. The comparison is done using
+ * unsigned characters.
+ * 
+ * @param s1 The first string to compare
+ * @param s2 The second string to compare
+ * @param n The maximum number of characters to compare
+ * @return An integer greater than, equal to, or less than 0, according
+ *         as s1 is greater than, equal to, or less than s2
+ * @note Returns 0 if either s1 or s2 is NULL (differs from standard strncmp)
  */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -50,9 +46,19 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-/*
-works like strncmp but with less code
-*/
+/**
+ * @brief Compares two strings lexicographically
+ * 
+ * Compares the null-terminated strings s1 and s2 character by character
+ * using unsigned char values. A simplified version of strncmp without
+ * length limitation.
+ * 
+ * @param s1 The first string to compare
+ * @param s2 The second string to compare
+ * @return An integer greater than, equal to, or less than 0, according
+ *         as s1 is greater than, equal to, or less than s2
+ * @note Returns 0 if both s1 and s2 are NULL
+ */
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	if (!s1 && !s2)

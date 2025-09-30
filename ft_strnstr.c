@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:42:50 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:17:11 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 14:38:17 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <string.h>
-
-     char *strnstr(const char *big, const char *little, size_t len);
-
-The strnstr() function locates the first occurrence of the null-terminated 
- string needle in the string haystack, where not more than len characters
- are searched.  Characters that appear after a ‘\0’ character
- are not searched.  Since the strnstr() function is a FreeBSD specific API, 
- it should only be used when portability is not a concern.
- If needle is an empty string, haystack is returned; if needle occurs nowhere 
- in haystack, NULL is returned;
- otherwise a pointer to the first character of the first occurrence of needle 
- is returned.
+/**
+ * @brief Locates a substring in a string with length limit
+ * 
+ * Locates the first occurrence of the null-terminated string needle
+ * in the string haystack, where not more than len characters are
+ * searched. Characters that appear after a '\0' character are not
+ * searched.
+ * 
+ * @param haystack The string to search in
+ * @param needle The substring to search for
+ * @param len The maximum number of characters to search
+ * @return A pointer to the first character of the first occurrence of needle,
+ *         or haystack if needle is empty, or NULL if needle is not found
+ * @note Returns NULL if either haystack or needle is NULL 
+ * (differs from standard strnstr)
  */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

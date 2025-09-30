@@ -3,32 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:47:43 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/22 19:39:13 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 14:38:34 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
- Parameters
- s:  The string on which to iterate.
- f:  The function to apply to each character.
- Return value
- The string created from the successive applications
- of ’f’.
- Returns NULL if the allocation fails.
- Applies the function ’f’ to each character of the
- string ’s’, and passing its index as first argument
- to create a new string (with malloc(3)) resulting
- from successive applications of ’f’.
- 	// if (s == NULL || f == NULL)
-	// 	return ((char *)s);
+/**
+ * @brief Applies a function to each character of a string to create 
+ * a new string
+ * 
+ * Applies the function 'f' to each character of the string 's', passing its
+ * index as first argument to create a new string (with malloc) resulting
+ * from successive applications of 'f'.
+ * 
+ * @param s The string on which to iterate
+ * @param f The function to apply to each character (takes index and char, 
+ * returns char)
+ * @return The string created from the successive applications of 'f', 
+ * or NULL if allocation fails
+ * @note The caller is responsible for freeing the returned string
  */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

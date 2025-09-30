@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:39:29 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:14:52 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 14:33:57 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-
-char *ft_strjoin(char const *s1, char const *s2)
-
- s1:  The prefix string.
- s2:  The suffix string.
- ret The new string.
- NULL if the allocation fails.
- Allocates (with malloc(3)) and returns a new
- string, which is the result of the concatenation
- of ’s1’ and ’s2’.
+/**
+ * @brief Concatenates two strings into a new string
+ * 
+ * Allocates (with malloc) and returns a new string, which is the result
+ * of the concatenation of 's1' and 's2'.
+ * 
+ * @param s1 The prefix string
+ * @param s2 The suffix string
+ * @return The new concatenated string, or NULL if allocation fails
+ * @note The caller is responsible for freeing the returned string
  */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
