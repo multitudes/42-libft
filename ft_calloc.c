@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:44:16 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/05/04 14:25:11 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 12:53:36 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <stdlib.h>
-	   void *calloc(size_t nmemb, size_t size);
- The malloc() function allocates size bytes of memory and returns a pointer 
- to the allocated memory The calloc() function contiguously allocates
- enough space for count objects that are size bytes of memory
- each and returns a pointer to the allocated memory.
- The allocated memory is filled with bytes of value zero.
- If successful, calloc(), malloc(), realloc(), reallocf(), valloc(),
- and aligned_alloc() functions return a pointer to allocated memory.
- If there is an error, they return a NULL pointer and set errno to ENOMEM.
- 	if ((SIZE_MAX / count) < size))?
-	if (count > (INT_MAX - 1) || size > (INT_MAX - 1))
-	ULONG_MAX?
-	DEBUG tests/part1_tests.c:612: --- pointer ft_calloc 0 -5 -> (nil)
-DEBUG tests/part1_tests.c:616: --- pointer calloc 0 -5 -> 0xd6e750	
+/**
+ * @brief Allocates and zeros memory
+ * 
+ * Contiguously allocates enough space for count objects that are size bytes
+ * each and returns a pointer to the allocated memory. The allocated memory
+ * is filled with bytes of value zero.
+ * 
+ * @param count Number of objects to allocate
+ * @param size Size of each object in bytes
+ * @return A pointer to allocated memory, or NULL if allocation fails
+ * @note Checks for integer overflow in the multiplication count * size
  */
 void	*ft_calloc(size_t count, size_t size)
 {

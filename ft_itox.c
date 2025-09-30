@@ -3,20 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:44:18 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 13:54:25 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:10:16 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-In the functions used to convert a number to 
-a string I use an algo which produces a string first 
-but in the reverse order. This function just reverses that string 
-*/
+/**
+ * @brief Reverses a string in place
+ * 
+ * In the functions used to convert a number to a string, an algorithm
+ * is used which produces a string first but in reverse order. This
+ * function reverses that string to get the correct order.
+ * 
+ * @param res The string to reverse
+ * @param len The length of the string
+ */
 void	_reverse(char *res, int len)
 {
 	int	j;
@@ -35,9 +40,16 @@ void	_reverse(char *res, int len)
 	res[len] = 0;
 }
 
-/*
-Used for conversion to base16 from unsigned int
-This function handles the lowercase x
+/**
+ * @brief Converts unsigned integer to hexadecimal string (lowercase)
+ * 
+ * Converts an unsigned integer to its hexadecimal string representation
+ * using lowercase letters (a-f). This function handles the lowercase 'x'
+ * format for hexadecimal conversion.
+ * 
+ * @param nbr The unsigned integer to convert
+ * @return A newly allocated string containing the hexadecimal representation, or NULL if allocation fails
+ * @note The caller is responsible for freeing the returned string
  */
 char	*ft_itox(unsigned int nbr)
 {

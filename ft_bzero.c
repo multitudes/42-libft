@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:17:06 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 17:57:49 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:06:19 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <strings.h>
-
-       void bzero(void *s, size_t n);
-	   
- The bzero() function writes n zeroed bytes to the string s.  
- If n is zero, bzero() does nothing.
-*/
+/**
+ * @brief Sets bytes in memory to zero
+ * 
+ * Writes n zeroed bytes to the memory area pointed to by s.
+ * If n is zero, ft_bzero does nothing.
+ * 
+ * @param s Pointer to the memory area to zero
+ * @param n Number of bytes to set to zero
+ */
 void	ft_bzero(void *s, size_t n)
 {
 	char	*tmp;

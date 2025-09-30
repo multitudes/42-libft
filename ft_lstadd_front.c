@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:41:56 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/05/16 12:01:40 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:14:23 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-void ft_lstadd_front(t_list **lst, t_list *new);
-
- lst:  The address of a pointer to the first link of
- a list.
- new:  The address of a pointer to the node to be
- added to the list.
- Adds the node ’new’ at the beginning of the list.
- node->next = list->first;
- list->first->prev = node;
- list->first = node;
+/**
+ * @brief Adds a node at the beginning of a list
+ * 
+ * Adds the node 'new_node' at the beginning of the list. The new node
+ * becomes the first element of the list. This implementation supports
+ * doubly linked lists by setting both next and prev pointers.
+ * 
+ * @param lst The address of a pointer to the first link of a list
+ * @param new_node The node to be added to the list
  */
 void	ft_lstadd_front(t_list **lst, t_list *new_node)
 {

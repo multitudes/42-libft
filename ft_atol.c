@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:45:15 by lbrusa            #+#    #+#             */
-/*   Updated: 2024/01/06 15:19:14 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:12:28 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-Signature:
-    #include <stdlib.h>
-
-    long
-    atol(const char *str);
-	   
-The atol() function converts the initial portion of the string pointed to
-by str to long integer representation.
-
- The string may begin with an arbitrary amount of white space (as determined 
- by isspace(3)) followed by a single optional ‘+’ or ‘-’ sign.The remainder
- of the string is converted to a long, long long, intmax_t or quad_t
- value in the obvious manner, stopping at the first character which is not
- a valid digit.
- isspace checks for      ``\t''``\n''``\v''``\f''``\r''`` ''
+/**
+ * @brief Converts a string to a long integer
+ * 
+ * Converts the initial portion of the string pointed to by str to long
+ * integer representation. The string may begin with an arbitrary amount of
+ * white space (space, tab, newline, vertical tab, form feed, carriage return)
+ * followed by a single optional '+' or '-' sign.
+ * 
+ * @param str The string to convert
+ * @return The converted long integer value, or 0 if no conversion 
+ * @note Similar to ft_atoi but returns a long instead of int
+ * @warning Does not handle overflow/underflow like standard strtol
  */
 long	ft_atol(const char *str)
 {
@@ -47,11 +43,3 @@ long	ft_atol(const char *str)
 		n = 10 * n + ((*str++ - '0') * sign);
 	return (n);
 }
-
-// int main(void)
-// {
-// 	long num = 0;
-// 	num = ft_atol("2147483650");
-// 	printf("num got %ld",num);
-// 	return 0;
-// }

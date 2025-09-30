@@ -3,25 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:40:08 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:23 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:22:43 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-
-void ft_putchar_fd(char c, int fd);
-
- c:  The character to output.
- fd:  The file descriptor on which to write.
- Outputs the character ’c’ to the given file
- descriptor.
- write
+/**
+ * @brief Outputs a character to a file descriptor
+ * 
+ * Outputs the character 'c' to the given file descriptor using write().
+ * 
+ * @param c The character to output
+ * @param fd The file descriptor on which to write
  */
 void	ft_putchar_fd(char c, int fd)
 {

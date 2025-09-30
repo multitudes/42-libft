@@ -3,31 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:52:03 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:47 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:21:57 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-       #include <string.h>
-
-       void *memmove(void *dest, const void *src, size_t n);
-
- DESCRIPTION
- The memmove() function copies len bytes from string src to string dst.
- The two strings may overlap; the copy is always done in a non-destructive
- manner.
- RETURN VALUES
- The memmove() function returns the original value of dst.
- there is a way to make it faster without intermediate copy
- checking if the strings could overlapt or if they need to be copied
- from the end or the front
- I use len which is unsigned to loop on the strings
+/**
+ * @brief Copies memory area handling overlaps
+ * 
+ * Copies n bytes from memory area src to memory area dst. The two areas
+ * may overlap; the copy is always done in a non-destructive manner by
+ * choosing the appropriate copy direction (forward or backward).
+ * 
+ * @param dst Destination memory area
+ * @param src Source memory area
+ * @param len Number of bytes to copy
+ * @return The original value of dst
  */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

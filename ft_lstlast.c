@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:19:49 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:43 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:18:43 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-t_list *ft_lstlast(t_list *lst);
-
- lst:  The beginning of the list.
- ret Last node of the list
- Returns the last node of the list.
+/**
+ * @brief Returns the last node of a list
+ * 
+ * Traverses the list to find and return the last node. If the list
+ * is empty (NULL), returns NULL.
+ * 
+ * @param lst The beginning of the list
+ * @return The last node of the list, or NULL if the list is empty
  */
 t_list	*ft_lstlast(t_list *lst)
 {

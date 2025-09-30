@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbrusa <lbrusa@student.42berlin.de>        +#+  +:+       +#+        */
+/*   By: laurentb <laurentb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:13:19 by lbrusa            #+#    #+#             */
-/*   Updated: 2023/11/21 18:18:28 by lbrusa           ###   ########.fr       */
+/*   Updated: 2025/09/30 13:22:21 by laurentb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-
- void *memset(void *b, int c, size_t len);
-
- DESCRIPTION
- The memset() function writes len bytes of value c 
- (converted to an unsigned char) to the string b.
- RETURN VALUES
- The memset() function returns its first argument.
+/**
+ * @brief Sets bytes in memory to a specific value
+ * 
+ * Writes len bytes of value c (converted to an unsigned char) to the
+ * memory area pointed to by b.
+ * 
+ * @param b Pointer to the memory area to fill
+ * @param c The value to set (converted to unsigned char)
+ * @param len Number of bytes to set
+ * @return The original value of b
  */
 void	*ft_memset(void *b, int c, size_t len)
 {

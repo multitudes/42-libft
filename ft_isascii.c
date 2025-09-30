@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-/*
-SYNOPSIS
-        #include <ctype.h>
-		int isascii(int c);
-* The isascii() function tests for an ASCII character, which is any 
-* character between 0 and octal 0177 inclusive. (127!)
-* The values returned are nonzero if the character c falls into the tested 
-* class, and zero if not.
-*/
+/**
+ * @brief Tests for ASCII character
+ * 
+ * Tests for an ASCII character, which is any character between 0 and 127
+ * inclusive (octal 0177). This covers the standard ASCII character set.
+ * 
+ * @param c The character to test
+ * @return Non-zero if the character is ASCII, zero otherwise
+ */
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
